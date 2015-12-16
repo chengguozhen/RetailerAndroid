@@ -7,4 +7,13 @@
     <dimen name="default_widget_height">48dp</dimen>
     <dimen name="default_widget_width">48dp</dimen>
     <dimen name="text_size_small">14sp</dimen>
+
+    <!--pull to refresh -->
+    <dimen name="header_height">60dp</dimen>
+    <dimen name="footer_height">60dp</dimen>
+    <dimen name="footer_padding">10dp</dimen>
+    <dimen name="action_bar_widget_width">50dp</dimen>
+
+    <dimen name="ft_list_vertical_margin">12dp</dimen>
+    <dimen name="ft_list_icon_width">30dp</dimen>
 </resources>

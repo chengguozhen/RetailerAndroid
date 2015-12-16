@@ -31,7 +31,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText user_id;          //用户名（电话）输入框
     private EditText pwd;              //密码输入框
     private TextView register;         //注册
-    private TextView login_quick;      //手机快捷登录
     private ImageButton doBack;        //title bar 的返回按钮
     private TextView pwd_retrieve;     // title bar 找回密码
 
@@ -58,7 +57,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         user_id = (EditText) findViewById(R.id.edit_login_user_id);
         pwd = (EditText) this.findViewById(R.id.edit_login_pwd);
         register = (TextView) this.findViewById(R.id.register);
-        login_quick = (TextView) this.findViewById(R.id.login_quick);
         pwd_retrieve = (TextView) this.findViewById(R.id.pwd_retrieve);
         doBack = (ImageButton) this.findViewById(R.id.login_back);
         login = (Button) this.findViewById(R.id.login);
@@ -72,7 +70,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         doBack.setOnClickListener(this);
         pwd_retrieve.setOnClickListener(this);
         register.setOnClickListener(this);
-        login_quick.setOnClickListener(this);
 
         //mQueue = Volley.newRequestQueue(this);
     }
@@ -134,10 +131,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             case R.id.register:
                 //注册
                 //startActivity(new Intent(this, RegisterActivity.class));
-                break;
-            case R.id.login_quick:
-                //手机号快捷登录
-                //startActivity(new Intent(this, QuickLoginActivity.class));
                 break;
 
         }

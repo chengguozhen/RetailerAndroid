@@ -35,12 +35,11 @@
     <string name="login_quick_failed">快速登录失败！亲，别灰心，再试试！</string>
     <string name="login_quick_phone_illegal">您输入的号码不是手机号！</string>
 
-
-    <!-- 下拉刷新和加载更多 -->
-    <string name="xlistview_header_hint_normal">下拉刷新</string>
-    <string name="xlistview_header_hint_ready">松开刷新数据</string>
-    <string name="xlistview_header_hint_loading">正在加载...</string>
-    <string name="xlistview_header_last_time">上次更新时间：</string>
-    <string name="xlistview_footer_hint_normal">查看更多</string>
-    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <!-- pull to refresh strings -->
+    <string name="header_hint_refresh_normal">下拉即可刷新</string>
+    <string name="header_hint_refresh_ready">松开即可刷新</string>
+    <string name="header_hint_refresh_loading">使劲加载中，请稍后...</string>
+    <string name="header_hint_refresh_time">更新于:</string>
+    <string name="footer_hint_load_normal">使劲加载中，请稍后...</string>
+    <string name="footer_hint_load_ready">使劲加载中，请稍后...</string>
 </resources>

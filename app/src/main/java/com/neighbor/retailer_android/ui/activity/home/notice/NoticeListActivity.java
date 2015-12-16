@@ -8,8 +8,7 @@ import android.widget.AdapterView;
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.NoticeItemBean;
 import com.neighbor.retailer_android.ui.adapter.NoticeListItemAdapter;
-import com.neighbor.retailer_android.ui.view.KindPinnedHeaderListView;
-import com.neighbor.retailer_android.ui.view.XListView;
+import com.neighbor.retailer_android.ui.view.pulltorefresh.XListView;
 
 import java.util.ArrayList;
 

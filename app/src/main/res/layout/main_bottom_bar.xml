@@ -55,6 +55,27 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/id_tab_bottom_pi"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:descendantFocusability="beforeDescendants"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <ImageButton
+                android:id="@+id/btn_tab_bottom_pi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:clickable="false"
+                android:src="@mipmap/ic_launcher" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/id_tab_bottom_fantuan"
             android:layout_width="0dp"
             android:layout_height="fill_parent"

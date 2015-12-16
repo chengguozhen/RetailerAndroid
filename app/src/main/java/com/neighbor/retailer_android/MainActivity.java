@@ -25,6 +25,7 @@ import com.neighbor.retailer_android.ui.fragment.HomeTabFragment;
 import com.neighbor.retailer_android.ui.fragment.KindTabFragment;
 import com.neighbor.retailer_android.ui.fragment.MyTabFragment;
 import com.neighbor.retailer_android.ui.fragment.ShopCartTabFragment;
+import com.neighbor.retailer_android.ui.fragment.WholeSaleTabFragment;
 
 import java.io.File;
 
@@ -38,11 +39,13 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
 //    public static final String MY_TAB_ACTION = "MY_TAB_TO_MAIN";
 //
 //    public static final String FT_SHOW_DIALOG= "FT_SHOW_DIALOG";
+    private String TAG="nihao";
     /**
      * tab页面 fragment ，添加各自的fragment时自行修改
      */
     private HomeTabFragment mTab01;
     private KindTabFragment mTab02;
+    private WholeSaleTabFragment mTabMid;
     private ShopCartTabFragment mTab03;
     private MyTabFragment mTab04;
 
@@ -51,6 +54,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
      */
     private LinearLayout mTabBtnHome;
     private LinearLayout mTabBtnKind;
+    private LinearLayout mTabBtnWSale;
     private LinearLayout mTabBtnShopCart;
     private LinearLayout mTabBtnMy;
     //private PushTestReceiver pushReceiver = new PushTestReceiver();
@@ -92,11 +96,13 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
 
         mTabBtnHome = (LinearLayout) findViewById(R.id.id_tab_bottom_home);
         mTabBtnKind = (LinearLayout) findViewById(R.id.id_tab_bottom_meishi);
+        mTabBtnWSale = (LinearLayout) findViewById(R.id.id_tab_bottom_pi);
         mTabBtnShopCart = (LinearLayout) findViewById(R.id.id_tab_bottom_fantuan);
         mTabBtnMy = (LinearLayout) findViewById(R.id.id_tab_bottom_my);
 
         mTabBtnHome.setOnClickListener(this);
         mTabBtnKind.setOnClickListener(this);
+        mTabBtnWSale.setOnClickListener(this);
         mTabBtnShopCart.setOnClickListener(this);
         mTabBtnMy.setOnClickListener(this);
         //mTabBtnMy.setOnLongClickListener(this);
@@ -111,11 +117,14 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
             case R.id.id_tab_bottom_meishi:
                 setTabSelection(1);
                 break;
-            case R.id.id_tab_bottom_fantuan:
+            case R.id.id_tab_bottom_pi:
                 setTabSelection(2);
                 break;
-            case R.id.id_tab_bottom_my:
+            case R.id.id_tab_bottom_fantuan:
                 setTabSelection(3);
+                break;
+            case R.id.id_tab_bottom_my:
+                setTabSelection(4);
                 break;
 
             default:
@@ -162,19 +171,32 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
                 }
                 break;
             case 2:
+                //批发商
+                ((ImageButton) mTabBtnWSale.findViewById(R.id.btn_tab_bottom_pi))
+                        .setImageResource(R.mipmap.main_meishi_press);
+                if (mTabMid == null) {
+                    // 如果MessageFragment为空，则创建一个并添加到界面上
+                    mTabMid = new WholeSaleTabFragment();
+                    transaction.add(R.id.id_content, mTabMid,"pifashang");
+                } else {
+                    // 如果MessageFragment不为空，则直接将它显示出来
+                    transaction.show(mTabMid);
+                }
+                break;
+            case 3:
                 // 当点击了动态tab时，改变控件的图片和文字颜色
                 ((ImageButton) mTabBtnShopCart.findViewById(R.id.btn_tab_bottom_fantuan))
                         .setImageResource(R.mipmap.main_fantuan_press);
                 if (mTab03 == null) {
                     // 如果NewsFragment为空，则创建一个并添加到界面上
                     mTab03 = new ShopCartTabFragment();
-                    transaction.add(R.id.id_content, mTab03,"fantuan");
+                    transaction.add(R.id.id_content, mTab03,"gouwuche");
                 } else {
                     // 如果NewsFragment不为空，则直接将它显示出来
                     transaction.show(mTab03);
                 }
                 break;
-            case 3:
+            case 4:
                 // 当点击了设置tab时，改变控件的图片和文字颜色
                 ((ImageButton) mTabBtnMy.findViewById(R.id.btn_tab_bottom_my))
                         .setImageResource(R.mipmap.main_my_press);
@@ -199,6 +221,8 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
                 .setImageResource(R.mipmap.main_home);
         ((ImageButton) mTabBtnKind.findViewById(R.id.btn_tab_bottom_meishi))
                 .setImageResource(R.mipmap.main_meishi);
+        ((ImageButton) mTabBtnWSale.findViewById(R.id.btn_tab_bottom_pi))
+                .setImageResource(R.mipmap.ic_launcher);
         ((ImageButton) mTabBtnShopCart.findViewById(R.id.btn_tab_bottom_fantuan))
                 .setImageResource(R.mipmap.main_fantuan);
         ((ImageButton) mTabBtnMy.findViewById(R.id.btn_tab_bottom_my))
@@ -217,6 +241,9 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         }
         if (mTab02 != null) {
             transaction.hide(mTab02);
+        }
+        if(mTabMid != null){
+            transaction.hide(mTabMid);
         }
         if (mTab03 != null) {
             transaction.hide(mTab03);

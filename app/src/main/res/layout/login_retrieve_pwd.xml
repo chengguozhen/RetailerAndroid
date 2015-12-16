@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_background_color">
+
+    <include layout="@layout/login_title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray_background_color"
+        android:layout_margin="@dimen/activity_horizontal_margin">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/login_pwd_new_phone_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_weight="2"
+                android:textSize="@dimen/text_size_medium"
+                android:hint="@string/login_quick_phone_number" />
+
+            <Button
+                android:id="@+id/login_pwd_new_code_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:background="@drawable/click"
+                android:textSize="@dimen/text_size_medium"
+                android:text="@string/login_quick_verification_code_get" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/login_pwd_new_pwd_input"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_medium"
+            android:hint="@string/register_password_input_new"/>
+        <EditText
+            android:id="@+id/login_pwd_new_code_input"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textSize="@dimen/text_size_medium"
+            android:hint="@string/login_quick_verification_code_input"/>
+        <Button
+            android:id="@+id/login_pwd_new_btn"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/click"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_large"
+            android:text="@string/login_setpwd_new" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--灰色 14sp 字体-->
+    <style name="ft_gray_text">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">@color/gray_text_color</item>
+    </style>
+
 </resources>

@@ -52,7 +52,8 @@ public class NoticeListItemAdapter extends BaseAdapter {
 
     static class ViewHolder
     {
-
+        TextView noticeTitle;
+        TextView noticeTime;
     }
 
     @Override
@@ -84,11 +85,14 @@ public class NoticeListItemAdapter extends BaseAdapter {
         if (v == null) {
             v = layoutInflater.inflate(R.layout.activity_notice_listitem, null);
             viewHolder = new ViewHolder();
-
+            viewHolder.noticeTitle = (TextView)v.findViewById(R.id.notice_title);
+            viewHolder.noticeTime = (TextView)v.findViewById(R.id.notice_time);
             v.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) v.getTag();
         }
+        viewHolder.noticeTitle.setText(list.get(position).getNoticeTitle());
+        viewHolder.noticeTime.setText(list.get(position).getNoticeTime());
 
         return v;
     }

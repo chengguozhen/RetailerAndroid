@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_marginTop="70dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ft_img_net_disable"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/ms_not_network_tx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="您还没有连接网络，请连网后查看"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            style="@style/ft_gray_text"/>
+
+        <Button
+            android:id="@+id/ms_tab_do_lodding_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ft_gray_btn"
+            android:text="重新加载"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/main_theme_color"
+            android:padding="10dp"/>
+</LinearLayout>

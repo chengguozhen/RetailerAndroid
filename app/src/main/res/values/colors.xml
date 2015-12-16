@@ -9,4 +9,7 @@
     <color name="gray_text_color">#aaaaaa</color>
     <color name="main_theme_dark_color" >#c74345</color>
     <color name="transparent">#00000000</color>
+    <color name="gray">#828282</color>
+    <color name="gray_line_color">#e4e4e4</color><!--灰色 分割线 文字-->
+    <color name="main_text_color">#4c4c4c</color>
 </resources>

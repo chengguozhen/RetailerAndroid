@@ -3,7 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
-
     <TextView
         android:id="@+id/item_tx"
         android:layout_width="match_parent"
@@ -11,5 +10,4 @@
         android:gravity="center"
         android:text="niaho"
         android:textSize="20sp"/>
-
 </LinearLayout>

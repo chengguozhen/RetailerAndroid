@@ -13,11 +13,30 @@
         android:gravity="center"
         android:textSize="50sp"
         android:textColor="@color/colorAccent"/>
-    <ImageView
-        android:id="@+id/notice_image"
-        android:layout_width="@dimen/home_default_imageview"
-        android:layout_height="@dimen/home_default_imageview"
-        android:src="@mipmap/home_notice"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_below="@+id/home_header"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/notice_image"
+            android:layout_weight="1"
+            android:layout_width="@dimen/home_default_imageview"
+            android:layout_height="@dimen/home_default_imageview"
+            android:src="@mipmap/home_notice"
+            />
+        <ImageView
+            android:id="@+id/notice_discount"
+            android:src="@mipmap/home_discount"
+            android:layout_weight="1"
+            android:layout_width="@dimen/home_default_imageview"
+            android:layout_height="@dimen/home_default_imageview" />
+        <ImageView
+            android:id="@+id/notice_new_merchandise"
+            android:src="@mipmap/home_new_merchance"
+            android:layout_weight="1"
+            android:layout_width="@dimen/home_default_imageview"
+            android:layout_height="@dimen/home_default_imageview" />
+    </LinearLayout>
+
 </RelativeLayout>

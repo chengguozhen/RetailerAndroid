@@ -20,5 +20,9 @@
     <dimen name="ft_list_icon_width">30dp</dimen>
 
     <dimen name="home_default_imageview">80dp</dimen>
+    <dimen name="merchandise_list_image">80dp</dimen>
+    <dimen name="add_substract_icon">30dp</dimen>
+    <dimen name="purchanse_height">40dp</dimen>
+    <dimen name="purchase_width">100dp</dimen>
 
 </resources>

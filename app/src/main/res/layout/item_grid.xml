@@ -19,5 +19,4 @@
         android:gravity="center"
         android:text="niaho"
         android:textSize="20sp"/>
-
 </LinearLayout>

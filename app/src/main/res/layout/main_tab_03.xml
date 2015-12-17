@@ -6,7 +6,7 @@
 
     <include layout="@layout/shop_cart_title_bar"/>
 
-    <com.neighbor.retailer_android.ui.view.pulltorefresh.XListView
+    <ExpandableListView
         android:id="@+id/shop_cart_listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -18,6 +18,9 @@
         android:id="@+id/submit_pay"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:background="@drawable/click"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_large"
         android:text="点击支付"/>
 
     <include layout="@layout/kind_no_network_bar"

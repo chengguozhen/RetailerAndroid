@@ -46,4 +46,11 @@
     <!-- 公告Activity-->
     <string name="noticelist_title">公告列表</string>
     <string name="notice_title">公告详情</string>
+    <!-- 商品列表 -->
+    <string name="merchandiselist_title">商品列表</string>
+    <string name="merchandise_new_title">新品列表</string>
+    <string name="merchandise_discount_title">特惠商品列表</string>
+    <string name="merchandisedetail_title">商品详情</string>
+
+
 </resources>

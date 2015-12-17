@@ -9,7 +9,7 @@
     <com.neighbor.retailer_android.ui.view.pulltorefresh.XListView
         android:id="@+id/shop_cart_listview"
         android:layout_width="match_parent"
-        android:layout_height="odp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:cacheColorHint="#00000000"
         android:divider="@null"

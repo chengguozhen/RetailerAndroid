@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
@@ -62,6 +63,7 @@ public class ShopCartAdapter extends BaseAdapter {
             //根据自定义的Item布局加载布局
             convertView = mInflater.inflate(R.layout.shop_cart_list_item, null);
             holder.msResName = (TextView)convertView.findViewById(R.id.textItem);
+            holder.shopInfoList = (ListView)convertView.findViewById(R.id.shop_cart_info_ls);
             //将设置好的布局保存到缓存中，并将其设置在Tag里，以便后面方便取出Tag
             convertView.setTag(holder);
         }else
@@ -77,5 +79,6 @@ public class ShopCartAdapter extends BaseAdapter {
          * 菜品分类
          */
         public TextView msResName;
+        public ListView shopInfoList;
     }
 }

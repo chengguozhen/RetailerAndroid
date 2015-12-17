@@ -8,15 +8,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/default_widget_height"
-        android:gravity="center">
+        android:layout_height="@dimen/default_widget_height">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="@dimen/default_widget_height"
             android:id="@+id/textItem"
-            android:gravity="center"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="8dp"
             android:focusable="false"
             android:textColor="@color/main_text_color"
+            android:text="批发商名称+二级类目"
             android:textSize="@dimen/text_size_medium"/>
         </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimary"/>
+    <ListView
+        android:id="@+id/shop_cart_info_ls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

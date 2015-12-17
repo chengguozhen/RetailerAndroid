@@ -1,12 +1,19 @@
 <resources>
+    
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>-->
+    </style>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar"/>
 
     <!--灰色 14sp 字体-->
     <style name="ft_gray_text">
         <item name="android:textSize">@dimen/text_size_small</item>
         <item name="android:textColor">@color/gray_text_color</item>
     </style>
-
+    <style name="toolbar_title" parent="@android:style/Widget.DeviceDefault.ActionBar">
+        <item name="android:textSize">@dimen/abc_text_size_title_material</item>
+    </style>
 </resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.neighbor.retailer_android.ui.activity.home.notice.NoticeDetailActivity">
+
+    <include android:id="@+id/noticedetail_header"
+        layout="@layout/my_header_toolbar"/>
+
+    <ScrollView
+        android:layout_below="@+id/noticedetail_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="@dimen/default_margin_distance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/notice_content_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="公告题目"
+                android:textSize="@dimen/text_size_large"
+                />
+            <TextView
+                android:id="@+id/notice_content_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2015-12-15 11:00:08"
+                android:layout_marginTop="@dimen/default_margin_distance"
+                android:textSize="@dimen/text_size_small"
+                />
+            <TextView
+                android:id="@+id/notice_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="eowrnioidsfnivsdfn搜if的脑袋上覅ONS多噢覅女上丹佛in博v死的年森林人累死人
+            的女生地方女；的神佛IM的神佛v闹洞房搜in而我in
+            额外热票房你说地方女eowrnioidsfnivsdfn搜if的脑袋上覅ONS多噢覅女上丹佛in博v死的年森林人累死人
+            的女生地方女；的神佛IM的神佛v闹洞房搜in而我in
+            额外热票房你说地方女eowrnioidsfnivsdfn搜if的脑袋上覅ONS多噢覅女上丹佛in博v死的年森林人累死人
+            的女生地方女；的神佛IM的神佛v闹洞房搜in而我in
+            额外热票房你说地方女eowrnioidsfnivsdfn搜if的脑袋上覅ONS多噢覅女上丹佛in博v死的年森林人累死人
+            的女生地方女；的神佛IM的神佛v闹洞房搜in而我in
+            额外热票房你说地方女eowrnioidsfnivsdfn搜if的脑袋上覅ONS多噢覅女上丹佛in博v死的年森林人累死人
+            的女生地方女；的神佛IM的神佛v闹洞房搜in而我in
+            额外热票房你说地方女eowrnioidsfnivsdfn搜if的脑袋上覅ONS多噢覅女上丹佛in博v死的年森林人累死人
+            的女生地方女；的神佛IM的神佛v闹洞房搜in而我in
+            额外热票房你说地方女eowrnioidsfnivsdfn搜if的脑袋上覅ONS多噢覅女上丹佛in博v死的年森林人累死人
+            的女生地方女；的神佛IM的神佛v闹洞房搜in而我in
+            额外热票房你说地方女eowrnioidsfnivsdfn搜if的脑袋上覅ONS多噢覅女上丹佛in博v死的年森林人累死人
+            的女生地方女；的神佛IM的神佛v闹洞房搜in而我in
+            额外热票房你说地方女"
+                android:layout_marginTop="@dimen/default_margin_distance"
+                android:textSize="@dimen/text_size_medium"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -13,5 +13,7 @@
         <item name="android:textSize">@dimen/text_size_small</item>
         <item name="android:textColor">@color/gray_text_color</item>
     </style>
-
+    <style name="toolbar_title" parent="@android:style/Widget.DeviceDefault.ActionBar">
+        <item name="android:textSize">@dimen/abc_text_size_title_material</item>
+    </style>
 </resources>

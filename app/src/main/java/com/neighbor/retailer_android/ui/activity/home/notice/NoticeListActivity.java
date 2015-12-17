@@ -1,19 +1,24 @@
 package com.neighbor.retailer_android.ui.activity.home.notice;
 
-import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.support.v7.widget.Toolbar;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.NoticeItemBean;
+import com.neighbor.retailer_android.common.Constants;
 import com.neighbor.retailer_android.ui.adapter.NoticeListItemAdapter;
+import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarHeader;
+import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarListener;
 import com.neighbor.retailer_android.ui.view.pulltorefresh.XListView;
 
 import java.util.ArrayList;
 
-public class NoticeListActivity extends Activity implements XListView.IXListViewListener{
+public class NoticeListActivity extends ActionBarActivity implements XListView.IXListViewListener{
 
     /**
      * 公告列表控件
@@ -25,6 +30,11 @@ public class NoticeListActivity extends Activity implements XListView.IXListView
      */
     private ArrayList<NoticeItemBean> noticeList;
     private NoticeListItemAdapter adapter;
+
+    /**
+     * toolbar
+     */
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +50,25 @@ public class NoticeListActivity extends Activity implements XListView.IXListView
      */
     private void initView()
     {
+        /**
+         * toolbar title
+         */
+        view = findViewById(R.id.header);
+        if(view != null)
+        {
+            Toolbar toolbar = (Toolbar)view;
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            MyToolbarHeader toolbarHeader = new MyToolbarHeader(this,toolbar);
+            toolbarHeader.setHeaderTitle(getString(R.string.noticelist_title));
+            MyToolbarListener listener = new MyToolbarListener() {
+                @Override
+                public void addNavigation() {
+                    finish();
+                }
+            };
+            toolbarHeader.setNavigation(R.mipmap.back,listener);
+        }
 
     }
     /**
@@ -52,7 +81,9 @@ public class NoticeListActivity extends Activity implements XListView.IXListView
         noticeListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(NoticeListActivity.this,NoticeDetailActivity.class);
+                intent.putExtra(Constants.NOTICEID,noticeList.get(position).getId());
+                startActivity(intent);
             }
         });
         noticeListview.setPullLoadEnable(true);
@@ -65,6 +96,7 @@ public class NoticeListActivity extends Activity implements XListView.IXListView
     @Override
     public void onRefresh() {
 
+        onLoad();
     }
 
     /**
@@ -73,6 +105,13 @@ public class NoticeListActivity extends Activity implements XListView.IXListView
     @Override
     public void onLoadMore() {
 
+        onLoad();
+    }
+
+    private void onLoad() {
+        noticeListview.stopRefresh();
+        noticeListview.stopLoadMore();
+        noticeListview.setRefreshTime("none");
     }
 
     /**
@@ -80,9 +119,11 @@ public class NoticeListActivity extends Activity implements XListView.IXListView
      */
     private void initAdapterData()
     {
+        noticeList = new ArrayList<NoticeItemBean>();
         for(int i=0;i <10; i++)
         {
             NoticeItemBean bean = new NoticeItemBean();
+            bean.setId(i+"");
             bean.setNoticeTitle("title "+i);
             bean.setNoticeTime("9:05:"+i);
             noticeList.add(bean);

@@ -42,4 +42,8 @@
     <string name="header_hint_refresh_time">更新于:</string>
     <string name="footer_hint_load_normal">使劲加载中，请稍后...</string>
     <string name="footer_hint_load_ready">使劲加载中，请稍后...</string>
+
+    <!-- 公告Activity-->
+    <string name="noticelist_title">公告列表</string>
+    <string name="notice_title">公告详情</string>
 </resources>

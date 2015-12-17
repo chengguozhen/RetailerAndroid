@@ -7,6 +7,8 @@ package com.neighbor.retailer_android.bean;
  */
 public class NoticeItemBean {
 
+
+    private String id;
     private String noticeTitle;
     private String noticeTime;
 
@@ -24,5 +26,13 @@ public class NoticeItemBean {
 
     public void setNoticeTime(String noticeTime) {
         this.noticeTime = noticeTime;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

@@ -37,7 +37,7 @@ public class NoticeListItemAdapter extends BaseAdapter {
     .displayer(new RoundedBitmapDisplayer(20)) // 设置成圆角图片
             .build(); // 创建配置过得DisplayImageOption对象
     */
-    public NoticeListItemAdapter(final Context context,Handler handler,ArrayList<NoticeItemBean> list)
+    public NoticeListItemAdapter(final Context context,ArrayList<NoticeItemBean> list)
     {
         this.context = context;
         this.list = list;

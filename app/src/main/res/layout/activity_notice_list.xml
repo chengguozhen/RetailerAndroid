@@ -5,12 +5,15 @@
     android:layout_height="match_parent"
     tools:context="com.neighbor.retailer_android.ui.activity.home.notice.NoticeListActivity">
 
-    <com.neighbor.retailer_android.ui.view.XListView
+    <include android:id="@+id/header"
+        layout="@layout/my_header_toolbar"/>
+
+    <com.neighbor.retailer_android.ui.view.pulltorefresh.XListView
         android:id="@+id/notice_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
         >
-    </com.neighbor.retailer_android.ui.view.XListView>
+    </com.neighbor.retailer_android.ui.view.pulltorefresh.XListView>
 
 </RelativeLayout>

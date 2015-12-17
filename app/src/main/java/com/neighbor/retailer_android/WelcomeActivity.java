@@ -48,16 +48,16 @@ public class WelcomeActivity extends Activity {
 
         handler = new Handler();
         //MobclickAgent.updateOnlineConfig(this);
-        //openDelayedThread();
+        openDelayedThread();
     }
 
-//    /**
-//     * Welcome延迟跳转线程
-//     */
-//    private void openDelayedThread() {
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
+    /**
+     * Welcome延迟跳转线程
+     */
+    private void openDelayedThread() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
 //                if (spUtilCity.get(LOC_CITY).equals("")) {
 //                    //用户第一次打开App，那么跳转到CityListActivity
 //                    setIsOpened(spUtilCity);
@@ -67,16 +67,16 @@ public class WelcomeActivity extends Activity {
 //                    WelcomeActivity.this.finish();
 //
 //                } else {
-//                    //已获取到之前的城市数据，那么直接跳转到MainActivity上
-//                    Intent intent = new Intent();
-//                    intent.setClass(WelcomeActivity.this, MainActivity.class);
-//                    startActivity(intent);
-//                    WelcomeActivity.this.finish();
-//
+                    //已获取到之前的城市数据，那么直接跳转到MainActivity上
+                    Intent intent = new Intent();
+                    intent.setClass(WelcomeActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    WelcomeActivity.this.finish();
+
 //                }
-//            }
-//        }, DELAYED_TIME);
-//    }
+            }
+        }, DELAYED_TIME);
+    }
 
     private void initWidget() throws PackageManager.NameNotFoundException {
         PackageManager packageManager = getPackageManager();

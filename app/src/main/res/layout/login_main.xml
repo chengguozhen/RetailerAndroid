@@ -26,7 +26,6 @@
                 android:id="@+id/edit_login_user_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 android:textSize="@dimen/text_size_medium"
                 android:hint="@string/login_user_id" />
 
@@ -66,6 +65,19 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/pwd_retrieve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/main_theme_color"
+                android:text="@string/login_notice_password_retrieve"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/transparent"
+                android:gravity="center_vertical" />
         </RelativeLayout>
 
     </LinearLayout>

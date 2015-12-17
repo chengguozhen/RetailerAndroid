@@ -18,6 +18,6 @@
         android:layout_height="match_parent"
         android:id="@+id/imageView3"
         android:scaleType="centerCrop"
-        android:src="@mipmap/zhaozhuo_launcher"/>
+        android:src="@mipmap/welcome"/>
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.neighbor.retailer_android;
+package com.neighbor.retailer_android.ui.activity.login;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -18,6 +18,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.neighbor.retailer_android.R;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -64,7 +66,6 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         title = (TextView) this.findViewById(R.id.login_title);
         //设置title bar的显示内容
         title.setText(this.getResources().getText(R.string.login_notice));
-        pwd_retrieve.setText(this.getResources().getText(R.string.login_notice_password_retrieve));
 
         login.setOnClickListener(this);
         doBack.setOnClickListener(this);
@@ -125,8 +126,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 this.finish();
                 break;
             case R.id.pwd_retrieve:
-                //title bar找回密码
-                //startActivity(new Intent(this, RetrievePwdActivity.class));
+                //找回密码
+                startActivity(new Intent(this, RetrievePwdActivity.class));
                 break;
             case R.id.register:
                 //注册

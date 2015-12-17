@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.neighbor.retailer_android.ui.activity.login.LoginActivity;
 import com.neighbor.retailer_android.ui.fragment.HomeTabFragment;
 import com.neighbor.retailer_android.ui.fragment.KindTabFragment;
 import com.neighbor.retailer_android.ui.fragment.MyTabFragment;
@@ -113,6 +114,8 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         switch (v.getId()) {
             case R.id.id_tab_bottom_home:
                 setTabSelection(0);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
                 break;
             case R.id.id_tab_bottom_meishi:
                 setTabSelection(1);

@@ -54,11 +54,10 @@ public class ShopInfo {
     }
 
     public double getSum() {
+        if(count != 0){
+            sum = count * price;
+        }
         return sum;
-    }
-
-    public void setSum(double sum) {
-        this.sum = sum;
     }
     @Override
     public String toString() {

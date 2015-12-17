@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.ShopCartInfo;
+import com.neighbor.retailer_android.bean.ShopInfo;
 import com.neighbor.retailer_android.ui.adapter.ShopCartAdapter;
 import com.neighbor.retailer_android.ui.view.pulltorefresh.XListView;
 
@@ -66,7 +67,7 @@ public class ShopCartTabFragment extends Fragment implements XListView.IXListVie
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.main_tab_03, container, false);
         shopcartListView = (XListView)rootView.findViewById(R.id.shop_cart_listview);
-        noNetWork=(LinearLayout)rootView.findViewById(R.id.ms_not_network);
+        noNetWork=(LinearLayout)rootView.findViewById(R.id.shop_cart_not_network);
         doLoddingBtn=(Button)rootView.findViewById(R.id.ms_tab_do_lodding_btn);
         noNetWork.setVisibility(View.GONE);
         submit = (Button)rootView.findViewById(R.id.submit_pay);
@@ -90,6 +91,26 @@ public class ShopCartTabFragment extends Fragment implements XListView.IXListVie
         shopcartListView.setRefreshTime(getTime());
         shopCartAdapter = new ShopCartAdapter(getActivity(),list,mHandler);
         shopcartListView.setAdapter(shopCartAdapter);
+        if(list != null || !list.isEmpty()){
+            list.clear();
+        }
+        for(int i = 0;i < 5;i++){
+            List<ShopInfo> data = new ArrayList<ShopInfo>();
+            for(int j = 0;j < 3;j++){
+                ShopInfo shopInfo = new ShopInfo();
+                shopInfo.setName("商品名称" + i + j);
+                shopInfo.setCount(i + 1);
+                shopInfo.setPrice(10.0 + j);
+                shopInfo.setSpec("规格"+i+j);
+                data.add(shopInfo);
+            }
+            ShopCartInfo shopCartInfo = new ShopCartInfo();
+            shopCartInfo.setName("批发商" + i);
+            shopCartInfo.setCategory("二级类目" + i);
+            shopCartInfo.setList(data);
+            list.add(shopCartInfo);
+        }
+        shopCartAdapter.notifyDataSetChanged();
         return rootView;
     }
 
@@ -102,6 +123,22 @@ public class ShopCartTabFragment extends Fragment implements XListView.IXListVie
 //        if(list != null || !list.isEmpty()){
 //            list.clear();
 //        }
+//        for(int i = 0;i < 5;i++){
+//            List<ShopInfo> data = new ArrayList<ShopInfo>();
+//            for(int j = 0;j < 3;j++){
+//                ShopInfo shopInfo = new ShopInfo();
+//                shopInfo.setName("商品名称" + i + j);
+//                shopInfo.setCount(i + 1);
+//                shopInfo.setPrice(10.0 + j);
+//                shopInfo.setSpec("规格"+i+j);
+//            }
+//            ShopCartInfo shopCartInfo = new ShopCartInfo();
+//            shopCartInfo.setName("批发商" + i);
+//            shopCartInfo.setCategory("二级类目" + i);
+//            shopCartInfo.setList(data);
+//            list.add(shopCartInfo);
+//        }
+//        shopCartAdapter.notifyDataSetChanged();
 //        key = "";
 //        cityCode = (String)SPUtil.get(MeishiActivity.this,"CITY_NAME","name_pinyin","weihai");
 //        latitudeAndLongitude = (String)SPUtil.get(MeishiActivity.this,"CITY_NAME","location","37.433032,122.151025");

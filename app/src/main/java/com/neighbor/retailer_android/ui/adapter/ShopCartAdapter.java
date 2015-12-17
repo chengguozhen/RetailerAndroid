@@ -3,15 +3,19 @@ package com.neighbor.retailer_android.ui.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.ShopCartInfo;
+import com.neighbor.retailer_android.bean.ShopInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,14 +31,18 @@ public class ShopCartAdapter extends BaseAdapter {
      * 上下文
      */
     private Context mContext;
+    private MyShopCartItemAdapter myAdapter;
+    private List<ShopInfo> list = new ArrayList<ShopInfo>();
     private LayoutInflater mInflater = null;
     private Handler mHandler;
+    private String TAG = "nihao";
 
-    public ShopCartAdapter(Context context, List<ShopCartInfo> list,Handler mHandler){
+    public ShopCartAdapter(Context context, List<ShopCartInfo> mList,Handler mHandler){
         this.mContext = context;
-        this.mList = list;
+        this.mList = mList;
         this.mHandler = mHandler;
         this.mInflater = LayoutInflater.from(context);
+        myAdapter = new MyShopCartItemAdapter(mContext,list);
     }
     @Override
     public int getCount() {
@@ -61,14 +69,23 @@ public class ShopCartAdapter extends BaseAdapter {
             holder = new ViewHolder();
             //根据自定义的Item布局加载布局
             convertView = mInflater.inflate(R.layout.shop_cart_list_item, null);
-            holder.msResName = (TextView)convertView.findViewById(R.id.textItem);
+            holder.saleName = (TextView)convertView.findViewById(R.id.textItem);
+            holder.shopInfoList = (ListView)convertView.findViewById(R.id.shop_cart_info_ls);
             //将设置好的布局保存到缓存中，并将其设置在Tag里，以便后面方便取出Tag
             convertView.setTag(holder);
         }else
         {
             holder = (ViewHolder)convertView.getTag();
         }
-
+        holder.saleName.setText(mList.get(position).getName() + "  " + mList.get(position).getCategory());
+        holder.shopInfoList.setAdapter(myAdapter);
+        if(list != null || !list.isEmpty()){
+            list.clear();
+        }
+        for(int i = 0;i < mList.get(position).getList().size();i++){
+            list.add((ShopInfo)mList.get(position).getList().get(i));
+        }
+        myAdapter.notifyDataSetChanged();
         return convertView;
     }
 
@@ -76,6 +93,7 @@ public class ShopCartAdapter extends BaseAdapter {
         /**
          * 菜品分类
          */
-        public TextView msResName;
+        public TextView saleName;
+        public ListView shopInfoList;
     }
 }

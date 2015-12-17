@@ -7,7 +7,7 @@
     <string name="login_setpwd_new">设置新密码</string>
     <string name="login_notice">登录</string>
     <string name="login_notice_password_retrieve">找回密码</string>
-    <string name="login_user_id">手机号</string>
+    <string name="login_user_id">帐号</string>
     <string name="login_password">密码</string>
     <string name="login_register_straightway">立即注册</string>
     <string name="login_notice_quick">无账号快捷登录</string>

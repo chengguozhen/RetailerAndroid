@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/merchandise_name"
+        android:layout_margin="@dimen/default_margin_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:text="45g 乐事薯片 美国经典原味"
+        android:textColor="@color/black"
+        />
+    <LinearLayout
+        android:id="@+id/merchandise_info_ll"
+        android:orientation="horizontal"
+        android:layout_below="@+id/merchandise_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/merchandise_url"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/merchandise_default"
+            android:layout_marginLeft="@dimen/default_margin_distance"
+            android:layout_width="@dimen/merchandise_list_image"
+            android:layout_height="@dimen/merchandise_list_image"
+            />
+        <LinearLayout
+            android:id="@+id/merchandise_linear1"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/default_margin_distance"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/merchandise_unit_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="零售价： ¥9.0"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/merchandise_specification"
+                android:layout_marginTop="@dimen/default_margin_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="规格： 每箱40个"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/merchandise_inventory"
+                android:layout_marginTop="@dimen/default_margin_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="库存： 460"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/add_merchandise"
+                    android:src="@mipmap/substract"
+                    android:layout_marginRight="@dimen/default_margin_distance"
+                    android:padding="@dimen/default_margin_distance"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="@dimen/add_substract_icon"
+                    android:layout_height="@dimen/add_substract_icon" />
+                <EditText
+                    android:id="@+id/purchase_number"
+                    android:text="55"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/substract_merchandise"
+                    android:layout_marginLeft="@dimen/default_margin_distance"
+                    android:padding="@dimen/default_margin_distance"
+                    android:src="@mipmap/add"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="@dimen/add_substract_icon"
+                    android:layout_height="@dimen/add_substract_icon" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/purchase_btn"
+                android:text="加入购物车"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/default_margin_distance"
+                android:background="@color/main_theme_color"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                android:layout_width="@dimen/purchase_width"
+                android:layout_height="@dimen/purchanse_height" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/wholesaler_name"
+        android:layout_below="@+id/merchandise_info_ll"
+        android:layout_margin="@dimen/default_margin_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_medium"
+        android:text="乐事中国威海分部提供"
+        android:textColor="@color/black"
+        />
+</RelativeLayout>

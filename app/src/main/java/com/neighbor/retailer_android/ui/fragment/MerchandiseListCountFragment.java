@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.MerchandiseItemBean;
-import com.neighbor.retailer_android.ui.adapter.MerchandiseAdapter;
+import com.neighbor.retailer_android.ui.adapter.MerchandiseCountAdapter;
 import com.neighbor.retailer_android.ui.view.pulltorefresh.XListView;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class MerchandiseListCountFragment extends Fragment {
     private XListView countListview;
 
     private List<MerchandiseItemBean> merchandiseList;
-    private MerchandiseAdapter adapter;
+    private MerchandiseCountAdapter adapter;
 
     @Nullable
     @Override
@@ -62,7 +62,7 @@ public class MerchandiseListCountFragment extends Fragment {
             bean.setWholesaler("批发商"+i);
             merchandiseList.add(bean);
         }
-        adapter = new MerchandiseAdapter(getActivity(),merchandiseList);
+        adapter = new MerchandiseCountAdapter(getActivity(),merchandiseList);
     }
 
     /**

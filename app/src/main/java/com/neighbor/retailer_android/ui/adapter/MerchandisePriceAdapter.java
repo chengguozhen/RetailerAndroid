@@ -11,23 +11,22 @@ import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.MerchandiseItemBean;
+
 import java.util.List;
 
 /**
  * Created by Vicky on 2015/12/17.
  * Retailer_android
  * contact way: 317461087@qq.com
- *
- * 商品列表适配器
  */
-public class MerchandiseAdapter extends ParentBaseAdapter implements View.OnClickListener{
-
+public class MerchandisePriceAdapter extends ParentBaseAdapter implements View.OnClickListener{
     private List<MerchandiseItemBean> list;
     private ViewHolder viewHolder;
     private LayoutInflater layoutInflater;
     private Context context;
+    private int purchasePosition;
 
-    public MerchandiseAdapter(Context context,List<MerchandiseItemBean> list)
+    public MerchandisePriceAdapter(Context context, List<MerchandiseItemBean> list)
     {
         this.context = context;
         this.list = list;
@@ -70,7 +69,7 @@ public class MerchandiseAdapter extends ParentBaseAdapter implements View.OnClic
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         if (v == null) {
-            v = layoutInflater.inflate(R.layout.fragment_merchandise_countitem, null);
+            v = layoutInflater.inflate(R.layout.fragment_merchandise_priceitem, null);
             viewHolder = new ViewHolder();
             viewHolder.merchandiseName = (TextView)v.findViewById(R.id.merchandise_name);
             viewHolder.merchandiseImage = (ImageView)v.findViewById(R.id.merchandise_url);
@@ -86,6 +85,8 @@ public class MerchandiseAdapter extends ParentBaseAdapter implements View.OnClic
         } else {
             viewHolder = (ViewHolder) v.getTag();
         }
+        purchasePosition = position;
+
         viewHolder.substract.setOnClickListener(this);
         viewHolder.add.setOnClickListener(this);
         viewHolder.pruchase.setOnClickListener(this);
@@ -108,6 +109,11 @@ public class MerchandiseAdapter extends ParentBaseAdapter implements View.OnClic
         return v;
     }
 
+    /**
+     * 点击修改购买数量
+     *
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         int number = Integer.valueOf(viewHolder.purchaseNum.getText().toString());
@@ -126,6 +132,7 @@ public class MerchandiseAdapter extends ParentBaseAdapter implements View.OnClic
             default:
                 break;
         }
-        viewHolder.purchaseNum.setText(number+"");
+        //通知修改数据  传递number和purchasePosition数据
+
     }
 }

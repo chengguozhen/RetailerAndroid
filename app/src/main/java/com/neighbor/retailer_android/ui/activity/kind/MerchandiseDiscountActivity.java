@@ -9,13 +9,21 @@ import android.view.View;
 import android.widget.Button;
 
 import com.neighbor.retailer_android.R;
+import com.neighbor.retailer_android.ui.fragment.MerchandiseDiscountCountFragment;
 import com.neighbor.retailer_android.ui.fragment.MerchandiseListCountFragment;
 import com.neighbor.retailer_android.ui.fragment.MerchandiseListPriceFragment;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarHeader;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarListener;
 
-public class MerchandiseListActivity extends AppCompatActivity implements View.OnClickListener{
+public class MerchandiseDiscountActivity extends AppCompatActivity implements View.OnClickListener{
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_merchandise_discount);
+        initView();
+        initFragment();
+    }
     private View view;
     /**
      * 销量 价格排序
@@ -26,30 +34,22 @@ public class MerchandiseListActivity extends AppCompatActivity implements View.O
      * 两个排序后的list fragment
      */
     private FragmentManager fragmentManager;
-    private MerchandiseListCountFragment countFragment;
+    private MerchandiseDiscountCountFragment countFragment;
     private MerchandiseListPriceFragment priceFragment;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_merchandise_list);
-        initView();
-        initFragment();
-    }
 
     private void initView()
     {
         /**
          * toolbar title
          */
-        view = findViewById(R.id.merchandiselist_header);
+        view = findViewById(R.id.merchandisediscount_header);
         if(view != null)
         {
             Toolbar toolbar = (Toolbar)view;
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
             MyToolbarHeader toolbarHeader = new MyToolbarHeader(this,toolbar);
-            toolbarHeader.setHeaderTitle(getString(R.string.merchandiselist_title));
+            toolbarHeader.setHeaderTitle(getString(R.string.merchandise_discount_title));
             MyToolbarListener listener = new MyToolbarListener() {
                 @Override
                 public void addNavigation() {
@@ -104,8 +104,8 @@ public class MerchandiseListActivity extends AppCompatActivity implements View.O
             case 0:
                 if(countFragment == null){
                     //如果MessageFragment为空，则创建一个添加到界面上
-                    countFragment = new MerchandiseListCountFragment();
-                    transaction.add(R.id.merchandise_list,countFragment);
+                    countFragment = new MerchandiseDiscountCountFragment();
+                    transaction.add(R.id.merchandise_discount_list,countFragment);
                 }else{
                     transaction.show(countFragment);
                 }
@@ -113,7 +113,7 @@ public class MerchandiseListActivity extends AppCompatActivity implements View.O
             case 1:
                 if (priceFragment == null){
                     priceFragment = new MerchandiseListPriceFragment();
-                    transaction.add(R.id.merchandise_list,priceFragment);
+                    transaction.add(R.id.merchandise_discount_list,priceFragment);
                 }else {
                     transaction.show(priceFragment);
                 }

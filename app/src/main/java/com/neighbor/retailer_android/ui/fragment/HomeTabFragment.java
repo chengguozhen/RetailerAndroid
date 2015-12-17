@@ -10,9 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.neighbor.retailer_android.R;
-import com.neighbor.retailer_android.ui.activity.home.notice.DiscountActivity;
-import com.neighbor.retailer_android.ui.activity.home.notice.NewMerchandiseActivity;
 import com.neighbor.retailer_android.ui.activity.home.notice.NoticeListActivity;
+import com.neighbor.retailer_android.ui.activity.kind.MerchandiseDiscountActivity;
 import com.neighbor.retailer_android.ui.activity.kind.MerchandiseListActivity;
 
 @SuppressLint("NewApi")
@@ -50,12 +49,11 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.notice_discount:
                 Intent intentDiscount = new Intent();
-                intentDiscount.setClass(getActivity(), DiscountActivity.class);
+                intentDiscount.setClass(getActivity(), MerchandiseDiscountActivity.class);
                 startActivity(intentDiscount);
                 break;
             case R.id.notice_new_merchandise:
                 Intent intentNew = new Intent();
-                //intent.setClass(getActivity(), NewMerchandiseActivity.class);
                 intentNew.setClass(getActivity(), MerchandiseListActivity.class);
                 startActivity(intentNew);
                 break;

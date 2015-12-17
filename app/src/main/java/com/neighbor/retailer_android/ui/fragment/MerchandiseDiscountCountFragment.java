@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.MerchandiseItemBean;
 import com.neighbor.retailer_android.ui.adapter.MerchandiseCountAdapter;
-import com.neighbor.retailer_android.ui.adapter.MerchandisePriceAdapter;
+import com.neighbor.retailer_android.ui.adapter.MerchandiseDiscountCountAdapter;
 import com.neighbor.retailer_android.ui.view.pulltorefresh.XListView;
 
 import java.util.ArrayList;
@@ -21,8 +21,7 @@ import java.util.List;
  * Retailer_android
  * contact way: 317461087@qq.com
  */
-public class MerchandiseListPriceFragment extends Fragment{
-
+public class MerchandiseDiscountCountFragment extends Fragment{
     private View count;
     /**
      * 显示商品列表组件
@@ -30,13 +29,13 @@ public class MerchandiseListPriceFragment extends Fragment{
     private XListView countListview;
 
     private List<MerchandiseItemBean> merchandiseList;
-    private MerchandisePriceAdapter adapter;
+    private MerchandiseDiscountCountAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        count = inflater.inflate(R.layout.fragment_merchandise_price,container,false);
+        count = inflater.inflate(R.layout.fragment_merchandise_discount_count,container,false);
         initAdapterData();
         initView();
         return count;
@@ -53,17 +52,17 @@ public class MerchandiseListPriceFragment extends Fragment{
         {
             bean = new MerchandiseItemBean();
             bean.setUnitPrice(i + "元");
-            bean.setMerchandiseName("奥尔良鸡块 啊喵");
-            bean.setSpecifications("500g/袋");
+            bean.setMerchandiseName("这是特惠区商品 销量排序");
+            bean.setSpecifications("度搜非农");
             bean.setInitNumber(i);
-            bean.setInventoryCounts(i + "10");
+            bean.setInventoryCounts(i + "0");
             List<String> image = new ArrayList<String>();
             image.add("http://pic.ffpic.com/files/2012/1221/1206pic1205we188.jpg");
             bean.setMerchandiseUrl(image);
             bean.setWholesaler("批发商"+i);
             merchandiseList.add(bean);
         }
-        adapter = new MerchandisePriceAdapter(getActivity(),merchandiseList);
+        adapter = new MerchandiseDiscountCountAdapter(getActivity(),merchandiseList);
     }
 
     /**
@@ -71,7 +70,7 @@ public class MerchandiseListPriceFragment extends Fragment{
      */
     private void initView()
     {
-        countListview = (XListView)count.findViewById(R.id.price_list);
+        countListview = (XListView)count.findViewById(R.id.discount_count_list);
         countListview.setAdapter(adapter);
     }
 }

@@ -19,19 +19,18 @@ import java.util.List;
  * Retailer_android
  * contact way: 317461087@qq.com
  */
-public class MerchandisePriceAdapter extends ParentBaseAdapter implements View.OnClickListener{
+public class MerchandiseDiscountCountAdapter extends ParentBaseAdapter implements View.OnClickListener{
     private List<MerchandiseItemBean> list;
     private ViewHolder viewHolder;
     private LayoutInflater layoutInflater;
     private Context context;
     private int purchasePosition;
 
-    public MerchandisePriceAdapter(Context context, List<MerchandiseItemBean> list)
+    public MerchandiseDiscountCountAdapter(Context context, List<MerchandiseItemBean> list)
     {
         this.context = context;
         this.list = list;
         layoutInflater = LayoutInflater.from(context);
-
     }
 
     static class ViewHolder
@@ -70,7 +69,7 @@ public class MerchandisePriceAdapter extends ParentBaseAdapter implements View.O
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         if (v == null) {
-            v = layoutInflater.inflate(R.layout.fragment_merchandise_priceitem, null);
+            v = layoutInflater.inflate(R.layout.fragment_merchandise_discount_countitem, null);
             viewHolder = new ViewHolder();
             viewHolder.merchandiseName = (TextView)v.findViewById(R.id.merchandise_name);
             viewHolder.merchandiseImage = (ImageView)v.findViewById(R.id.merchandise_url);

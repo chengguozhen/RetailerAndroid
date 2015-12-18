@@ -30,16 +30,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.login.LoginActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.activity.login.Agreement"></activity>
-        <activity android:name=".ui.activity.login.RetrievePwdActivity"></activity>
+        <activity
+            android:name=".ui.activity.login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.login.Agreement" />
+        <activity android:name=".ui.activity.login.RetrievePwdActivity" />
         <activity android:name=".ui.activity.home.notice.NoticeListActivity" />
         <activity android:name=".ui.activity.home.notice.NoticeDetailActivity" />
         <activity android:name=".ui.activity.kind.MerchandiseListActivity" />
-        <activity android:name=".ui.activity.home.notice.DiscountActivity" />
-        <activity android:name=".ui.activity.home.notice.NewMerchandiseActivity"></activity>
         <activity android:name=".ui.activity.login.RegisterActivity"></activity>
+        <activity android:name=".ui.activity.kind.MerchandiseDiscountActivity" />
+        <activity android:name=".ui.activity.kind.MerchandiseNewActivity"></activity>
     </application>
 
 </manifest>

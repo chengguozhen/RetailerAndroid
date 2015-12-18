@@ -14,7 +14,16 @@ import com.neighbor.retailer_android.ui.fragment.MerchandiseListPriceFragment;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarHeader;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarListener;
 
-public class MerchandiseListActivity extends AppCompatActivity implements View.OnClickListener{
+public class MerchandiseNewActivity extends AppCompatActivity implements View.OnClickListener{
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_merchandise_new);
+
+        initView();
+        initFragment();
+    }
 
     private View view;
     /**
@@ -28,14 +37,6 @@ public class MerchandiseListActivity extends AppCompatActivity implements View.O
     private FragmentManager fragmentManager;
     private MerchandiseListCountFragment countFragment;
     private MerchandiseListPriceFragment priceFragment;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_merchandise_list);
-        initView();
-        initFragment();
-    }
 
     private void initView()
     {

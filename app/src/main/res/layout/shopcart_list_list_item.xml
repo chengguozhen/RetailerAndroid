@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="160dp"
-    android:background="@color/white">
+    android:layout_height="100dp"
+    android:background="@color/gray_background_color">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_height="75dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/white"
         android:orientation="horizontal">
 
         <ImageView
@@ -24,10 +30,19 @@
                 android:id="@+id/shop_name"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="商品名称"
                 android:textColor="@color/main_text_color"
-                android:textSize="@dimen/text_size_large"/>
+                android:textSize="@dimen/text_size_medium"/>
+
+            <TextView
+                android:id="@+id/shop_category"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="规格:1*40"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/gray_text_color"/>
 
             <TextView
                 android:id="@+id/shop_price"
@@ -35,8 +50,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:textColor="@color/gray_text_color"
-                android:textSize="@dimen/text_size_medium"
-                android:text="单价：100"/>
+                android:textSize="@dimen/text_size_small"
+                android:text="零售价：￥100"/>
 
             <TextView
                 android:id="@+id/shop_total_price"
@@ -44,50 +59,111 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:textColor="@color/gray_text_color"
-                android:textSize="@dimen/text_size_medium"
-                android:text="总价：500"/>
+                android:textSize="@dimen/text_size_small"
+                android:text="每箱/盒/打：￥500"/>
 
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="75dp"
+        android:background="@color/white"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/shop_count_del"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:background="@color/transparent"
-            android:src="@mipmap/ms_takeout_bg_btn_reduce"/>
         <TextView
-            android:id="@+id/shop_count"
-            android:layout_width="40dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="5"
-            android:gravity="center"
-            android:textSize="@dimen/text_size_small"
-            android:textColor="@color/main_theme_color"/>
-        <ImageButton
-            android:id="@+id/shop_count_add"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:background="@color/transparent"
-            android:src="@mipmap/ms_takeout_bg_btn_increase"/>
-        <TextView
-            android:id="@+id/shop_category"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="规格"
-            android:gravity="right|center_vertical"
+            android:text="小计：￥"
             android:textSize="@dimen/text_size_medium"
-            android:textColor="@color/main_text_color"/>
+            android:textColor="@color/main_theme_color"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/shop_total_mon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="250.0"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_theme_color"
+            android:gravity="center"
+            />
 
     </LinearLayout>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/colorPrimary"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="right">
+            <ImageButton
+                android:id="@+id/shop_count_del"
+                android:background="@color/transparent"
+                android:src="@mipmap/ms_takeout_bg_btn_reduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:visibility="visible"
+                android:layout_marginRight="75dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="right">
+            <TextView
+                android:id="@+id/shop_count"
+                android:text="5"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/main_theme_color"
+                android:layout_width="24dp"
+                android:singleLine="true"
+                android:visibility="visible"
+                android:layout_height="30dp"
+                android:layout_marginRight="45dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="right">
+            <ImageButton
+                android:id="@+id/shop_count_add"
+                android:background="@color/transparent"
+                android:src="@mipmap/ms_takeout_bg_btn_increase"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="right">
+            <CheckBox
+                android:id="@+id/shop_info_check"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="2dp"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:layout_marginTop="98dp"-->
+        <!--android:background="@color/colorPrimary"/>-->
+
+    </FrameLayout>
 </LinearLayout>

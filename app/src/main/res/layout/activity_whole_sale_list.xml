@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/kind_title_bar"/>
+    <include layout="@layout/whole_sale_title_bar"/>
 
     <LinearLayout
         android:id="@+id/parent_layout"

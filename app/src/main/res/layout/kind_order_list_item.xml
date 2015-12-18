@@ -26,8 +26,8 @@
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:columnWidth="60dp"
         android:numColumns="3"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
+        android:verticalSpacing="1dp"
+        android:horizontalSpacing="1dp"
         android:stretchMode="columnWidth"
         android:gravity="center"/>
 </LinearLayout>

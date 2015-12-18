@@ -71,6 +71,7 @@ public class ShopCartTabFragment extends Fragment {
         shopcartListView = (ExpandableListView) rootView.findViewById(R.id.shop_cart_listview);
         noNetWork = (LinearLayout) rootView.findViewById(R.id.shop_cart_not_network);
         doLoddingBtn = (Button) rootView.findViewById(R.id.ms_tab_do_lodding_btn);
+        shopcartListView.setGroupIndicator(null);
         noNetWork.setVisibility(View.GONE);
         submit = (Button) rootView.findViewById(R.id.submit_pay);
         submit.setOnClickListener(new ImageButton.OnClickListener() {

@@ -163,7 +163,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
             case 1:
                 // 当点击了消息tab时，改变控件的图片和文字颜色
                 ((ImageButton) mTabBtnKind.findViewById(R.id.btn_tab_bottom_meishi))
-                        .setImageResource(R.mipmap.main_meishi_press);
+                        .setImageResource(R.mipmap.main_kind_press);
                 if (mTab02 == null) {
                     // 如果MessageFragment为空，则创建一个并添加到界面上
                     mTab02 = new KindTabFragment();
@@ -176,7 +176,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
             case 2:
                 //批发商
                 ((ImageButton) mTabBtnWSale.findViewById(R.id.btn_tab_bottom_pi))
-                        .setImageResource(R.mipmap.main_meishi_press);
+                        .setImageResource(R.mipmap.main_wholesale_press);
                 if (mTabMid == null) {
                     // 如果MessageFragment为空，则创建一个并添加到界面上
                     mTabMid = new WholeSaleTabFragment();
@@ -189,7 +189,7 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
             case 3:
                 // 当点击了动态tab时，改变控件的图片和文字颜色
                 ((ImageButton) mTabBtnShopCart.findViewById(R.id.btn_tab_bottom_fantuan))
-                        .setImageResource(R.mipmap.main_fantuan_press);
+                        .setImageResource(R.mipmap.main_shopcart_press);
                 if (mTab03 == null) {
                     // 如果NewsFragment为空，则创建一个并添加到界面上
                     mTab03 = new ShopCartTabFragment();
@@ -223,11 +223,11 @@ public class MainActivity extends Activity implements View.OnClickListener,View.
         ((ImageButton) mTabBtnHome.findViewById(R.id.btn_tab_bottom_home))
                 .setImageResource(R.mipmap.main_home);
         ((ImageButton) mTabBtnKind.findViewById(R.id.btn_tab_bottom_meishi))
-                .setImageResource(R.mipmap.main_meishi);
+                .setImageResource(R.mipmap.main_kind);
         ((ImageButton) mTabBtnWSale.findViewById(R.id.btn_tab_bottom_pi))
-                .setImageResource(R.mipmap.ic_launcher);
+                .setImageResource(R.mipmap.main_wholesale);
         ((ImageButton) mTabBtnShopCart.findViewById(R.id.btn_tab_bottom_fantuan))
-                .setImageResource(R.mipmap.main_fantuan);
+                .setImageResource(R.mipmap.main_shopcart);
         ((ImageButton) mTabBtnMy.findViewById(R.id.btn_tab_bottom_my))
                 .setImageResource(R.mipmap.main_my);
     }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -99,6 +100,11 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
         holder.saleName.setText(mList.get(groupPosition).getName() + "  " + mList.get(groupPosition).getCategory());
+        if(isExpanded){
+            holder.openImg.setBackgroundResource(R.mipmap.shop_list_item_down);
+        }else{
+            holder.openImg.setBackgroundResource(R.mipmap.shop_list_item_go);
+        }
         return convertView;
     }
 
@@ -119,6 +125,7 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
             holder.del = (ImageButton)convertView.findViewById(R.id.shop_count_del);
             holder.add = (ImageButton)convertView.findViewById(R.id.shop_count_add);
             holder.category = (TextView)convertView.findViewById(R.id.shop_category);
+            holder.check = (CheckBox)convertView.findViewById(R.id.shop_info_check);
             //将设置好的布局保存到缓存中，并将其设置在Tag里，以便后面方便取出Tag
             convertView.setTag(holder);
         }else
@@ -154,5 +161,6 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
         public ImageButton del;
         public ImageButton add;
         public TextView category;
+        public CheckBox check;
     }
 }

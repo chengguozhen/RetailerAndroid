@@ -49,7 +49,7 @@
                 android:layout_height="match_parent"
                 android:background="#0000"
                 android:clickable="false"
-                android:src="@mipmap/main_meishi" />
+                android:src="@mipmap/main_kind" />
 
 
         </LinearLayout>
@@ -70,7 +70,7 @@
                 android:layout_height="match_parent"
                 android:background="#0000"
                 android:clickable="false"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/main_wholesale" />
 
 
         </LinearLayout>
@@ -90,7 +90,7 @@
                 android:layout_height="match_parent"
                 android:background="#0000"
                 android:clickable="false"
-                android:src="@mipmap/main_fantuan" />
+                android:src="@mipmap/main_shopcart" />
 
 
         </LinearLayout>

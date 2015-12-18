@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -78,6 +79,7 @@ public class KindTabFragment extends Fragment {
      */
     private Button doLoddingBtn;
     private ImageButton searchBtn;
+    private EditText searchEdit;
     /**
      * Handler MSG 饭店列表数据更新
      */
@@ -174,6 +176,7 @@ public class KindTabFragment extends Fragment {
         noNetWork=(LinearLayout)rootView.findViewById(R.id.ms_not_network);
         doLoddingBtn=(Button)rootView.findViewById(R.id.ms_tab_do_lodding_btn);
         noNetWork.setVisibility(View.GONE);
+        searchEdit = (EditText)rootView.findViewById(R.id.search_name_edit);
         searchBtn = (ImageButton)rootView.findViewById(R.id.search_btn);
         doLoddingBtn.setOnClickListener(new ImageButton.OnClickListener() {
             @Override

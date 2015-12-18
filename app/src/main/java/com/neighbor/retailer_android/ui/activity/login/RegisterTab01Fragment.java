@@ -29,6 +29,10 @@ public class RegisterTab01Fragment extends Fragment implements View.OnClickListe
     private Button getCode;
     private Button next;
     private View rootView;
+    private String name;
+    private String phoneNum;
+    private String email;
+    private String pwd;
 
     TextWatcher watcher = new TextWatcher() {
         @Override
@@ -83,6 +87,7 @@ public class RegisterTab01Fragment extends Fragment implements View.OnClickListe
                 break;
             case R.id.register_next:
                 //跳转至下一个注册页面
+                ((Step01ClickListener)getActivity()).onStep01Click(name,phoneNum,email,pwd);
                 break;
         }
     }

@@ -81,9 +81,11 @@ public class RegisterTab02Fragment extends Fragment implements View.OnClickListe
                 break;
             case R.id.register_pre:
                 //跳转至上一个注册页面
+                ((Step02ClickListener)getActivity()).onStep02BackClick();
                 break;
             case R.id.register_submit:
                 //判断提交注册
+                ((Step02ClickListener)getActivity()).onStep02Click();
                 break;
         }
     }
@@ -93,6 +95,7 @@ public class RegisterTab02Fragment extends Fragment implements View.OnClickListe
      */
     public interface Step02ClickListener {
         void onStep02Click();
+        void onStep02BackClick();
     }
 
     /**

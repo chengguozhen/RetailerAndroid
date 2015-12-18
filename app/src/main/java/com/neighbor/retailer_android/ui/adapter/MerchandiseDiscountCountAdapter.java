@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.MerchandiseItemBean;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 import java.util.List;
 

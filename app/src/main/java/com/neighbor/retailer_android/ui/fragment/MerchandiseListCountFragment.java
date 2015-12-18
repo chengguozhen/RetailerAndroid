@@ -20,7 +20,7 @@ import java.util.List;
  * Retailer_android
  * contact way: 317461087@qq.com
  */
-public class MerchandiseListCountFragment extends Fragment {
+public class MerchandiseListCountFragment extends Fragment implements XListView.IXListViewListener{
 
     private View count;
     /**
@@ -62,7 +62,13 @@ public class MerchandiseListCountFragment extends Fragment {
             bean.setWholesaler("批发商"+i);
             merchandiseList.add(bean);
         }
-        adapter = new MerchandiseCountAdapter(getActivity(),merchandiseList);
+        if(adapter == null)
+        {
+            adapter = new MerchandiseCountAdapter(getActivity(),merchandiseList);
+        }
+        else {
+            adapter.notifyDataSetChanged();
+        }
     }
 
     /**
@@ -72,5 +78,31 @@ public class MerchandiseListCountFragment extends Fragment {
     {
         countListview = (XListView)count.findViewById(R.id.count_list);
         countListview.setAdapter(adapter);
+        countListview.setPullLoadEnable(true);
+        countListview.setXListViewListener(this);
+    }
+
+    /**
+     * 刷新数据函数
+     */
+    @Override
+    public void onRefresh() {
+
+        onLoad();
+    }
+
+    /**
+     * 加载更多数据函数
+     */
+    @Override
+    public void onLoadMore() {
+
+        onLoad();
+    }
+
+    private void onLoad() {
+        countListview.stopRefresh();
+        countListview.stopLoadMore();
+        countListview.setRefreshTime("none");
     }
 }

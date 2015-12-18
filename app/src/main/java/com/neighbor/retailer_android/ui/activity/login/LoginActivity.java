@@ -131,7 +131,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.register:
                 //注册
-                //startActivity(new Intent(this, RegisterActivity.class));
+                startActivity(new Intent(this, RegisterActivity.class));
                 break;
 
         }

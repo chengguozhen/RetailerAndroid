@@ -20,13 +20,13 @@ import java.util.List;
  * Retailer_android
  * contact way: 317461087@qq.com
  */
-public class MerchandiseNewPriceFragment extends Fragment{
+public class MerchandiseNewPriceFragment extends Fragment implements XListView.IXListViewListener{
 
     private View count;
     /**
      * 显示商品列表组件
      */
-    private XListView countListview;
+    private XListView priceListview;
 
     private List<MerchandiseItemBean> merchandiseList;
     private MerchandiseDiscountPriceAdapter adapter;
@@ -57,7 +57,7 @@ public class MerchandiseNewPriceFragment extends Fragment{
             bean.setInitNumber(i);
             bean.setInventoryCounts(i + "0");
             List<String> image = new ArrayList<String>();
-            image.add("http://pic.ffpic.com/files/2012/1221/1206pic1205we188.jpg");
+            image.add("http://images.99pet.com/InfoImages/wm600_450/1d770941f8d44c6e85ba4c0eb736ef69.jpg");
             bean.setMerchandiseUrl(image);
             bean.setWholesaler("批发商"+i);
             merchandiseList.add(bean);
@@ -70,7 +70,33 @@ public class MerchandiseNewPriceFragment extends Fragment{
      */
     private void initView()
     {
-        countListview = (XListView)count.findViewById(R.id.new_price_list);
-        countListview.setAdapter(adapter);
+        priceListview = (XListView)count.findViewById(R.id.new_price_list);
+        priceListview.setAdapter(adapter);
+        priceListview.setPullLoadEnable(true);
+        priceListview.setXListViewListener(this);
+    }
+
+    /**
+     * 刷新数据函数
+     */
+    @Override
+    public void onRefresh() {
+
+        onLoad();
+    }
+
+    /**
+     * 加载更多数据函数
+     */
+    @Override
+    public void onLoadMore() {
+
+        onLoad();
+    }
+
+    private void onLoad() {
+        priceListview.stopRefresh();
+        priceListview.stopLoadMore();
+        priceListview.setRefreshTime("none");
     }
 }

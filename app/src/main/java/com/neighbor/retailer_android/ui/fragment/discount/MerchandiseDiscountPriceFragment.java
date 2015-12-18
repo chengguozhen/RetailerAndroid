@@ -21,14 +21,14 @@ import java.util.List;
  * Retailer_android
  * contact way: 317461087@qq.com
  */
-public class MerchandiseDiscountPriceFragment extends Fragment{
+public class MerchandiseDiscountPriceFragment extends Fragment implements XListView.IXListViewListener{
 
 
     private View count;
     /**
      * 显示商品列表组件
      */
-    private XListView countListview;
+    private XListView priceListview;
 
     private List<MerchandiseItemBean> merchandiseList;
     private MerchandiseDiscountPriceAdapter adapter;
@@ -72,7 +72,33 @@ public class MerchandiseDiscountPriceFragment extends Fragment{
      */
     private void initView()
     {
-        countListview = (XListView)count.findViewById(R.id.discount_price_list);
-        countListview.setAdapter(adapter);
+        priceListview = (XListView)count.findViewById(R.id.discount_price_list);
+        priceListview.setAdapter(adapter);
+        priceListview.setPullLoadEnable(true);
+        priceListview.setXListViewListener(this);
+    }
+
+    /**
+     * 刷新数据函数
+     */
+    @Override
+    public void onRefresh() {
+
+        onLoad();
+    }
+
+    /**
+     * 加载更多数据函数
+     */
+    @Override
+    public void onLoadMore() {
+
+        onLoad();
+    }
+
+    private void onLoad() {
+        priceListview.stopRefresh();
+        priceListview.stopLoadMore();
+        priceListview.setRefreshTime("none");
     }
 }

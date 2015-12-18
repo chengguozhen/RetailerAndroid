@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.neighbor.retailer_android.R;
@@ -14,12 +15,20 @@ import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseNew
 import com.neighbor.retailer_android.ui.activity.home.notice.NoticeListActivity;
 import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseDiscountActivity;
 import com.neighbor.retailer_android.ui.activity.kind.MerchandiseListActivity;
+import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
 
 @SuppressLint("NewApi")
 public class HomeTabFragment extends Fragment implements View.OnClickListener{
 
+    //toolbar
     private View home;
+    /**
+     * 通知公告 优惠商品 新品上市
+     */
     private ImageView noticeImage,discountImage,newMerchandiseImage;
+
+    //我的名片
+    private Button identity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,12 +40,18 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
 
     private void initView()
     {
+        /**
+         * 通知公告 优惠商品 新品上市
+         */
         noticeImage = (ImageView)home.findViewById(R.id.notice_image);
         noticeImage.setOnClickListener(this);
         discountImage = (ImageView)home.findViewById(R.id.notice_discount);
         discountImage.setOnClickListener(this);
         newMerchandiseImage = (ImageView)home.findViewById(R.id.notice_new_merchandise);
         newMerchandiseImage.setOnClickListener(this);
+
+        identity = (Button)home.findViewById(R.id.my_identity_btn);
+        identity.setOnClickListener(this);
     }
 
     @Override
@@ -57,6 +72,12 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                 Intent intentNew = new Intent();
                 intentNew.setClass(getActivity(), MerchandiseNewActivity.class);
                 startActivity(intentNew);
+                break;
+            case R.id.my_identity_btn:
+                Intent intentIdentity = new Intent(getActivity(), MyIdentityActivity.class);
+                startActivity(intentIdentity);
+                break;
+            default:
                 break;
         }
 

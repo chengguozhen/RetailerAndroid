@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity">
+
+    <include
+        android:id="@+id/my_identity_toobar"
+        layout="@layout/my_header_toolbar" />
+    <ScrollView
+        android:id="@+id/my_identity_scroll"
+        android:layout_weight="1"
+        android:layout_below="@+id/my_identity_toobar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="@dimen/default_margin_distance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.CardView
+                android:layout_marginLeft="@dimen/default_margin_distance"
+                android:layout_marginRight="@dimen/default_margin_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include
+                    android:id="@+id/my_top_area"
+                    layout="@layout/activity_my_identity_top" />
+            </android.support.v7.widget.CardView>
+            <!--
+            <View
+                android:id="@+id/my_top_line"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/my_top_area"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:background="@color/gray"
+                />-->
+            <android.support.v7.widget.CardView
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginLeft="@dimen/default_margin_distance"
+                android:layout_marginRight="@dimen/default_margin_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include
+                    android:id="@+id/my_middle_area"
+                    layout="@layout/activity_my_identity_middle" />
+            </android.support.v7.widget.CardView>
+            <!--
+            <View
+                android:id="@+id/my_middle_line"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/my_top_area"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:background="@color/gray"
+                />-->
+            <android.support.v7.widget.CardView
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginLeft="@dimen/default_margin_distance"
+                android:layout_marginRight="@dimen/default_margin_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include
+                    android:id="@+id/my_bottom_area"
+                    layout="@layout/activity_my_identity_bottom" />
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/edit_save_btn"
+        android:layout_below="@+id/my_identity_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/click"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_large"
+        android:text="编辑/保存"/>
+</LinearLayout>

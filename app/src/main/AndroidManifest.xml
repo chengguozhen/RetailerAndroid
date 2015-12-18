@@ -38,8 +38,8 @@
         <activity android:name=".ui.activity.home.notice.NoticeListActivity" />
         <activity android:name=".ui.activity.home.notice.NoticeDetailActivity" />
         <activity android:name=".ui.activity.kind.MerchandiseListActivity" />
-        <activity android:name=".ui.activity.kind.MerchandiseDiscountActivity" />
-        <activity android:name=".ui.activity.kind.MerchandiseNewActivity"></activity>
+        <activity android:name=".ui.activity.home.newdiscount.MerchandiseDiscountActivity" />
+        <activity android:name=".ui.activity.home.newdiscount.MerchandiseNewActivity"></activity>
     </application>
 
 </manifest>

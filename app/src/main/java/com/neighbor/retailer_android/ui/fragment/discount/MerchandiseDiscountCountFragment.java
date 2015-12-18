@@ -1,4 +1,4 @@
-package com.neighbor.retailer_android.ui.fragment;
+package com.neighbor.retailer_android.ui.fragment.discount;
 
 import android.app.Fragment;
 import android.os.Bundle;

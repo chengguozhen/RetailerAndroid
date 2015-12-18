@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +35,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener,R
 
             tx.add(R.id.register_steps, step01, "step01");
             tx.add(R.id.register_steps, step02, "step02");
+            tx.commit();
         }else{
             step01 = (RegisterTab01Fragment) getFragmentManager().findFragmentByTag("step01");
             step02 = (RegisterTab02Fragment) getFragmentManager().findFragmentByTag("step02");
@@ -60,6 +62,22 @@ public class RegisterActivity extends Activity implements View.OnClickListener,R
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            switch (position) {
+                case 1:
+                    this.finish();
+                    break;
+                case 2:
+                    setFragment(1);
+                    position = 1;
+                    break;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void onStep01Click(String name, String phoneNumber, String email, String pwd) {
         //设置step02需要的数据
         setFragment(2);
@@ -69,6 +87,14 @@ public class RegisterActivity extends Activity implements View.OnClickListener,R
     @Override
     public void onStep02Click() {
         //判断数据并进行注册
+        this.finish();
+    }
+
+    @Override
+    public void onStep02BackClick() {
+        //上一步逻辑
+        setFragment(1);
+        position = 1;
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.neighbor.retailer_android.ui.fragment;
+package com.neighbor.retailer_android.ui.fragment.discount;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,33 +9,35 @@ import android.view.ViewGroup;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.MerchandiseItemBean;
-import com.neighbor.retailer_android.ui.adapter.MerchandiseCountAdapter;
+import com.neighbor.retailer_android.ui.adapter.MerchandiseDiscountCountAdapter;
+import com.neighbor.retailer_android.ui.adapter.MerchandiseDiscountPriceAdapter;
 import com.neighbor.retailer_android.ui.view.pulltorefresh.XListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Vicky on 2015/12/17.
+ * Created by Vicky on 2015/12/18.
  * Retailer_android
  * contact way: 317461087@qq.com
  */
-public class MerchandiseListCountFragment extends Fragment implements XListView.IXListViewListener{
+public class MerchandiseDiscountPriceFragment extends Fragment implements XListView.IXListViewListener{
+
 
     private View count;
     /**
      * 显示商品列表组件
      */
-    private XListView countListview;
+    private XListView priceListview;
 
     private List<MerchandiseItemBean> merchandiseList;
-    private MerchandiseCountAdapter adapter;
+    private MerchandiseDiscountPriceAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        count = inflater.inflate(R.layout.fragment_merchandise_count,container,false);
+        count = inflater.inflate(R.layout.fragment_merchandise_discount_price,container,false);
         initAdapterData();
         initView();
         return count;
@@ -52,8 +54,8 @@ public class MerchandiseListCountFragment extends Fragment implements XListView.
         {
             bean = new MerchandiseItemBean();
             bean.setUnitPrice(i + "元");
-            bean.setMerchandiseName("乐事薯片 美国经典");
-            bean.setSpecifications("300g/袋");
+            bean.setMerchandiseName("这是特惠区商品 价格排序");
+            bean.setSpecifications("诶哦认为呢");
             bean.setInitNumber(i);
             bean.setInventoryCounts(i + "0");
             List<String> image = new ArrayList<String>();
@@ -62,13 +64,7 @@ public class MerchandiseListCountFragment extends Fragment implements XListView.
             bean.setWholesaler("批发商"+i);
             merchandiseList.add(bean);
         }
-        if(adapter == null)
-        {
-            adapter = new MerchandiseCountAdapter(getActivity(),merchandiseList);
-        }
-        else {
-            adapter.notifyDataSetChanged();
-        }
+        adapter = new MerchandiseDiscountPriceAdapter(getActivity(),merchandiseList);
     }
 
     /**
@@ -76,10 +72,10 @@ public class MerchandiseListCountFragment extends Fragment implements XListView.
      */
     private void initView()
     {
-        countListview = (XListView)count.findViewById(R.id.count_list);
-        countListview.setAdapter(adapter);
-        countListview.setPullLoadEnable(true);
-        countListview.setXListViewListener(this);
+        priceListview = (XListView)count.findViewById(R.id.discount_price_list);
+        priceListview.setAdapter(adapter);
+        priceListview.setPullLoadEnable(true);
+        priceListview.setXListViewListener(this);
     }
 
     /**
@@ -101,8 +97,8 @@ public class MerchandiseListCountFragment extends Fragment implements XListView.
     }
 
     private void onLoad() {
-        countListview.stopRefresh();
-        countListview.stopLoadMore();
-        countListview.setRefreshTime("none");
+        priceListview.stopRefresh();
+        priceListview.stopLoadMore();
+        priceListview.setRefreshTime("none");
     }
 }

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.neighbor.retailer_android.ui.activity.kind.MerchandiseNewActivity">
+    tools:context=".ui.activity.home.newdiscount.MerchandiseNewActivity">
 
     <include
         android:id="@+id/merchandisenew_header"

@@ -11,24 +11,23 @@ import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.MerchandiseItemBean;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 import java.util.List;
 
 /**
- * Created by Vicky on 2015/12/17.
+ * Created by Vicky on 2015/12/18.
  * Retailer_android
  * contact way: 317461087@qq.com
  */
-public class MerchandiseDiscountCountAdapter extends ParentBaseAdapter implements View.OnClickListener{
+public class MerchandiseDiscountPriceAdapter extends ParentBaseAdapter implements View.OnClickListener{
+
     private List<MerchandiseItemBean> list;
     private ViewHolder viewHolder;
     private LayoutInflater layoutInflater;
     private Context context;
     private int purchasePosition;
 
-    public MerchandiseDiscountCountAdapter(Context context, List<MerchandiseItemBean> list)
+    public MerchandiseDiscountPriceAdapter(Context context, List<MerchandiseItemBean> list)
     {
         this.context = context;
         this.list = list;
@@ -71,7 +70,7 @@ public class MerchandiseDiscountCountAdapter extends ParentBaseAdapter implement
     public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         if (v == null) {
-            v = layoutInflater.inflate(R.layout.fragment_merchandise_discount_countitem, null);
+            v = layoutInflater.inflate(R.layout.fragment_merchandise_discount_priceitem, null);
             viewHolder = new ViewHolder();
             viewHolder.merchandiseName = (TextView)v.findViewById(R.id.merchandise_name);
             viewHolder.merchandiseImage = (ImageView)v.findViewById(R.id.merchandise_url);

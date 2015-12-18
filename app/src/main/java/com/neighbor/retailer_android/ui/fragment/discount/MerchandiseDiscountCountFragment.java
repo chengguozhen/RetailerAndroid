@@ -1,4 +1,4 @@
-package com.neighbor.retailer_android.ui.fragment;
+package com.neighbor.retailer_android.ui.fragment.discount;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ import java.util.List;
  * Retailer_android
  * contact way: 317461087@qq.com
  */
-public class MerchandiseDiscountCountFragment extends Fragment{
+public class MerchandiseDiscountCountFragment extends Fragment implements XListView.IXListViewListener{
     private View count;
     /**
      * 显示商品列表组件
@@ -62,7 +62,13 @@ public class MerchandiseDiscountCountFragment extends Fragment{
             bean.setWholesaler("批发商"+i);
             merchandiseList.add(bean);
         }
-        adapter = new MerchandiseDiscountCountAdapter(getActivity(),merchandiseList);
+        if(adapter == null)
+        {
+            adapter = new MerchandiseDiscountCountAdapter(getActivity(),merchandiseList);
+        }
+        else {
+            adapter.notifyDataSetChanged();
+        }
     }
 
     /**
@@ -72,5 +78,31 @@ public class MerchandiseDiscountCountFragment extends Fragment{
     {
         countListview = (XListView)count.findViewById(R.id.discount_count_list);
         countListview.setAdapter(adapter);
+        countListview.setPullLoadEnable(true);
+        countListview.setXListViewListener(this);
+    }
+
+    /**
+     * 刷新数据函数
+     */
+    @Override
+    public void onRefresh() {
+
+        onLoad();
+    }
+
+    /**
+     * 加载更多数据函数
+     */
+    @Override
+    public void onLoadMore() {
+
+        onLoad();
+    }
+
+    private void onLoad() {
+        countListview.stopRefresh();
+        countListview.stopLoadMore();
+        countListview.setRefreshTime("none");
     }
 }

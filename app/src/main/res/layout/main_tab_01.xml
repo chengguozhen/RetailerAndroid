@@ -14,6 +14,7 @@
         android:textSize="50sp"
         android:textColor="@color/colorAccent"/>
     <LinearLayout
+        android:id="@+id/home_middle"
         android:orientation="horizontal"
         android:layout_below="@+id/home_header"
         android:layout_width="match_parent"
@@ -38,5 +39,11 @@
             android:layout_width="@dimen/home_default_imageview"
             android:layout_height="@dimen/home_default_imageview" />
     </LinearLayout>
-
+    <Button
+        android:id="@+id/my_identity_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="我的名片"
+        android:layout_below="@+id/home_middle"
+        />
 </RelativeLayout>

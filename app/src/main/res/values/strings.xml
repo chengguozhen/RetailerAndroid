@@ -52,5 +52,6 @@
     <string name="merchandise_discount_title">特惠商品列表</string>
     <string name="merchandisedetail_title">商品详情</string>
 
-
+    <!-- MyIdentityActivity -->
+    <string name="my_identity">我的名片</string>
 </resources>

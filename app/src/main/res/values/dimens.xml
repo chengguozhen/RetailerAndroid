@@ -25,4 +25,8 @@
     <dimen name="purchanse_height">40dp</dimen>
     <dimen name="purchase_width">100dp</dimen>
 
+    <!-- my identity -->
+    <dimen name="my_image_width">100dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+
 </resources>

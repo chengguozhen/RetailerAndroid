@@ -2,15 +2,20 @@ package com.neighbor.retailer_android.ui.activity.home.newdiscount;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.neighbor.retailer_android.R;
-import com.neighbor.retailer_android.ui.fragment.discount.MerchandiseDiscountCountFragment;
-import com.neighbor.retailer_android.ui.fragment.discount.MerchandiseDiscountPriceFragment;
+import com.neighbor.retailer_android.ui.activity.kind.SearchTransparentActivity;
 import com.neighbor.retailer_android.ui.fragment.newmerchandise.MerchandiseNewCountFragment;
 import com.neighbor.retailer_android.ui.fragment.newmerchandise.MerchandiseNewPriceFragment;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarHeader;
@@ -59,6 +64,7 @@ public class MerchandiseNewActivity extends AppCompatActivity implements View.On
                 }
             };
             toolbarHeader.setNavigation(R.mipmap.back,listener);
+            //toolbarHeader.setSearchMenu();
         }
         count = (Button)findViewById(R.id.count);
         price = (Button)findViewById(R.id.price);
@@ -138,4 +144,47 @@ public class MerchandiseNewActivity extends AppCompatActivity implements View.On
             transaction.hide(priceFragment);
         }
     }
+/*
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_menu,menu);
+
+        //获取MenuItem搜索的实例
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        menuItem.setVisible(false);
+
+        SearchView searchView = (SearchView)menuItem.getActionView();
+        searchView.setSubmitButtonEnabled(true);//显示确认搜索按钮
+        searchView.setIconifiedByDefault(false);
+        searchView.setIconified(false);
+        searchView.clearFocus();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(MerchandiseNewActivity.this,"click",Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.action_search:
+                Intent intent = new Intent(this, SearchTransparentActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    */
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -20,9 +21,17 @@ import com.neighbor.retailer_android.ui.activity.home.notice.NoticeListActivity;
 import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseDiscountActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
 import com.neighbor.retailer_android.ui.adapter.AdvPagerAdapter;
+import com.neighbor.retailer_android.util.AnimateFirstDisplayListener;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressLint("NewApi")
@@ -36,7 +45,7 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
     private ImageView noticeImage,discountImage,newMerchandiseImage;
 
     //我的名片
-    private Button identity;
+    //private Button identity;
 
     /**
      * 广告图存储
@@ -57,6 +66,8 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
      * 图片的url List
      */
     private List<String> imageUrl;
+
+    private List<View> advView;
     /**
      * 自动播放广告
      */
@@ -69,6 +80,10 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
     private AtomicInteger advPosition = new AtomicInteger(0);
 
     private int playDuration = 3000;
+
+    DisplayImageOptions options;
+    public ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
+    protected ImageLoader imageLoader= ImageLoader.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,9 +108,10 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         discountImage.setOnClickListener(this);
         newMerchandiseImage = (ImageView)home.findViewById(R.id.notice_new_merchandise);
         newMerchandiseImage.setOnClickListener(this);
-
+        /*
         identity = (Button)home.findViewById(R.id.my_identity_btn);
         identity.setOnClickListener(this);
+        */
     }
 
     /**
@@ -103,6 +119,16 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
      */
     private void initAdvAdapter()
     {
+        options =new DisplayImageOptions.Builder()
+                .showStubImage(R.mipmap.ic_launcher) // 设置图片下载期间显示的图片
+                .showImageForEmptyUri(R.mipmap.ic_launcher) // 设置图片Uri为空或是错误的时候显示的图片
+                .showImageOnFail(R.mipmap.ic_launcher) // 设置图片加载或解码过程中发生错误显示的图片
+                .cacheInMemory(true) // 设置下载的图片是否缓存在内存中
+                .cacheOnDisc(true) // 设置下载的图片是否缓存在SD卡中
+                .displayer(new RoundedBitmapDisplayer(20)) // 设置成圆角图片
+                .build(); // 创建配置过得DisplayImageOption对象
+
+        advView = new ArrayList<View>();
         advPager = (ViewPager)home.findViewById(R.id.adv_pager);
         //小圆点控件
         ViewGroup viewGroup = (ViewGroup)home.findViewById(R.id.circle_spot);
@@ -113,6 +139,9 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         imageUrl.add("http://g.hiphotos.baidu.com/zhidao/pic/item/960a304e251f95ca971dc905cd177f3e6609529c.jpg");
         imageUrl.add("http://a.hiphotos.baidu.com/zhidao/pic/item/9f510fb30f2442a7e1dc64f4d543ad4bd0130294.jpg");
         imageUrl.add("http://f.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=9307d2e77ad98d1076810435140f9438/503d269759ee3d6de821c3d045166d224e4adec2.jpg");
+
+        //初始化广告viewlist
+        advView = initImageview();
 
         circleSpot = new ImageView[imageUrl.size()];
         for(int i=0; i<imageUrl.size(); i++)
@@ -133,7 +162,7 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
             viewGroup.addView(circleSpot[i]);
         }
 
-        advPagerAdapter = new AdvPagerAdapter(getActivity(),imageUrl);
+        advPagerAdapter = new AdvPagerAdapter(getActivity(),advView);
         advPager.setAdapter(advPagerAdapter);
         //设置小圆点变化监听
         advPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -217,6 +246,24 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         }
     };
 
+    /**
+     * 加载网络图片
+     *
+     * @return
+     */
+    private List<View> initImageview()
+    {
+        //LayoutInflater.from(getActivity()).inflate(R.layout.adv_image_layout,get,true);
+        for(int i=0; i<imageUrl.size(); i++) {
+            ImageView view = new ImageView(getActivity());
+            view.setScaleType(ImageView.ScaleType.CENTER);
+            imageLoader.displayImage(imageUrl.get(i), view, options, animateFirstListener);
+            view.setTag(imageUrl.get(i));
+            advView.add(view);
+        }
+        return advView;
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId())
@@ -236,10 +283,10 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                 intentNew.setClass(getActivity(), MerchandiseNewActivity.class);
                 startActivity(intentNew);
                 break;
-            case R.id.my_identity_btn:
+            /*case R.id.my_identity_btn:
                 Intent intentIdentity = new Intent(getActivity(), MyIdentityActivity.class);
                 startActivity(intentIdentity);
-                break;
+                break;*/
             default:
                 break;
         }

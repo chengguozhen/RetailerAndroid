@@ -1,6 +1,7 @@
 package com.neighbor.retailer_android.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Handler;
@@ -19,6 +20,7 @@ import android.widget.ListView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.Dish;
+import com.neighbor.retailer_android.ui.activity.kind.MerchandiseListActivity;
 import com.neighbor.retailer_android.ui.adapter.KindOrderLeftAdapter;
 import com.neighbor.retailer_android.ui.adapter.TestKindSectionedAdapter;
 import com.neighbor.retailer_android.ui.view.KindPinnedHeaderListView;
@@ -27,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressLint("NewApi")
-public class KindTabFragment extends Fragment {
+public class KindTabFragment extends Fragment implements View.OnClickListener{
 
     private String TAG = "nihao";
     /**
@@ -178,19 +180,8 @@ public class KindTabFragment extends Fragment {
         noNetWork.setVisibility(View.GONE);
         searchEdit = (EditText)rootView.findViewById(R.id.search_name_edit);
         searchBtn = (ImageButton)rootView.findViewById(R.id.search_btn);
-        doLoddingBtn.setOnClickListener(new ImageButton.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //重新加载逻辑
-                //getMsListData(1);
-            }
-        });
-        searchBtn.setOnClickListener(new ImageButton.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //搜索逻辑跳转
-            }
-        });
+        doLoddingBtn.setOnClickListener(this);
+        searchBtn.setOnClickListener(this);
         leftListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -236,5 +227,21 @@ public class KindTabFragment extends Fragment {
         });
         Log.v(TAG, "right-->" + rightStr.toString());
         return rootView;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.search_btn:
+                //搜索逻辑跳转
+                Intent intent = new Intent(getActivity(), MerchandiseListActivity.class);
+                intent.putExtra("KEY",searchEdit.getText().toString());
+                startActivity(intent);
+                break;
+            case R.id.ms_tab_do_lodding_btn:
+                //重新加载逻辑
+                //getMsListData(1);
+                break;
+        }
     }
 }

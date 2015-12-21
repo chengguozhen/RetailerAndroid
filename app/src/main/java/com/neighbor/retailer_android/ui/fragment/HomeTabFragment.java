@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.neighbor.retailer_android.R;
@@ -39,6 +40,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressLint("NewApi")
@@ -93,6 +96,17 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
     protected ImageLoader imageLoader= ImageLoader.getInstance();
 
     /**
+     * 每日限时抢 计时器
+     */
+    private Timer timer;
+
+    private TextView second,minute,hour;
+    /**
+     * 小时 分钟 秒数
+     */
+    private int hourInt,minuteInt,secondInt;
+
+    /**
      * 比onCreateView先调用, menu关联
      * @param savedInstanceState
      */
@@ -109,6 +123,7 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         initToolbar();
         initView();
         initAdvAdapter();
+        startTimer();
         return home;
     }
 
@@ -126,8 +141,8 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
             MyToolbarListener listener = new MyToolbarListener() {
                 @Override
                 public void addNavigation() {
-                    //定位
-                    Toast.makeText(getActivity(), "定位", Toast.LENGTH_SHORT).show();
+                //定位
+                Toast.makeText(getActivity(), "定位", Toast.LENGTH_SHORT).show();
                 }
             };
             toolbarHeader.setNavigation(R.mipmap.add, listener);
@@ -153,6 +168,9 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         identity = (Button)home.findViewById(R.id.my_identity_btn);
         identity.setOnClickListener(this);
         */
+        hour = (TextView)home.findViewById(R.id.hour);
+        minute = (TextView)home.findViewById(R.id.minute);
+        second = (TextView)home.findViewById(R.id.second);
     }
 
     /**
@@ -347,4 +365,87 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
             getActivity().getMenuInflater().inflate(R.menu.search_menu,menu);
         }
     }
+
+    /**
+     * 开启倒计时
+     */
+    private void startTimer()
+    {
+        //需要先得到倒计时，Date形式？ 假设10：01：10
+        final String hourStr = "10";
+        final String minuteStr = "01";
+        final String secondStr = "10";
+
+        hour.setText(hourStr);
+        minute.setText(minuteStr);
+        second.setText(secondStr);
+        timer = new Timer();
+        hourInt = Integer.valueOf(hourStr);
+        minuteInt = Integer.valueOf(minuteStr);
+        secondInt = Integer.valueOf(secondStr);
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                Message msg = new Message();
+                msg.what = 1000;
+                timerHandler.sendMessage(msg);
+            }
+        };
+        timer.schedule(timerTask,1000,1000);
+    }
+
+    private Handler timerHandler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what)
+            {
+                case 1000:
+                    if(secondInt > 0)
+                    {
+                        secondInt--;
+                        second.setText(secondInt+"");
+                        if(minuteInt>0)
+                        {
+                            minuteInt--;
+                            minute.setText(minuteInt+"");
+                        }
+                        else if(minuteInt == 0){
+                            if(hourInt > 0)
+                            {
+                                hourInt--;
+                                hour.setText(hourInt+"");
+                            }
+                            else if(hourInt == 0)
+                            {}
+                        }
+                    }
+                    else if(secondInt == 0)
+                    {
+                        if(minuteInt>0)
+                        {
+                            secondInt = 59;
+                            second.setText(secondInt+"");
+                            minuteInt--;
+                            minute.setText(minuteInt+"");
+                        }
+                        else if(minuteInt == 0){
+                            if(hourInt > 0)
+                            {
+                                hourInt--;
+                                hour.setText(hourInt+"");
+                            }
+                            else if(hourInt == 0)
+                            {
+                                timer.cancel();
+                            }
+                        }
+                    }
+                    break;
+                default:
+
+                    break;
+            }
+        }
+    };
 }

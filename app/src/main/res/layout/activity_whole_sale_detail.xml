@@ -263,8 +263,8 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!--<include layout="@layout/kind_no_network_bar"
-            android:id="@+id/whole_not_network" />-->
+        <include layout="@layout/kind_no_network_bar"
+            android:id="@+id/whole_detail_not_network" />
 
     </LinearLayout>
 </LinearLayout>

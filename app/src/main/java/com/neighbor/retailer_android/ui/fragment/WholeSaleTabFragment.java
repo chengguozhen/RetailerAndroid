@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.WholeSale;
+import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleDetailActivity;
 import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleListActivity;
 import com.neighbor.retailer_android.ui.adapter.WholeSaleAdapter;
 import com.neighbor.retailer_android.ui.view.FtLoadingDialog;
@@ -96,9 +98,19 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
         saleListView.setAdapter(adapter);
         for(int i = 0;i < 10;i++){
             WholeSale info = new WholeSale();
+            info.setName("幸福便利店" + i);
             mList.add(info);
         }
         adapter.notifyDataSetChanged();
+        saleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String name = mList.get(position).getName();
+                Intent intent = new Intent(getActivity(), WholeSaleDetailActivity.class);
+                intent.putExtra("NAME",name);
+                startActivity(intent);
+            }
+        });
         return rootView;
     }
 

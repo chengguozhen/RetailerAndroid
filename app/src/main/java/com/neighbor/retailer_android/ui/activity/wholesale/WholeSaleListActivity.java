@@ -1,8 +1,10 @@
 package com.neighbor.retailer_android.ui.activity.wholesale;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -72,6 +74,7 @@ public class WholeSaleListActivity extends Activity implements View.OnClickListe
         key = getIntent().getStringExtra("KEY");
         back = (ImageButton)findViewById(R.id.wholesaler_back);
         title = (TextView)findViewById(R.id.wholesaler_title);
+        title.setText("批发商列表");
         saleListView = (ListView) findViewById(R.id.whole_listview);
         listviewLayout = (LinearLayout)findViewById(R.id.whole_lv_layout);
         noNetWork=(LinearLayout)findViewById(R.id.whole_not_network);
@@ -83,10 +86,20 @@ public class WholeSaleListActivity extends Activity implements View.OnClickListe
         saleListView.setAdapter(adapter);
         for(int i = 0;i < 10;i++){
             WholeSale info = new WholeSale();
+            info.setName("幸福便利店" + i);
             mList.add(info);
         }
         adapter.notifyDataSetChanged();
         title.setText(key);
+        saleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String name = mList.get(position).getName();
+                Intent intent = new Intent(WholeSaleListActivity.this, WholeSaleDetailActivity.class);
+                intent.putExtra("NAME", name);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -90,7 +90,6 @@ public class WholeSaleListActivity extends Activity implements View.OnClickListe
             mList.add(info);
         }
         adapter.notifyDataSetChanged();
-        title.setText(key);
         saleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

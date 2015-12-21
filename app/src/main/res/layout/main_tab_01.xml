@@ -69,7 +69,7 @@
                 android:id="@+id/limited_time_merchandise"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
-                
+
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

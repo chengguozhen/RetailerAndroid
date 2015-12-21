@@ -115,7 +115,7 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
     }
 
     /**
-     *
+     * 初始化广告ViewPagerAdapter信息以及广告涉及到的数据初始化
      */
     private void initAdvAdapter()
     {

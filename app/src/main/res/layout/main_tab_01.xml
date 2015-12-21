@@ -1,49 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <include
         android:id="@+id/home_header"
         layout="@layout/my_header_toolbar"/>
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="首页"
-        android:gravity="center"
-        android:textSize="50sp"
-        android:textColor="@color/colorAccent"/>
-    <LinearLayout
-        android:id="@+id/home_middle"
-        android:orientation="horizontal"
-        android:layout_below="@+id/home_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/notice_image"
-            android:layout_weight="1"
-            android:layout_width="@dimen/home_default_imageview"
-            android:layout_height="@dimen/home_default_imageview"
-            android:src="@mipmap/home_notice"
-            />
-        <ImageView
-            android:id="@+id/notice_discount"
-            android:src="@mipmap/home_discount"
-            android:layout_weight="1"
-            android:layout_width="@dimen/home_default_imageview"
-            android:layout_height="@dimen/home_default_imageview" />
-        <ImageView
-            android:id="@+id/notice_new_merchandise"
-            android:src="@mipmap/home_new_merchance"
-            android:layout_weight="1"
-            android:layout_width="@dimen/home_default_imageview"
-            android:layout_height="@dimen/home_default_imageview" />
-    </LinearLayout>
-    <Button
-        android:id="@+id/my_identity_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="我的名片"
-        android:layout_below="@+id/home_middle"
-        />
-</RelativeLayout>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/home_top_adv"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                >
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/adv_pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+                </android.support.v4.view.ViewPager>
+                <LinearLayout
+                    android:id="@+id/circle_spot"
+                    android:layout_below="@id/adv_pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-25px"
+                    android:gravity="right"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/home_middle"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/notice_image"
+                    android:layout_weight="1"
+                    android:layout_width="@dimen/home_default_imageview"
+                    android:layout_height="@dimen/home_default_imageview"
+                    android:src="@mipmap/home_notice"
+                    />
+                <ImageView
+                    android:id="@+id/notice_discount"
+                    android:src="@mipmap/home_discount"
+                    android:layout_weight="1"
+                    android:layout_width="@dimen/home_default_imageview"
+                    android:layout_height="@dimen/home_default_imageview" />
+                <ImageView
+                    android:id="@+id/notice_new_merchandise"
+                    android:src="@mipmap/home_new_merchance"
+                    android:layout_weight="1"
+                    android:layout_width="@dimen/home_default_imageview"
+                    android:layout_height="@dimen/home_default_imageview" />
+            </LinearLayout>
+            <!--<Button
+                android:id="@+id/my_identity_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="我的名片"
+                />-->
+            <RelativeLayout
+                android:id="@+id/limited_time_merchandise"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+                
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

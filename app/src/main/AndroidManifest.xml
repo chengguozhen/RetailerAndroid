@@ -50,6 +50,9 @@
         <activity android:name=".ui.activity.my.MyIdentityActivity" />
         <activity android:name=".ui.activity.wholesale.WholeSaleListActivity" />
         <activity android:name=".ui.activity.wholesale.WholeSaleDetailActivity"></activity>
+        <activity android:name=".ui.activity.kind.SearchTransparentActivity"
+            android:theme="@style/Transparent"
+            ></activity>
     </application>
 
 </manifest>

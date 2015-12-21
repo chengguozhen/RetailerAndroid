@@ -3,8 +3,10 @@ package com.neighbor.retailer_android.ui.view.MyToolBar;
 import android.content.Context;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.neighbor.retailer_android.R;
 
@@ -50,6 +52,27 @@ public class MyToolbarHeader {
                         listener.addNavigation();
                     }
                 });
+    }
+
+    public void setSearchMenu()
+    {
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.action_search:
+
+                        break;
+                    /*case R.id.action_test:
+                        Toast.makeText(context,"test",Toast.LENGTH_LONG).show();
+                        break;*/
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
 }

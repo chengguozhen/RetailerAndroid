@@ -54,4 +54,7 @@
 
     <!-- MyIdentityActivity -->
     <string name="my_identity">我的名片</string>
+
+    <string name="toolbar_search">搜索</string>
+    <string name="toolbar_test">test</string>
 </resources>

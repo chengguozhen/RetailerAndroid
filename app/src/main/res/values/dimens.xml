@@ -28,5 +28,6 @@
     <!-- my identity -->
     <dimen name="my_image_width">100dp</dimen>
     <dimen name="margin_medium">8dp</dimen>
+    <dimen name="my_adv_height">150dp</dimen>
 
 </resources>

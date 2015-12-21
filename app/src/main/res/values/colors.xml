@@ -15,4 +15,5 @@
     <color name="black_transparent">#86222222</color>
 
     <color name="black">#000000</color>
+    <color name="search_transparent">#3a0a0a00</color>
 </resources>

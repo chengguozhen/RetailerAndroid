@@ -2,9 +2,12 @@ package com.neighbor.retailer_android.ui.activity.kind;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -57,6 +60,7 @@ public class MerchandiseListActivity extends AppCompatActivity implements View.O
                 }
             };
             toolbarHeader.setNavigation(R.mipmap.back,listener);
+            //toolbarHeader.setSearchMenu();
         }
         count = (Button)findViewById(R.id.count);
         price = (Button)findViewById(R.id.price);
@@ -135,5 +139,28 @@ public class MerchandiseListActivity extends AppCompatActivity implements View.O
         if (priceFragment != null){
             transaction.hide(priceFragment);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_menu,menu);
+        return true;
+    }
+
+    /**
+     * 启动搜索
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.action_search:
+                Intent intent = new Intent(this, SearchTransparentActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

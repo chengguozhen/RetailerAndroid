@@ -12,6 +12,7 @@
     <color name="gray">#828282</color>
     <color name="gray_line_color">#e4e4e4</color><!--灰色 分割线 文字-->
     <color name="main_text_color">#4c4c4c</color>
+    <color name="black_transparent">#86222222</color>
 
     <color name="black">#000000</color>
     <color name="search_transparent">#3a0a0a00</color>

@@ -9,6 +9,7 @@
         android:layout_margin="5dp"
         >
     <RelativeLayout
+        android:descendantFocusability="blocksDescendants"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
@@ -80,10 +81,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/add_merchandise"
-                        android:src="@mipmap/substract"
+                        android:id="@+id/substract_merchandise"
+                        android:src="@mipmap/ms_takeout_bg_btn_reduce"
                         android:layout_marginRight="@dimen/default_margin_distance"
-                        android:padding="@dimen/default_margin_distance"
                         android:layout_gravity="center_vertical"
                         android:layout_width="@dimen/add_substract_icon"
                         android:layout_height="@dimen/add_substract_icon" />
@@ -94,10 +94,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ImageView
-                        android:id="@+id/substract_merchandise"
+                        android:id="@+id/add_merchandise"
                         android:layout_marginLeft="@dimen/default_margin_distance"
-                        android:padding="@dimen/default_margin_distance"
-                        android:src="@mipmap/add"
+                        android:src="@mipmap/ms_takeout_bg_btn_increase"
                         android:layout_gravity="center_vertical"
                         android:layout_width="@dimen/add_substract_icon"
                         android:layout_height="@dimen/add_substract_icon" />

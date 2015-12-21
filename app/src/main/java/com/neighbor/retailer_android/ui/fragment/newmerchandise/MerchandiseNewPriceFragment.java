@@ -1,14 +1,17 @@
 package com.neighbor.retailer_android.ui.fragment.newmerchandise;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.MerchandiseItemBean;
+import com.neighbor.retailer_android.ui.activity.kind.MerchandiseDetailActivity;
 import com.neighbor.retailer_android.ui.adapter.MerchandiseDiscountPriceAdapter;
 import com.neighbor.retailer_android.ui.view.pulltorefresh.XListView;
 
@@ -72,6 +75,13 @@ public class MerchandiseNewPriceFragment extends Fragment implements XListView.I
     {
         priceListview = (XListView)count.findViewById(R.id.new_price_list);
         priceListview.setAdapter(adapter);
+        priceListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), MerchandiseDetailActivity.class);
+                startActivity(intent);
+            }
+        });
         priceListview.setPullLoadEnable(true);
         priceListview.setXListViewListener(this);
     }

@@ -5,21 +5,19 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import java.util.List;
 
 /**
- * Created by VickyYang on 12/20/15.
+ * Created by Vicky on 2015/12/21.
+ * Retailer_android
+ * contact way: 317461087@qq.com
  */
-public class AdvPagerAdapter extends PagerAdapter {
-
+public class MerPagerAdapter extends PagerAdapter {
     private Context context;
     private List<View> advList;
 
-
-
-    public AdvPagerAdapter(Context context, List<View> advList) {
+    public MerPagerAdapter(Context context, List<View> advList) {
         this.context =context;
         this.advList =advList;
     }
@@ -44,6 +42,4 @@ public class AdvPagerAdapter extends PagerAdapter {
     public int getCount() {
         return advList.size();
     }
-
-
 }

@@ -10,14 +10,12 @@
         <option name="gradleJvm" value="1.8" />
 =======
         <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-2.8" />
+<<<<<<< HEAD
+        <option name="gradleJvm" value="1.7" />
+=======
 >>>>>>> 3397a085c899530d2af2064f5801c412d641dccd
+>>>>>>> 8506f92a62dba07d06e147fa3945219351dbcbc1
         <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
-          </set>
-        </option>
-        <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />

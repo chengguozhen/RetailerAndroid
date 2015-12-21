@@ -8,12 +8,17 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseNewActivity;
@@ -21,6 +26,8 @@ import com.neighbor.retailer_android.ui.activity.home.notice.NoticeListActivity;
 import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseDiscountActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
 import com.neighbor.retailer_android.ui.adapter.AdvPagerAdapter;
+import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarHeader;
+import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarListener;
 import com.neighbor.retailer_android.util.AnimateFirstDisplayListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -38,7 +45,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class HomeTabFragment extends Fragment implements View.OnClickListener{
 
     //toolbar
-    private View home;
+    private View home,homeHeader;
     /**
      * 通知公告 优惠商品 新品上市
      */
@@ -85,13 +92,47 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
     public ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
     protected ImageLoader imageLoader= ImageLoader.getInstance();
 
+    /**
+     * 比onCreateView先调用, menu关联
+     * @param savedInstanceState
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         home = inflater.inflate(R.layout.main_tab_01, container, false);
+        initToolbar();
         initView();
         initAdvAdapter();
         return home;
+    }
+
+    private void initToolbar()
+    {
+        homeHeader = home.findViewById(R.id.home_header);
+        if(homeHeader != null)
+        {
+            Toolbar toolbar = (Toolbar)homeHeader;
+            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+            MyToolbarHeader toolbarHeader = new MyToolbarHeader(getActivity(),toolbar);
+            toolbarHeader.setHeaderTitle(/*getString(R.string.)*/"首页");
+            toolbarHeader.setSearchMenu();
+            MyToolbarListener listener = new MyToolbarListener() {
+                @Override
+                public void addNavigation() {
+                    //定位
+                    Toast.makeText(getActivity(), "定位", Toast.LENGTH_SHORT).show();
+                }
+            };
+            toolbarHeader.setNavigation(R.mipmap.add, listener);
+            //toolbarHeader.setSearchMenu();
+        }
     }
 
     /**
@@ -168,7 +209,6 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         advPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
@@ -185,7 +225,6 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
         //设置自动滑动和手动改变监听
@@ -291,5 +330,21 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                 break;
         }
 
+    }
+
+    /**
+     *  想要生效 必须先setHasOptionsMenu(true);
+     * @param menu
+     * @param inflater
+     */
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //super.onCreateOptionsMenu(menu, inflater);
+        if(inflater!=null) {
+            inflater.inflate(R.menu.contact_menu, menu);
+        }
+        else {
+            getActivity().getMenuInflater().inflate(R.menu.search_menu,menu);
+        }
     }
 }

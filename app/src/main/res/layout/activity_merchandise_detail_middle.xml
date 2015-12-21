@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:layout_marginLeft="@dimen/default_margin_distance"
+    android:layout_marginTop="@dimen/margin_medium"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linear_category_top"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_margin_distance"
+        android:layout_below="@+id/merchandise_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品分类"
+            android:textSize="@dimen/text_size_medium"
+            />
+        <TextView
+            android:id="@+id/merchandise_category"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="休闲食品 膨化食品"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/text_size_medium"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_sale_medium"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_below="@+id/linear_category_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已售：  "
+            android:textSize="@dimen/text_size_medium"
+            />
+        <TextView
+            android:id="@+id/merchandise_sale_num"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="105570 "
+            android:textSize="@dimen/text_size_medium"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_inventory"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/default_margin_distance"
+        android:layout_below="@+id/linear_category_top"
+        android:layout_marginLeft="40dp"
+        android:layout_toRightOf="@+id/linear_sale_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="库存： "
+            android:textSize="@dimen/text_size_medium"
+            />
+        <TextView
+            android:id="@+id/merchandise_inventory_num"
+            android:layout_marginLeft="@dimen/margin_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3610 "
+            android:textSize="@dimen/text_size_medium"
+            />
+    </LinearLayout>
+</RelativeLayout>

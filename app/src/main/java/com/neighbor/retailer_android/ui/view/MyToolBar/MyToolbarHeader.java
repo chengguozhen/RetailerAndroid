@@ -67,6 +67,9 @@ public class MyToolbarHeader {
                     /*case R.id.action_test:
                         Toast.makeText(context,"test",Toast.LENGTH_LONG).show();
                         break;*/
+                    case R.id.action_contact:
+                        Toast.makeText(context,"联系客服",Toast.LENGTH_SHORT).show();
+                        break;
                     default:
                         break;
                 }

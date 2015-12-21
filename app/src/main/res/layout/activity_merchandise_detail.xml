@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.neighbor.retailer_android.ui.activity.kind.MerchandiseDetailActivity">
+
+    <include
+        android:id="@+id/merchandise_detail_header"
+        layout="@layout/my_header_toolbar"/>
+
+    <ScrollView
+        android:layout_below="@+id/merchandise_detail_header"
+        android:background="@color/gray_background_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/merchandise_detail_top_adv"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:background="@color/white"
+                >
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/mer_pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+                </android.support.v4.view.ViewPager>
+                <LinearLayout
+                    android:id="@+id/circle_spot"
+                    android:layout_below="@id/mer_pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-25px"
+                    android:gravity="right"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </RelativeLayout>
+            <include
+                android:id="@+id/merchandise_detail_top"
+                layout="@layout/activity_merchandise_detail_top" />
+            <include
+                android:id="@+id/merchandise_detail_middle"
+                layout="@layout/activity_merchandise_detail_middle" />
+            <include
+                android:id="@+id/merchandise_detail_bottom"
+                layout="@layout/activity_merchandise_detail_pay" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

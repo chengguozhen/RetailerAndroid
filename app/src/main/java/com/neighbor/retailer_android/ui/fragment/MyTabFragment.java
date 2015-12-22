@@ -12,7 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
+<<<<<<< HEAD
 import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
+=======
+import com.neighbor.retailer_android.ui.activity.my.MyOrderListActivity;
+>>>>>>> 2060ad179bfed37794e918407cefc05b83d11be1
 import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleListActivity;
 
 @SuppressLint("NewApi")
@@ -61,6 +65,9 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.my_order:
                 //跳转至我的订单页面
+                Intent intent1 = new Intent(getActivity(), MyOrderListActivity.class);
+                intent1.putExtra("KEY",myName.getText().toString());
+                startActivity(intent1);
                 break;
             case R.id.my_whole_sale:
                 //跳转至我的批发商

@@ -1,17 +1,20 @@
 package com.neighbor.retailer_android.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.Dish;
+import com.neighbor.retailer_android.ui.activity.kind.MerchandiseListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,6 +104,14 @@ public class TestKindSectionedAdapter extends KindSectionedBaseAdapter {
         }
         Log.v(TAG,"list-->" + list.toString());
         adapter.notifyDataSetChanged();
+        holder.gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //handler传值到activity在跳转
+                Intent intent = new Intent(mContext, MerchandiseListActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
         return convertView;
     }
 

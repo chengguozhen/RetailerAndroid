@@ -113,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:text="积分"
+                android:text="地址"
                 android:textSize="@dimen/text_size_large"
                 android:textColor="@color/main_text_color"/>
         </LinearLayout>

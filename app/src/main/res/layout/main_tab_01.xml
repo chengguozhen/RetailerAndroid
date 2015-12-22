@@ -132,7 +132,7 @@
                         android:layout_marginTop="20dp"
                         android:text="已结束"
                         android:gravity="right"
-                        android:textSize="@dimen/text_size_medium"
+                        android:textSize="@dimen/text_size_small"
                         android:textColor="@color/main_text_color"
                         android:visibility="invisible"
                         />

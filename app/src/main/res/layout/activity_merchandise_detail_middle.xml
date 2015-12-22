@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="商品分类"
             android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
             />
         <TextView
             android:id="@+id/merchandise_category"
@@ -42,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="已售：  "
             android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
             />
         <TextView
             android:id="@+id/merchandise_sale_num"
@@ -50,6 +52,7 @@
             android:layout_height="wrap_content"
             android:text="105570 "
             android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
             />
     </LinearLayout>
     <LinearLayout
@@ -67,6 +70,7 @@
             android:layout_height="wrap_content"
             android:text="库存： "
             android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
             />
         <TextView
             android:id="@+id/merchandise_inventory_num"
@@ -75,6 +79,7 @@
             android:layout_height="wrap_content"
             android:text="3610 "
             android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
             />
     </LinearLayout>
 </RelativeLayout>

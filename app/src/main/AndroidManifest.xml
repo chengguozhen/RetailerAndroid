@@ -54,13 +54,10 @@
             android:theme="@style/Transparent" />
         <activity android:name=".ui.activity.kind.MerchandiseDetailActivity" />
         <activity android:name=".ui.activity.wholesale.WholeSaleDetailActivity" />
-<<<<<<< HEAD
         <activity android:name=".ui.activity.my.AddressEditActivity" />
         <activity android:name=".ui.activity.my.NewAddressActivity"></activity>
-=======
         <activity android:name=".ui.activity.my.MyOrderListActivity" />
         <activity android:name=".ui.activity.shopcart.SubmitOrderActivity"></activity>
->>>>>>> 2060ad179bfed37794e918407cefc05b83d11be1
     </application>
 
 </manifest>

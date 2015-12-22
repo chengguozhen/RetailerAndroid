@@ -12,11 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
-<<<<<<< HEAD
 import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
-=======
 import com.neighbor.retailer_android.ui.activity.my.MyOrderListActivity;
->>>>>>> 2060ad179bfed37794e918407cefc05b83d11be1
 import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleListActivity;
 
 @SuppressLint("NewApi")

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.my.AddressEditActivity">
+
+    <include
+        android:id="@+id/home_header"
+        layout="@layout/my_header_toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/area_ll"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/area"
+            android:text="山东省威海市环翠区"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="所在区域"
+            android:layout_marginTop="@dimen/default_margin_distance"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/main_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="@color/gray"
+        android:layout_marginLeft="@dimen/default_margin_distance"
+        android:layout_marginRight="@dimen/default_margin_distance"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:id="@+id/address_ll"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/address"
+            android:text="青岛中路107-2 1604"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="详细地址"
+            android:layout_marginTop="@dimen/default_margin_distance"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/main_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="@color/gray"
+        android:layout_marginLeft="@dimen/default_margin_distance"
+        android:layout_marginRight="@dimen/default_margin_distance"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:id="@+id/charger_ll"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/charger"
+            android:text="小婊砸"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="收货人姓名"
+            android:layout_marginTop="@dimen/default_margin_distance"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/main_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="@color/gray"
+        android:layout_marginLeft="@dimen/default_margin_distance"
+        android:layout_marginRight="@dimen/default_margin_distance"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:id="@+id/telephone_ll"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/telephone"
+            android:text="18363121120"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="手机号码"
+            android:layout_marginTop="@dimen/default_margin_distance"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/main_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="@color/gray"
+        android:layout_marginLeft="@dimen/default_margin_distance"
+        android:layout_marginRight="@dimen/default_margin_distance"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:id="@+id/zip_code_ll"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/zip_code"
+            android:text="264400"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="邮编"
+            android:layout_marginTop="@dimen/default_margin_distance"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/main_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="@color/gray"
+        android:layout_marginLeft="@dimen/default_margin_distance"
+        android:layout_marginRight="@dimen/default_margin_distance"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="0.1"
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/delete_address"
+            android:background="@color/main_theme_color"
+            android:text="删除"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/default_margin_distance"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/save_address"
+            android:background="@color/main_theme_color"
+            android:text="保存"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/default_margin_distance"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

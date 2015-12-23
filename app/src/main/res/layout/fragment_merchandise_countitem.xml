@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_large"
             android:text="45g 乐事薯片 美国经典原味"
-            android:textColor="@color/black"
+            android:textColor="@color/main_text_color"
             />
         <LinearLayout
             android:id="@+id/merchandise_info_ll"
@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:text="零售价： ¥9.0"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/black"
+                    android:textColor="@color/main_text_color"
                     />
                 <TextView
                     android:id="@+id/merchandise_specification"
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:text="规格： 每箱40个"
                     android:textSize="@dimen/text_size_small"
-                    android:textColor="@color/black"
+                    android:textColor="@color/main_text_color"
                     />
                 <TextView
                     android:id="@+id/merchandise_inventory"
@@ -65,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="库存： 460"
-                    android:textColor="@color/black"
+                    android:textColor="@color/main_text_color"
                     android:textSize="@dimen/text_size_small"
                     />
             </LinearLayout>
@@ -106,7 +106,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/default_margin_distance"
                     android:background="@color/main_theme_color"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_size_small"
                     android:layout_width="@dimen/purchase_width"
                     android:layout_height="@dimen/purchanse_height" />
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_medium"
             android:text="乐事中国威海分部提供"
-            android:textColor="@color/black"
+            android:textColor="@color/main_text_color"
             />
     </RelativeLayout>
     </android.support.v7.widget.CardView>

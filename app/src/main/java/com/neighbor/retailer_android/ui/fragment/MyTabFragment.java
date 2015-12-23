@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
+import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyOrderListActivity;
 import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleListActivity;
 
@@ -56,6 +57,8 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
         switch(v.getId()){
             case R.id.my_bussiness_card:
                 //跳转到我的名片界面
+                Intent intentIdentity= new Intent(getActivity(), MyIdentityActivity.class);
+                startActivity(intentIdentity);
                 break;
             case R.id.my_order:
                 //跳转至我的订单页面

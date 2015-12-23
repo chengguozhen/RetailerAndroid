@@ -99,12 +99,13 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
      * 每日限时抢 计时器
      */
     private Timer timer;
-
-    private TextView second,minute,hour;
     /**
      * 小时 分钟 秒数
      */
+    private TextView second,minute,hour;
     private int hourInt,minuteInt,secondInt;
+
+    private TextView endTv;
 
     /**
      * 比onCreateView先调用, menu关联
@@ -171,6 +172,8 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         hour = (TextView)home.findViewById(R.id.hour);
         minute = (TextView)home.findViewById(R.id.minute);
         second = (TextView)home.findViewById(R.id.second);
+        endTv = (TextView)home.findViewById(R.id.merchandise_end);
+        endTv.setVisibility(View.INVISIBLE);
     }
 
     /**
@@ -372,7 +375,7 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
     private void startTimer()
     {
         //需要先得到倒计时，Date形式？ 假设10：01：10
-        final String hourStr = "10";
+        final String hourStr = "00";
         final String minuteStr = "01";
         final String secondStr = "10";
 
@@ -405,7 +408,12 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                     {
                         secondInt--;
                         second.setText(secondInt+"");
-                        if(minuteInt>0)
+                        if(secondInt <= 9)
+                        {
+                            second.setText("0"+secondInt);
+                        }
+
+                        /*if(minuteInt>0)
                         {
                             minuteInt--;
                             minute.setText(minuteInt+"");
@@ -418,7 +426,7 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                             }
                             else if(hourInt == 0)
                             {}
-                        }
+                        }*/
                     }
                     else if(secondInt == 0)
                     {
@@ -428,16 +436,29 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                             second.setText(secondInt+"");
                             minuteInt--;
                             minute.setText(minuteInt+"");
+                            if(minuteInt <= 9)
+                            {
+                                minute.setText("0"+minuteInt);
+                            }
                         }
                         else if(minuteInt == 0){
                             if(hourInt > 0)
                             {
+                                secondInt = 59;
+                                second.setText(secondInt+"");
                                 hourInt--;
                                 hour.setText(hourInt+"");
+                                if(hourInt <= 9)
+                                {
+                                    hour.setText("0"+hourInt);
+                                }
+                                minuteInt = 59;
+                                minute.setText(minuteInt+"");
                             }
                             else if(hourInt == 0)
                             {
                                 timer.cancel();
+                                endTv.setVisibility(View.VISIBLE);
                             }
                         }
                     }

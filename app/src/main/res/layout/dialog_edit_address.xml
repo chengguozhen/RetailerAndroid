@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_theme_color"
+        android:padding="8dp"
+        android:text="title"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:id="@+id/dialog_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_medium"
+        android:layout_margin="@dimen/default_margin_distance"
+        android:padding="@dimen/default_margin_distance" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/cancel_edit"
+            android:background="@color/main_theme_color"
+            android:text="取消"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/default_margin_distance"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/save_edit"
+            android:background="@color/main_theme_color"
+            android:text="保存"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/default_margin_distance"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

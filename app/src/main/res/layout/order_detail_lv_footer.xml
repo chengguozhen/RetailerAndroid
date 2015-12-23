@@ -76,4 +76,25 @@
             android:textSize="@dimen/text_size_medium"
             android:textColor="@color/gray_text_color"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/order_state_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="付款时间："
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/gray_text_color"/>
+        <TextView
+            android:id="@+id/order_state_tag_value"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="2015-12-21 15:35:18"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/gray_text_color"/>
+    </LinearLayout>
 </LinearLayout>

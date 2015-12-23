@@ -15,8 +15,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/white"/>
+            android:layout_height="8dp" />
 
         <LinearLayout
             android:id="@+id/whole_lv_layout"
@@ -26,42 +25,53 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="55dp" >
 
-                <Button
+                <LinearLayout
                     android:id="@+id/nopay_money_order"
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:text="未付款"
-                    android:textSize="@dimen/text_size_large"
-                    android:textColor="@color/main_text_color"
-                    android:background="@color/transparent"/>
-                <ImageView
-                    android:layout_width="2px"
-                    android:layout_height="match_parent"
-                    android:background="@color/white"/>
-                <Button
+                    android:background="@color/white"
+                    android:descendantFocusability="beforeDescendants"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/new_order_tx"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/main_theme_color"
+                        android:textSize="@dimen/text_size_large"
+                        android:text="未付款" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/finish_order"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:text="已完成"
-                    android:textSize="@dimen/text_size_large"
-                    android:textColor="@color/main_text_color"
-                    android:background="@color/transparent"/>
+                    android:layout_marginLeft="2dp"
+                    android:background="@color/white"
+                    android:layout_weight="1"
+                    android:descendantFocusability="beforeDescendants"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/received_order_tx"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_large"
+                        android:text="已完成" />
+                </LinearLayout>
+
             </LinearLayout>
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:background="@color/white"/>
-            <FrameLayout
-                android:id="@+id/order_tab"
+            <android.support.v4.view.ViewPager
+                android:id="@+id/id_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1" >
-            </FrameLayout>
+            </android.support.v4.view.ViewPager>
         </LinearLayout>
 
         <!--<include layout="@layout/kind_no_network_bar"

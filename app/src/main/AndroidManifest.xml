@@ -58,6 +58,9 @@
         <activity android:name=".ui.activity.my.NewAddressActivity"></activity>
         <activity android:name=".ui.activity.my.MyOrderListActivity" />
         <activity android:name=".ui.activity.shopcart.SubmitOrderActivity"></activity>
+
+        <activity android:name=".util.cascade.activity.BaseActivity" />
+        <activity android:name=".util.cascade.activity.ModifyLocationActivity" />
     </application>
 
 </manifest>

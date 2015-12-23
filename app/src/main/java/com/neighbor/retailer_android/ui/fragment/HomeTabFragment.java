@@ -25,7 +25,9 @@ import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseNewActivity;
 import com.neighbor.retailer_android.ui.activity.home.notice.NoticeListActivity;
 import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseDiscountActivity;
+import com.neighbor.retailer_android.ui.activity.my.AddressEditActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
+import com.neighbor.retailer_android.ui.activity.my.NewAddressActivity;
 import com.neighbor.retailer_android.ui.adapter.AdvPagerAdapter;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarHeader;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarListener;
@@ -144,6 +146,8 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                 public void addNavigation() {
                 //定位
                 Toast.makeText(getActivity(), "定位", Toast.LENGTH_SHORT).show();
+                    Intent address = new Intent(getActivity(), NewAddressActivity.class);
+                    startActivity(address);
                 }
             };
             toolbarHeader.setNavigation(R.mipmap.add, listener);

@@ -7,7 +7,7 @@
     tools:context=".ui.activity.my.AddressEditActivity">
 
     <include
-        android:id="@+id/home_header"
+        android:id="@+id/address_header"
         layout="@layout/my_header_toolbar"/>
 
     <LinearLayout
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/area"
-            android:text="山东省威海市环翠区"
+            android:text="山东省 威海市 环翠区"
             android:textSize="@dimen/text_size_medium"
             android:textColor="@color/main_text_color"
             android:layout_width="match_parent"

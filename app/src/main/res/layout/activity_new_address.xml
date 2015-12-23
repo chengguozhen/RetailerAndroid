@@ -7,7 +7,7 @@
     tools:context=".ui.activity.my.AddressEditActivity">
 
     <include
-        android:id="@+id/home_header"
+        android:id="@+id/address_header"
         layout="@layout/my_header_toolbar"/>
 
     <LinearLayout
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/area"
-            android:text="山东省威海市环翠区"
+            android:text=""
             android:textSize="@dimen/text_size_medium"
             android:textColor="@color/main_text_color"
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/address"
-            android:text="青岛中路107-2 1604"
+            android:text=""
             android:textSize="@dimen/text_size_medium"
             android:textColor="@color/main_text_color"
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/charger"
-            android:text="小婊砸"
+            android:text=""
             android:textSize="@dimen/text_size_medium"
             android:textColor="@color/main_text_color"
             android:layout_width="match_parent"
@@ -101,7 +101,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/telephone"
-            android:text="18363121120"
+            android:text=""
             android:textSize="@dimen/text_size_medium"
             android:textColor="@color/main_text_color"
             android:layout_width="match_parent"
@@ -129,7 +129,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/zip_code"
-            android:text="264400"
+            android:text=""
             android:textSize="@dimen/text_size_medium"
             android:textColor="@color/main_text_color"
             android:layout_width="match_parent"
@@ -154,7 +154,7 @@
         android:gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
+        <!--<Button
             android:id="@+id/delete_address"
             android:background="@color/main_theme_color"
             android:text="删除"
@@ -162,13 +162,12 @@
             android:layout_marginRight="@dimen/default_margin_distance"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />-->
         <Button
             android:id="@+id/save_address"
             android:background="@color/main_theme_color"
             android:text="保存"
             android:layout_weight="1"
-            android:layout_marginLeft="@dimen/default_margin_distance"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

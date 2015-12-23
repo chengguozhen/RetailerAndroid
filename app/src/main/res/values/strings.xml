@@ -58,4 +58,9 @@
     <string name="toolbar_search">搜索</string>
     <string name="toolbar_test">test</string>
     <string name="toolbar_contact">联系客服</string>
+
+
+    <string name="location_choose">请选择省市区</string>
+    <string name="location_confirm">确定</string>
+    <string name="location_cancel">取消</string>
 </resources>

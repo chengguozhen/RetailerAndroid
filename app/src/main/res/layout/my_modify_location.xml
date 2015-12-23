@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#E9E9E9"
+    android:orientation="vertical"
+    tools:context = ".util.cascade.activity.ModifyLocationActivity">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/default_widget_height"
+    android:background="@color/main_theme_color">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/location_choose"
+        android:textSize="@dimen/text_size_large"
+        android:textColor="@color/white"/>
+</RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <com.neighbor.retailer_android.util.widget.WheelView
+            android:id="@+id/id_province"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </com.neighbor.retailer_android.util.widget.WheelView>
+
+        <com.neighbor.retailer_android.util.widget.WheelView
+            android:id="@+id/id_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </com.neighbor.retailer_android.util.widget.WheelView>
+
+        <com.neighbor.retailer_android.util.widget.WheelView
+            android:id="@+id/id_district"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </com.neighbor.retailer_android.util.widget.WheelView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_widget_height"
+        android:orientation="horizontal">
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/button_click"
+            android:text="@string/location_cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_large" />
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_margin="5dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/button_click"
+            android:text="@string/location_confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_large" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

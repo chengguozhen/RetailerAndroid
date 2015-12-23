@@ -11,7 +11,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
+import com.neighbor.retailer_android.bean.ShopInfo;
+import com.neighbor.retailer_android.ui.adapter.OrderShopListAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
 public class SubmitOrderActivity extends Activity implements View.OnClickListener{
@@ -33,6 +37,8 @@ public class SubmitOrderActivity extends Activity implements View.OnClickListene
     private TextView orderTime;
     private CheckBox online;
     private CheckBox outline;
+    private OrderShopListAdapter adpater;
+    private List<ShopInfo> mList = new ArrayList<ShopInfo>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +68,13 @@ public class SubmitOrderActivity extends Activity implements View.OnClickListene
         back.setOnClickListener(this);
         submit.setOnClickListener(this);
         addressImg.setOnClickListener(this);
+        adpater = new OrderShopListAdapter(this,mList);
+        listView.setAdapter(adpater);
+        for(int i = 0;i < 10;i++){
+            ShopInfo info = new ShopInfo();
+            mList.add(info);
+        }
+        adpater.notifyDataSetChanged();
     }
 
     @Override

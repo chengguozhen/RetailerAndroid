@@ -146,8 +146,8 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                 public void addNavigation() {
                 //定位
                 Toast.makeText(getActivity(), "定位", Toast.LENGTH_SHORT).show();
-                    Intent address = new Intent(getActivity(), NewAddressActivity.class);
-                    startActivity(address);
+                    /*Intent address = new Intent(getActivity(), AddressEditActivity.class);
+                    startActivity(address);*/
                 }
             };
             toolbarHeader.setNavigation(R.mipmap.add, listener);

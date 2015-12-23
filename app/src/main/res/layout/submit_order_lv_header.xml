@@ -14,7 +14,7 @@
             android:id="@+id/chance_address"
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/address_icon"
             android:background="@color/transparent"/>
         <LinearLayout
             android:layout_width="wrap_content"

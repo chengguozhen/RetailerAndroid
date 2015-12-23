@@ -34,6 +34,8 @@ public class OrderDetailActivity extends Activity implements View.OnClickListene
     private TextView totalPrice;
     private TextView orderCode;
     private TextView orderTime;
+    private TextView orderStateTag;//分为两种（一是已完成订单的付款时间，二是订单状态）
+    private TextView orderStateValue;
     private OrderShopListAdapter adpater;
     private List<ShopInfo> mList = new ArrayList<ShopInfo>();
 
@@ -60,6 +62,8 @@ public class OrderDetailActivity extends Activity implements View.OnClickListene
         totalPrice = (TextView)footer.findViewById(R.id.order_total_price);
         orderCode = (TextView)footer.findViewById(R.id.order_code);
         orderTime = (TextView)footer.findViewById(R.id.order_create_time);
+        orderStateTag = (TextView)footer.findViewById(R.id.order_state_tag);
+        orderStateValue = (TextView)footer.findViewById(R.id.order_state_tag_value);
         back.setOnClickListener(this);
         delete.setOnClickListener(this);
         addressImg.setClickable(false);

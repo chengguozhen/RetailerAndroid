@@ -8,4 +8,8 @@ package com.neighbor.retailer_android.common;
 public class Constants {
 
     public final static String NOTICEID="notice_id";
+
+    public final static int pwd_min_length = 6;
+
+    public final static int pwd_max_length = 18;
 }

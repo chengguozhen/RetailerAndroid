@@ -1,6 +1,7 @@
 package com.neighbor.retailer_android.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Handler;
@@ -17,6 +18,8 @@ import android.widget.LinearLayout;
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.ShopCartInfo;
 import com.neighbor.retailer_android.bean.ShopInfo;
+import com.neighbor.retailer_android.ui.activity.shopcart.SubmitOrderActivity;
+import com.neighbor.retailer_android.ui.adapter.OrderShopListAdapter;
 import com.neighbor.retailer_android.ui.adapter.ShopCartAdapter;
 import com.neighbor.retailer_android.ui.view.pulltorefresh.XListView;
 
@@ -78,6 +81,8 @@ public class ShopCartTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //点击支付逻辑
+                Intent intent = new Intent(getActivity(), SubmitOrderActivity.class);
+                startActivity(intent);
             }
         });
         doLoddingBtn.setOnClickListener(new ImageButton.OnClickListener() {

@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.ui.activity.my.AddressListActivity;
-import com.neighbor.retailer_android.ui.activity.my.ModifyPwd;
+import com.neighbor.retailer_android.ui.activity.my.ModifyPwdActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyOrderListActivity;
 import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleListActivity;
@@ -90,7 +90,7 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.my_pwd_change:
                 //跳转至修改密码页面
-                Intent intent3 = new Intent(getActivity(), ModifyPwd.class);
+                Intent intent3 = new Intent(getActivity(), ModifyPwdActivity.class);
                 startActivity(intent3);
                 break;
         }

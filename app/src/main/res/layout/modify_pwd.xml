@@ -5,12 +5,12 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/header"
+        android:id="@+id/pwd_header"
         layout="@layout/my_header_toolbar" />
 
     <RelativeLayout
         android:id="@+id/modify_pwd_layout"
-        android:layout_below="@+id/header"
+        android:layout_below="@+id/pwd_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView

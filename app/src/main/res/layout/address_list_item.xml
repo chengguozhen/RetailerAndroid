@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:layout_margin="5dp"
+    android:background="@color/white">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:id="@+id/address_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@+id/recive_name_tag"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/main_text_color"
+                android:text="张三"/>
+            <ImageView
+                android:id="@+id/tag_img"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/shop_list_item_go"/>
+            <TextView
+                android:id="@+id/address_item_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="86-15650131931"
+                android:layout_toLeftOf="@+id/tag_img"
+                android:layout_marginRight="10dp"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/main_text_color" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/address_item_address"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/main_text_color"
+            android:text="山东省 威海市 环翠区 世昌大道一号 706室青岛中路107-2号1604室"/>
+</LinearLayout>

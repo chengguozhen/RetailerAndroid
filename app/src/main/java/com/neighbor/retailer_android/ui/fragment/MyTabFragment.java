@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
+import com.neighbor.retailer_android.ui.activity.my.AddressListActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyOrderListActivity;
 import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleListActivity;
@@ -28,6 +29,7 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
     private LinearLayout myIntegral;
     private LinearLayout myStockCycleCount;
     private LinearLayout myPriceChangeCount;
+    private LinearLayout myPwdChange;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,12 +44,14 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
         myIntegral = (LinearLayout)rootView.findViewById(R.id.my_integral);
         myStockCycleCount = (LinearLayout)rootView.findViewById(R.id.my_stock_cycle_count);
         myPriceChangeCount = (LinearLayout)rootView.findViewById(R.id.my_price_change_count);
+        myPwdChange = (LinearLayout)rootView.findViewById(R.id.my_pwd_change);
         myCard.setOnClickListener(this);
         myOrder.setOnClickListener(this);
         myWholeSale.setOnClickListener(this);
         myIntegral.setOnClickListener(this);
         myStockCycleCount.setOnClickListener(this);
         myPriceChangeCount.setOnClickListener(this);
+        myPwdChange.setOnClickListener(this);
         myHeadImg.setImageResource(R.mipmap.merchandise_default);
         return rootView;
     }
@@ -73,13 +77,18 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.my_integral:
-                //跳转至我的积分页面
+                //跳转至我的地址页面
+                Intent intent2 = new Intent(getActivity(), AddressListActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.my_stock_cycle_count:
                 //跳转至进货周期统计界面
                 break;
             case R.id.my_price_change_count:
                 //跳转至价格变动统计界面
+                break;
+            case R.id.my_pwd_change:
+                //跳转至修改密码页面
                 break;
         }
     }

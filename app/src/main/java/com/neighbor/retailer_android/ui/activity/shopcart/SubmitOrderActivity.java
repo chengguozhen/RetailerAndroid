@@ -36,6 +36,7 @@ public class SubmitOrderActivity extends Activity implements View.OnClickListene
     private TextView totalPrice;
     private TextView orderCode;
     private TextView orderTime;
+    private TextView totalSubmit;
     private CheckBox online;
     private CheckBox outline;
     private OrderShopListAdapter adpater;
@@ -51,6 +52,7 @@ public class SubmitOrderActivity extends Activity implements View.OnClickListene
         title.setText("确认订单");
         listView = (ListView)findViewById(R.id.order_submit_lv);
         submit = (Button)findViewById(R.id.submit);
+        totalSubmit = (TextView)findViewById(R.id.total_submit);
         mInflater = LayoutInflater.from(SubmitOrderActivity.this);
         header = mInflater.inflate(R.layout.submit_order_lv_header, null);
         footer = mInflater.inflate(R.layout.submit_order_lv_footer, null);

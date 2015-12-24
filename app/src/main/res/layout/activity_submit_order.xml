@@ -11,12 +11,43 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
-    <Button
-        android:id="@+id/submit"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/main_theme_color"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_large"
-        android:text="点击结算"/>
+        android:layout_height="2px"
+        android:background="@color/gray_line_color"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/main_theme_color"
+            android:padding="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_large"
+            android:layout_alignParentRight="true"
+            android:text="确认"/>
+        <TextView
+            android:id="@+id/total_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_toLeftOf="@+id/submit"
+            android:text="240.18"
+            android:textColor="@color/main_theme_color"
+            android:textSize="@dimen/text_size_large"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_toLeftOf="@+id/total_submit"
+            android:text="合计："
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/text_size_large"/>
+    </RelativeLayout>
 </LinearLayout>

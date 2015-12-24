@@ -28,4 +28,5 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.0.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/locSDK_6.05.jar')
+    compile files('libs/Volley.jar')
 }

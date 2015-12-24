@@ -37,7 +37,7 @@ public class MerchandisePriceAdapter extends ParentBaseAdapter implements View.O
     static class ViewHolder
     {
         TextView merchandiseName,specification,inventory,unitPrice;
-        EditText purchaseNum;
+        TextView purchaseNum;
         ImageView add,substract,merchandiseImage;
         Button pruchase;
         TextView wholesaler;
@@ -78,7 +78,7 @@ public class MerchandisePriceAdapter extends ParentBaseAdapter implements View.O
             viewHolder.specification = (TextView)v.findViewById(R.id.merchandise_specification);
             viewHolder.inventory = (TextView)v.findViewById(R.id.merchandise_inventory);
             viewHolder.wholesaler = (TextView)v.findViewById(R.id.wholesaler_name);
-            viewHolder.purchaseNum = (EditText)v.findViewById(R.id.purchase_number);
+            viewHolder.purchaseNum = (TextView)v.findViewById(R.id.purchase_number);
             viewHolder.pruchase = (Button)v.findViewById(R.id.purchase_btn);
             viewHolder.add = (ImageView)v.findViewById(R.id.add_merchandise);
             viewHolder.substract = (ImageView)v.findViewById(R.id.substract_merchandise);

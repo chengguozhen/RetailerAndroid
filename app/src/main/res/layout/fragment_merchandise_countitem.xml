@@ -86,10 +86,11 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="@dimen/add_substract_icon"
                         android:layout_height="@dimen/add_substract_icon" />
-                    <EditText
+                    <TextView
                         android:id="@+id/purchase_number"
                         android:text="55"
                         android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                     <ImageView

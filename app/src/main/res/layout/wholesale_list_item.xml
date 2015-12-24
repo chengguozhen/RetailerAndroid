@@ -19,8 +19,12 @@
         <ImageView
             android:id="@+id/sale_img"
             android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher"/>
+            android:layout_height="45dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ws_test_img"/>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -31,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="批发商名称"
+                android:text="旺仔小小飘食品厂"
                 android:textColor="@color/main_text_color"
                 android:textSize="@dimen/text_size_medium"/>
 

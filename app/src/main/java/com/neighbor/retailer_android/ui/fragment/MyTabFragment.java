@@ -80,6 +80,7 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
             case R.id.my_integral:
                 //跳转至我的地址页面
                 Intent intent2 = new Intent(getActivity(), AddressListActivity.class);
+                intent2.putExtra("FLAG",false);
                 startActivity(intent2);
                 break;
             case R.id.my_stock_cycle_count:

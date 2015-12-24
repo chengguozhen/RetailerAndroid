@@ -34,7 +34,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher"/>
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ws_test_img"/>
 
                 <LinearLayout
                     android:layout_width="0dp"

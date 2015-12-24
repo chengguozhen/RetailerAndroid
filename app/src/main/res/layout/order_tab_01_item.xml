@@ -98,7 +98,7 @@
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
-            android:src="@mipmap/shop_list_item_go"/>
+            android:src="@mipmap/icon_goto_gray"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"

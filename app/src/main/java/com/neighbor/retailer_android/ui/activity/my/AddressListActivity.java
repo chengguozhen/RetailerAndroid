@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.WholeSale;
+import com.neighbor.retailer_android.ui.activity.shopcart.SubmitOrderActivity;
 import com.neighbor.retailer_android.ui.adapter.MyAddressAdapter;
 import com.neighbor.retailer_android.ui.view.FtLoadingDialog;
 
@@ -46,6 +47,7 @@ public class AddressListActivity extends Activity implements View.OnClickListene
      *  loading 对话框
      *  */
     private FtLoadingDialog dialog;
+    private boolean flag = true;
 
     /**
      * show loading 对话框
@@ -71,6 +73,7 @@ public class AddressListActivity extends Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address_list);
 
+        flag = (boolean)getIntent().getBooleanExtra("FLAG", true);
         back = (ImageButton)findViewById(R.id.address_back);
         title = (TextView)findViewById(R.id.address_title);
         title.setText("地址管理");
@@ -94,10 +97,17 @@ public class AddressListActivity extends Activity implements View.OnClickListene
         addressListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //String name = mList.get(position).getName();
-                Intent intent = new Intent(AddressListActivity.this, AddressEditActivity.class);
-                //intent.putExtra("NAME", name);
-                startActivity(intent);
+                if(flag){
+                    Intent intent = new Intent(AddressListActivity.this, SubmitOrderActivity.class);
+                    intent.putExtra("ADDRESS","山东省 威海市 环翠区 世昌大道一号 青岛中路107-2号");
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }else{
+                    //String name = mList.get(position).getName();
+                    //Intent intent = new Intent(AddressListActivity.this, AddressEditActivity.class);
+                    //intent.putExtra("NAME", name);
+                    //startActivity(intent);
+                }
             }
         });
     }
@@ -106,7 +116,15 @@ public class AddressListActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.address_back:
-                finish();
+                if(flag){
+                    Intent intent = new Intent(AddressListActivity.this, SubmitOrderActivity.class);
+                    //传一个空地址（即未选中地址）
+                    intent.putExtra("ADDRESS","");
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }else{
+                    finish();
+                }
                 break;
             case R.id.ms_tab_do_lodding_btn:
                 //重新加载逻辑
@@ -118,5 +136,16 @@ public class AddressListActivity extends Activity implements View.OnClickListene
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(flag){
+            Intent intent = new Intent(AddressListActivity.this, SubmitOrderActivity.class);
+            intent.putExtra("ADDRESS", "");
+            setResult(RESULT_OK, intent);
+            finish();
+        }
+        super.onBackPressed();
     }
 }

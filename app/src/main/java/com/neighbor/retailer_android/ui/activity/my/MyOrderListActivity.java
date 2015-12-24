@@ -82,11 +82,11 @@ public class MyOrderListActivity extends FragmentActivity implements View.OnClic
                 resetTabBtn();
                 switch (position) {
                     case 0:
-                        newTx.setTextColor(MyOrderListActivity.this.getResources().getColor(R.color.main_theme_color));
+                        newTx.setTextColor(MyOrderListActivity.this.getResources().getColor(R.color.white));
                         tab01.fragmentVisible();
                         break;
                     case 1:
-                        recTx.setTextColor(MyOrderListActivity.this.getResources().getColor(R.color.main_theme_color));
+                        recTx.setTextColor(MyOrderListActivity.this.getResources().getColor(R.color.white));
                         tab02.fragmentVisible();
                         break;
                 }

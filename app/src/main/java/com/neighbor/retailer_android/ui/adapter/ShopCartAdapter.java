@@ -101,9 +101,9 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
         }
         holder.saleName.setText(mList.get(groupPosition).getName() + "  " + mList.get(groupPosition).getCategory());
         if(isExpanded){
-            holder.openImg.setBackgroundResource(R.mipmap.shop_list_item_down);
+            holder.openImg.setBackgroundResource(R.mipmap.icon_down_arrow);
         }else{
-            holder.openImg.setBackgroundResource(R.mipmap.shop_list_item_go);
+            holder.openImg.setBackgroundResource(R.mipmap.icon_goto_gray);
         }
         return convertView;
     }

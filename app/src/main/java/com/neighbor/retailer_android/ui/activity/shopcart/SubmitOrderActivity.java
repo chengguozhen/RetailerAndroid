@@ -13,11 +13,11 @@ import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.ShopInfo;
+import com.neighbor.retailer_android.ui.activity.my.AddressListActivity;
 import com.neighbor.retailer_android.ui.adapter.OrderShopListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class SubmitOrderActivity extends Activity implements View.OnClickListener{
 
@@ -93,6 +93,22 @@ public class SubmitOrderActivity extends Activity implements View.OnClickListene
                 break;
             case R.id.chance_address:
                 //更改地址
+                Intent intent = new Intent(this, AddressListActivity.class);
+                startActivityForResult(intent, 1);
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
+            case RESULT_OK:
+                String address = data.getStringExtra("ADDRESS");
+                if(!address.equals("")){
+                    recAddress.setText(address);
+                }
+                break;
+            default:
                 break;
         }
     }

@@ -56,6 +56,10 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
 
     //toolbar
     private View home,homeHeader;
+    private ImageView locView;
+    private TextView cityTv;
+    private ImageView contactView;
+
     /**
      * 通知公告 优惠商品 新品上市
      */
@@ -148,27 +152,38 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
 
     private void initToolbar()
     {
-        homeHeader = home.findViewById(R.id.home_header);
+        /*homeHeader = home.findViewById(R.id.home_header);
         if(homeHeader != null)
         {
             Toolbar toolbar = (Toolbar)homeHeader;
             ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
             MyToolbarHeader toolbarHeader = new MyToolbarHeader(getActivity(),toolbar);
-            toolbarHeader.setHeaderTitle(/*getString(R.string.)*/"首页");
+            toolbarHeader.setHeaderTitle(*//*getString(R.string.)*//*"首页");
             toolbarHeader.setSearchMenu();
             MyToolbarListener listener = new MyToolbarListener() {
                 @Override
                 public void addNavigation() {
                 //定位
-                Toast.makeText(getActivity(), "定位", Toast.LENGTH_SHORT).show();
                 mLocationClient.start();
                 mLocationClient.requestLocation();
                 }
             };
             toolbarHeader.setNavigation(R.mipmap.add, listener);
             //toolbarHeader.setSearchMenu();
-        }
+        }*/
+
+        homeHeader = home.findViewById(R.id.home_header);
+        locView = (ImageView)homeHeader.findViewById(R.id.home_loc);
+        cityTv = (TextView)homeHeader.findViewById(R.id.home_city);
+        contactView = (ImageView)homeHeader.findViewById(R.id.home_contact);
+        locView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mLocationClient.start();
+                mLocationClient.requestLocation();
+            }
+        });
     }
 
     /**
@@ -529,7 +544,7 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
             Log.i("home loction:", bdLocation.getLatitude() + "-" + bdLocation.getLongitude());
             Log.e("error code:",bdLocation.getLocType()+"");
             bdLocation.getTime();
-            //可能是错误码：161 网络定位
+            //错误码：
             bdLocation.getLocType();
             //GPS
             if(bdLocation.getLocType() == BDLocation.TypeGpsLocation)
@@ -542,6 +557,16 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
             {
                 bdLocation.getAddrStr();
                 bdLocation.getAddress();
+            }
+            else {}
+            //Log.i("city",bdLocation.getAddress().city);
+            if(bdLocation.getAddress()!=null)
+            {
+                cityTv.setVisibility(View.VISIBLE);
+                cityTv.setText(bdLocation.getAddress().city);
+            }
+            else {
+                cityTv.setVisibility(View.INVISIBLE);
             }
         }
     }

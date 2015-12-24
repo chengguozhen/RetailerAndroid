@@ -1,6 +1,5 @@
 package com.neighbor.retailer_android.common;
 
-import android.app.DownloadManager;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -15,7 +14,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
 import java.util.Map;
-import java.util.Queue;
 
 /**
  * Created by Vicky on 2015/12/24.
@@ -29,7 +27,6 @@ import java.util.Queue;
 public class Common {
 
     private RequestQueue mQueue;
-
 
 
     private static void basicRequest(final Context context,final int method,final String url,

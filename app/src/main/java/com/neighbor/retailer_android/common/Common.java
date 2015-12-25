@@ -33,70 +33,44 @@ public class Common {
 
     public static String baseUrl = "http://192.168.10.110:8088/imail/v1";
     public static String loginUrl = "/openapi/user/accessToken.d-json";
+    public static String registerUrl = "/openapi/user/resgister.d-json";
 
     public static final int loginUrl_success = 10001;
     public static final int loginUrl_failed = 10002;
+    public static final int register_susccess = 10004;
+    public static final int register_failed = 10005;
 
+    /**
+     * login params
+     */
     public static String KEY_USER_TEL = "user_tel";
     public static String KEY_REMEMBER_ME = "remember_me";
     public static String KEY_USER_PW = "user_pw";
+    /**
+     * register params
+     */
+    public static String KEY_US_NICK_NM = "US_NICK_NM";
+    public static String KEY_US_TEL = "US_TEL";
+    public static String KEY_US_PW = "US_PW";
+    public static String KEY_CO_NM_CN = "CO_NM_CN";
+    public static String KEY_CO_TYPE = "CO_TYPE";
+    public static String KEY_CHARGE_NM = "CHARGE_NM";
+    public static String KEY_CHARGE_TEL = "CHARGE_TEL";
+    public static String KEY_LocalArea = "LocalArea";
+    public static String KEY_CO_BIZ_SCOPE = "CO_BIZ_SCOPE";
+    public static String KEY_CO_ADDR_CN = "CO_ADDR_CN";
+    public static String KEY_DocumentType = "DocumentType";
+    public static String KEY_DocumentNum = "DocumentNum";
+    public static String KEY_US_MAIL = "US_MAIL";
 
-
-
-    /*
-    private RequestQueue mQueue;
-    private static void basicRequest(final Context context,final int method,final String url,
-                      RequestQueue mQueue, final Map<String, String> params, int time_count,
-                      final int what,final Handler mHandler, final int where_failed)
-    {
-        Response.ErrorListener errorListener = new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                //Message message = new Message();
-                mHandler.sendEmptyMessage(where_failed);
-
-                if (volleyError.networkResponse == null) {
-                    Toast.makeText(context, "网络连接错误", Toast.LENGTH_SHORT).show();
-                } else if (volleyError.networkResponse.statusCode == 408) {
-                    Toast.makeText(context, "网络连接超时", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "服务器内部错误", Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
-        StringRequest request = new StringRequest(method, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String s) {
-                //转化json对象数据
-
-                //处理返回数据
-                Message msg = new Message();
-                msg.what = what;
-                //msg.obj = bean;
-            }
-        }, errorListener)
-        {
-            //发送post请求时，调用父类的getParams方法来获得发送给服务器的参数值
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> paramsTemp;
-                if(method == Method.GET || params == null)
-                {
-                    paramsTemp = super.getParams();
-                }
-                else {
-                    paramsTemp = params;
-                    Log.i("http post request:", super.getUrl()+"\n params:"+params.toString());
-                }
-                return paramsTemp;
-            }
-        };
-        request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * time_count,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        mQueue.add(request);
-    }
-    */
-
+    /**
+     * 登录接口
+     * @param context
+     * @param mhandler
+     * @param username  用户名
+     * @param pwd  密码
+     * @param rememberMe  是否记住此用户
+     */
     public static void login(Context context, Handler mhandler, String username, String pwd ,String rememberMe)
     {
         Map<String,String> params = new HashMap<String, String>();
@@ -104,5 +78,42 @@ public class Common {
         params.put(KEY_USER_PW,pwd);
         params.put(KEY_REMEMBER_ME,rememberMe);
         MRequest.postRequest(context, loginUrl, null, params, mhandler, loginUrl_success, loginUrl_failed);
+    }
+    /*
+        US_NICK_NM,  //昵称
+    US_TEL, //个人电话
+    US_PW, //密码
+    CO_NM_CN,  //公司中文名
+    CO_TYPE, //公司类型
+    CHARGE_NM, //负责人名字
+    CHARGE_TEL, //负责人电话
+    LocalArea,  //所属区域
+    CO_BIZ_SCOPE,  //经营范围
+    CO_ADDR_CN, //公司中文地址
+    DocumentType, //证件类型
+    DocumentNum //证件号码
+    */
+    public static void register(Context context, Handler mhandler, String nickName, String telephone,
+                  String pwd, String firmName, String firmType, String charge, String chargePhone,
+                  String area, String controlArea, String address, String identityType, String identitiyNum,
+                  String email)
+    {
+        Map<String,String> params = new HashMap<String, String>();
+        params.put(KEY_US_NICK_NM,nickName);
+        params.put(KEY_US_TEL,telephone);
+        params.put(KEY_US_PW,pwd);
+        params.put(KEY_CO_NM_CN, firmName);
+        params.put(KEY_CO_TYPE, firmType);
+        params.put(KEY_CHARGE_NM, charge);
+        params.put(KEY_CHARGE_TEL, chargePhone);
+        params.put(KEY_LocalArea, area);
+        params.put(KEY_CO_BIZ_SCOPE,controlArea);
+        params.put(KEY_CO_ADDR_CN, address);
+        params.put(KEY_DocumentType, identityType);
+        params.put(KEY_DocumentNum, identitiyNum);
+        params.put(KEY_US_MAIL,email);
+
+        MRequest.postRequest(context, registerUrl, null, params, mhandler, register_susccess, register_failed);
+
     }
 }

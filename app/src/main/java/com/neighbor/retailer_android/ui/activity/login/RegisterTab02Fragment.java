@@ -2,7 +2,10 @@ package com.neighbor.retailer_android.ui.activity.login;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.neighbor.retailer_android.R;
+import com.neighbor.retailer_android.common.Common;
+import com.neighbor.retailer_android.common.utils.MToast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,6 +52,22 @@ public class RegisterTab02Fragment extends Fragment implements View.OnClickListe
     //立即注册
     private Button register;
 
+    private Context context;
+
+    /*
+    {
+      "id": "openapi_user_resgister",
+      "result": {
+        "result": null,
+        "msg": "请随时关注个人中心,查看审核状态,谢谢",
+        "success": true
+      },
+      "errMsg": "Success",
+      "errCd": 0,
+      "trId": "Hjlk_openapi_user_resgister_1451018002897"
+    }
+     */
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,8 +91,28 @@ public class RegisterTab02Fragment extends Fragment implements View.OnClickListe
         preview.setOnClickListener(this);
         register.setOnClickListener(this);
 
+        context = getActivity();
+
         return rootView;
     }
+
+    Handler mHandler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what)
+            {
+                case Common.register_susccess:
+                    MToast.show(context,"success");
+                    break;
+                case Common.register_failed:
+                    MToast.show(context,"failed");
+                    break;
+
+            }
+        }
+    };
 
     @Override
     public void onClick(View v) {
@@ -84,6 +125,9 @@ public class RegisterTab02Fragment extends Fragment implements View.OnClickListe
                 ((Step02ClickListener)getActivity()).onStep02BackClick();
                 break;
             case R.id.register_submit:
+                Common.register(getActivity(),mHandler,"yyj","456879","123","yyFirm","firmType",
+                        "sf", "126165165115","dsfoinsd","sdf","dfs","identityCard",
+                                "4946545466948464","54546161@qq.com");
                 //判断提交注册
                 ((Step02ClickListener)getActivity()).onStep02Click();
                 break;

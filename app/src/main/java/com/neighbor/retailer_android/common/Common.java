@@ -3,6 +3,7 @@ package com.neighbor.retailer_android.common;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,8 +13,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.neighbor.retailer_android.common.network.MRequest;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Vicky on 2015/12/24.
@@ -26,9 +31,20 @@ import java.util.Map;
  */
 public class Common {
 
+    public static String baseUrl = "http://192.168.10.110:8088/imail/v1";
+    public static String loginUrl = "/openapi/user/accessToken.d-json";
+
+    public static final int loginUrl_success = 10001;
+    public static final int loginUrl_failed = 10002;
+
+    public static String KEY_USER_TEL = "user_tel";
+    public static String KEY_REMEMBER_ME = "remember_me";
+    public static String KEY_USER_PW = "user_pw";
+
+
+
+    /*
     private RequestQueue mQueue;
-
-
     private static void basicRequest(final Context context,final int method,final String url,
                       RequestQueue mQueue, final Map<String, String> params, int time_count,
                       final int what,final Handler mHandler, final int where_failed)
@@ -79,5 +95,14 @@ public class Common {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mQueue.add(request);
     }
+    */
 
+    public static void login(Context context, Handler mhandler, String username, String pwd ,String rememberMe)
+    {
+        Map<String,String> params = new HashMap<String, String>();
+        params.put(KEY_USER_TEL,username);
+        params.put(KEY_USER_PW,pwd);
+        params.put(KEY_REMEMBER_ME,rememberMe);
+        MRequest.postRequest(context, loginUrl, null, params, mhandler, loginUrl_success, loginUrl_failed);
+    }
 }

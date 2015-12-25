@@ -20,6 +20,16 @@ import android.widget.Toast;
 
 
 import com.neighbor.retailer_android.R;
+import com.neighbor.retailer_android.bean.LoginResultBean;
+import com.neighbor.retailer_android.bean.ResponseBean;
+import com.neighbor.retailer_android.bean.ResponseInnerBean;
+import com.neighbor.retailer_android.common.Common;
+import com.neighbor.retailer_android.common.network.MRequest;
+import com.neighbor.retailer_android.common.utils.JsonUtil;
+import com.neighbor.retailer_android.common.utils.MToast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -81,6 +91,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         public void handleMessage(Message msg) {
             // TODO Auto-generated method stub
             super.handleMessage(msg);
+            ResponseBean bean= null;
             switch (msg.what) {
                 case DEVID_NO:
                     //showDialog("请稍候");
@@ -88,6 +99,19 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     break;
                 case DEVID_YES:
                     //Common.doLogin(LoginActivity.this, mQueue, loginListener, errorListener, phone, password);
+                    break;
+                case Common.loginUrl_success:
+                    bean = (ResponseBean) msg.obj;
+                    ResponseInnerBean innerBean = JsonUtil.jsonToObj(JsonUtil.objToJson(bean.getResult()),ResponseInnerBean.class);
+                    LoginResultBean resultBean = JsonUtil.jsonToObj(JsonUtil.objToJson(innerBean.getResult()),LoginResultBean.class);
+                    MToast.show(LoginActivity.this,"longin success.");
+                    break;
+                case Common.loginUrl_failed:
+                    bean = (ResponseBean) msg.obj;
+                    MToast.show(LoginActivity.this,"longin failed..");
+                    if (bean != null) {
+                        MToast.show(LoginActivity.this,bean.getErrMsg());
+                    }
                     break;
                 default:
                     break;
@@ -105,20 +129,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 password = pwd.getText().toString().trim();
                 //判断输入是否合法
                 if (checkPhonePwd(phone, password)) {
-//                    String devid = (String) SPUtil.get(this, Common.LOGIN_TOKEN, Common.KEY_DEVID, "");
-//                    if (devid.equals("")) {
-//                        Log.i("devid", "没有devid");
-//
-//                        Message msg = new Message();
-//                        msg.what = DEVID_NO;
-//                        mHandler.sendMessage(msg);
-//
-//
-//                    } else {
-//                        Message msg = new Message();
-//                        msg.what = DEVID_YES;
-//                        mHandler.sendMessage(msg);
-//                    }
+
+                    Common.login(LoginActivity.this,mHandler,phone,password,"124");
+
                 }
                 break;
             case R.id.login_back:

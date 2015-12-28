@@ -50,7 +50,11 @@ import java.util.ListIterator;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
-
+/**
+ * Created by Vicky on 2015/12/17.
+ * Retailer_android
+ * contact way: 317461087@qq.com
+ */
 @SuppressLint("NewApi")
 public class HomeTabFragment extends Fragment implements View.OnClickListener{
 

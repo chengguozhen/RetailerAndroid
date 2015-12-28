@@ -31,14 +31,24 @@ import java.util.Set;
  */
 public class Common {
 
-    public static String baseUrl = "http://192.168.10.110:8088/imail/v1";
+    /**
+     * url address
+     */
+    public static String baseUrl = "http://192.168.10.110:8088/v1";
     public static String loginUrl = "/openapi/user/accessToken.d-json";
     public static String registerUrl = "/openapi/user/resgister.d-json";
+    public static String merchandiseDetailUrl = "/api/mid/good/goodInfo.d-json";
 
+    /**
+     * msg.what
+     */
     public static final int loginUrl_success = 10001;
     public static final int loginUrl_failed = 10002;
     public static final int register_susccess = 10004;
     public static final int register_failed = 10005;
+    public static final int merchandiseDetailSuccess = 10007;
+    public static final int merchandiseDetailFailed = 10008;
+
 
     /**
      * login params
@@ -62,6 +72,10 @@ public class Common {
     public static String KEY_DocumentType = "DocumentType";
     public static String KEY_DocumentNum = "DocumentNum";
     public static String KEY_US_MAIL = "US_MAIL";
+    /**
+     * 商品详情 ：商品Id
+     */
+    public static String KEY_GD_ID = "GD_ID";
 
     /**
      * 登录接口
@@ -115,5 +129,14 @@ public class Common {
 
         MRequest.postRequest(context, registerUrl, null, params, mhandler, register_susccess, register_failed);
 
+    }
+
+    public static void merchandiseDetail(Context context, Handler mhandler, String merchandiseId)
+    {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put(KEY_GD_ID,merchandiseId);
+
+        MRequest.postRequest(context, merchandiseDetailUrl, null, params, mhandler,
+                merchandiseDetailSuccess, merchandiseDetailFailed);
     }
 }

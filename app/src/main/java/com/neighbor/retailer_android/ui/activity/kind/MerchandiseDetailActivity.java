@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
-import com.neighbor.retailer_android.bean.MerchandiseDetailBean;
+import com.neighbor.retailer_android.bean.MerchandiseItemBean;
 import com.neighbor.retailer_android.bean.ResponseBean;
 import com.neighbor.retailer_android.bean.ResponseInnerBean;
 import com.neighbor.retailer_android.common.Common;
@@ -33,6 +33,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Created by Vicky on 2015/12/17.
+ * Retailer_android
+ * contact way: 317461087@qq.com
+ */
 public class MerchandiseDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
     /**
@@ -196,11 +201,25 @@ public class MerchandiseDetailActivity extends AppCompatActivity implements View
             switch (msg.what)
             {
                 case Common.merchandiseDetailSuccess:
-                    MToast.show(MerchandiseDetailActivity.this,"merchandise detail success.");
+//                    MToast.show(MerchandiseDetailActivity.this,"merchandise detail success.");
                     ResponseBean responseBean = (ResponseBean)msg.obj;
                     ResponseInnerBean innerBean = JsonUtil.jsonToObj(JsonUtil.objToJson(responseBean.getResult()),ResponseInnerBean.class);
-                    MerchandiseDetailBean merchandiseDetailBean = JsonUtil.jsonToObj(JsonUtil.objToJson(innerBean.getResult()), MerchandiseDetailBean.class);
-                    MToast.show(MerchandiseDetailActivity.this,merchandiseDetailBean.getGoodName());
+                    MerchandiseItemBean merchandiseDetailBean = JsonUtil.jsonToObj(JsonUtil.objToJson(innerBean.getResult()), MerchandiseItemBean.class);
+                    if(merchandiseDetailBean != null)
+                    {
+                        merchandiseName.setText(merchandiseDetailBean.getMerchandiseName());
+                        merchandiseUnitPrice.setText(/*merchandiseDetailBean.get*/"0.0");
+                        merchandiseCellPrice.setText(merchandiseDetailBean.getCellPrice());
+                        merchandiseSpecification.setText(merchandiseDetailBean.getSpecifications());
+                        createdTime.setText(merchandiseDetailBean.getDateOfManufacture());
+                        qualityPeriod.setText(merchandiseDetailBean.getQualifyPeriod());
+                        category.setText(merchandiseDetailBean.getCategory());
+                        salesNum.setText(merchandiseDetailBean.getSaledCounts());
+                        inventoryNum.setText(merchandiseDetailBean.getInventoryCounts());
+                        purchaseNum.setText(merchandiseDetailBean.getInitNumber());
+                        batchNum = merchandiseDetailBean.getInitNumber();
+                        MToast.show(MerchandiseDetailActivity.this,merchandiseDetailBean.getUrl());
+                    }
                     break;
                 case Common.merchandiseDetailFailed:
                     MToast.show(MerchandiseDetailActivity.this,"merchandise detail failed.");

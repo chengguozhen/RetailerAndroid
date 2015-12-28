@@ -14,7 +14,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.neighbor.retailer_android.R;
-
+/**
+ * Created by Vicky on 2015/12/17.
+ * Retailer_android
+ * contact way: 317461087@qq.com
+ */
 public class SearchTransparentActivity extends Activity implements View.OnClickListener{
 
     private ImageButton searchBtn;

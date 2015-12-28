@@ -152,6 +152,28 @@
                 android:textColor="@color/main_text_color"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/my_collection"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:src="@mipmap/icon_my_collection"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="我的收藏"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/main_text_color"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout

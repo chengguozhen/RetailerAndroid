@@ -30,37 +30,67 @@
                 android:id="@+id/shop_name"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="金龙鱼花生油"
                 android:textColor="@color/main_text_color"
                 android:textSize="@dimen/text_size_medium"/>
 
-            <TextView
-                android:id="@+id/shop_category"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="规格:1*40"
-                android:textSize="@dimen/text_size_small"
-                android:textColor="@color/gray_text_color"/>
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/gray_text_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="零售价："/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/main_theme_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="￥"/>
+                <TextView
+                    android:id="@+id/shop_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/gray_text_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="100"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/shop_price"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textColor="@color/gray_text_color"
-                android:textSize="@dimen/text_size_small"
-                android:text="零售价：￥100"/>
-
-            <TextView
-                android:id="@+id/shop_total_price"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textColor="@color/gray_text_color"
-                android:textSize="@dimen/text_size_small"
-                android:text="每箱/盒/打：￥500"/>
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/gray_text_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="每箱/盒/打："/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/main_theme_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="￥"/>
+                <TextView
+                    android:id="@+id/shop_total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/gray_text_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="500"/>
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

@@ -105,7 +105,6 @@ public class ShopCartTabFragment extends Fragment {
                 shopInfo.setName("商品名称" + i + j);
                 shopInfo.setCount(i + 1);
                 shopInfo.setPrice(10.0 + j);
-                shopInfo.setSpec("规格" + i + j);
                 data.add(shopInfo);
             }
             ShopCartInfo shopCartInfo = new ShopCartInfo();

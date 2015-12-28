@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/whole_sale_title_bar"/>
+
+    <LinearLayout
+        android:id="@+id/parent_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_background_color"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/collect_lv_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <com.neighbor.retailer_android.ui.view.pulltorefresh.XListView
+                android:id="@+id/collection_listview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/gray_background_color"
+                />
+        </LinearLayout>
+
+        <include layout="@layout/kind_no_network_bar"
+            android:id="@+id/collect_not_network" />
+
+    </LinearLayout>
+</LinearLayout>

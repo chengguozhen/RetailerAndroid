@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.ui.activity.my.AddressListActivity;
 import com.neighbor.retailer_android.ui.activity.my.ModifyPwdActivity;
+import com.neighbor.retailer_android.ui.activity.my.MyCollectionActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyOrderListActivity;
 import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleListActivity;
@@ -40,6 +41,8 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
     private LinearLayout myPriceChangeCount;
     /* 修改密码 */
     private LinearLayout myPwdChange;
+    /* 我的收藏 */
+    private LinearLayout myCollection;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +58,7 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
         myStockCycleCount = (LinearLayout)rootView.findViewById(R.id.my_stock_cycle_count);
         myPriceChangeCount = (LinearLayout)rootView.findViewById(R.id.my_price_change_count);
         myPwdChange = (LinearLayout)rootView.findViewById(R.id.my_pwd_change);
+        myCollection = (LinearLayout)rootView.findViewById(R.id.my_collection);
         myCard.setOnClickListener(this);
         myOrder.setOnClickListener(this);
         myWholeSale.setOnClickListener(this);
@@ -62,6 +66,7 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
         myStockCycleCount.setOnClickListener(this);
         myPriceChangeCount.setOnClickListener(this);
         myPwdChange.setOnClickListener(this);
+        myCollection.setOnClickListener(this);
         myHeadImg.setImageResource(R.mipmap.merchandise_default);
         return rootView;
     }
@@ -102,6 +107,11 @@ public class MyTabFragment extends Fragment implements View.OnClickListener{
                 //跳转至修改密码页面
                 Intent intent3 = new Intent(getActivity(), ModifyPwdActivity.class);
                 startActivity(intent3);
+                break;
+            case R.id.my_collection:
+                //跳转至我的收藏页面
+                Intent intent4 = new Intent(getActivity(), MyCollectionActivity.class);
+                startActivity(intent4);
                 break;
         }
     }

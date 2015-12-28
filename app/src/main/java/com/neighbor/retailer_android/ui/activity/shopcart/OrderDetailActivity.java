@@ -19,24 +19,43 @@ import java.util.List;
 
 public class OrderDetailActivity extends Activity implements View.OnClickListener{
 
+    /* 返回键 */
     private ImageButton back;
+    /* 标题 */
     private TextView title;
+    /* 订单中商品listview */
     private ListView listView;
+    /* 删除订单 */
     private Button delete;
+    /* header footer 布局画布 */
     private LayoutInflater mInflater;
+    /* listview 头 */
     private View header;
+    /* listview 尾 */
     private View footer;
+    /* 切换地址按钮 */
     private ImageButton addressImg;
+    /* 收货人 */
     private TextView recName;
+    /* 收货人联系方式 */
     private TextView recPhone;
+    /* 收货地址 */
     private TextView recAddress;
+    /* 批发商名称 */
     private TextView wsName;
+    /* 总价 */
     private TextView totalPrice;
+    /* 订单编码 */
     private TextView orderCode;
+    /* 下单时间 */
     private TextView orderTime;
-    private TextView orderStateTag;//分为两种（一是已完成订单的付款时间，二是订单状态）
+    /* 分为两种（一是已完成订单的付款时间，二是订单状态） */
+    private TextView orderStateTag;
+    /* 上面Tag值（一为时间，二为状态） */
     private TextView orderStateValue;
+    /* 适配器 */
     private OrderShopListAdapter adpater;
+    /* 数据源 */
     private List<ShopInfo> mList = new ArrayList<ShopInfo>();
 
     @Override

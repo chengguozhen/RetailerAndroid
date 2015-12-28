@@ -19,9 +19,13 @@ import java.util.List;
 
 public class MyOrderListActivity extends FragmentActivity implements View.OnClickListener{
 
+    /* 返回键 */
     private ImageButton back;
+    /* 标题 */
     private TextView title;
+    /* 未支付订单按钮 */
     private LinearLayout noPayOrederBtn;
+    /* 已完成订单按钮 */
     private LinearLayout finishOrderBtn;
     /**
      * 左右滑动pager
@@ -35,8 +39,11 @@ public class MyOrderListActivity extends FragmentActivity implements View.OnClic
      * fragment数组
      */
     private List<Fragment> mFragments = new ArrayList<Fragment>();
+    /* 未支付与已完成 */
     private TextView newTx,recTx;
+    /* 未支付订单fragment */
     OrderTab01 tab01 = new OrderTab01();
+    /* 已完成订单fragment */
     OrderTab02 tab02 = new OrderTab02();
 
     @Override

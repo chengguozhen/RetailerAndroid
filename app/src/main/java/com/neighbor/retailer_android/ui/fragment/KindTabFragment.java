@@ -80,7 +80,9 @@ public class KindTabFragment extends Fragment implements View.OnClickListener{
      * 网络错误，重新加载按钮
      */
     private Button doLoddingBtn;
+    /* 搜索按钮 */
     private ImageButton searchBtn;
+    /* 搜索框 */
     private EditText searchEdit;
     /**
      * Handler MSG 饭店列表数据更新

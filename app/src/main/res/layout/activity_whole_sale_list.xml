@@ -14,12 +14,12 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/lv_layout"
+            android:id="@+id/whole_lv_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
             <ListView
-                android:id="@+id/sale_listview"
+                android:id="@+id/whole_listview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -28,7 +28,7 @@
         </LinearLayout>
 
         <include layout="@layout/kind_no_network_bar"
-            android:id="@+id/sale_not_network" />
+            android:id="@+id/whole_not_network" />
 
     </LinearLayout>
 </LinearLayout>

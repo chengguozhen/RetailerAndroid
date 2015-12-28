@@ -5,7 +5,7 @@ android:layout_height="@dimen/default_widget_height"
 android:background="@color/main_theme_color">
 
 <ImageButton
-    android:id="@+id/login_back"
+    android:id="@+id/wholesaler_back"
     android:layout_width="48dp"
     android:layout_height="match_parent"
     android:layout_gravity="center"
@@ -16,24 +16,14 @@ android:background="@color/main_theme_color">
     android:layout_alignParentStart="true" />
 
 <TextView
-    android:id="@+id/login_title"
+    android:id="@+id/wholesaler_title"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/transparent"
-
+    android:text="批发商列表"
     android:textSize="@dimen/text_size_large"
     android:textColor="@color/white"
     android:gravity="center"
     android:layout_alignParentTop="true"
     android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:id="@+id/search_btn"
-        android:layout_width="40dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:clickable="false"
-        android:background="@color/transparent"
-        android:src="@mipmap/search_blue" />
 </RelativeLayout>

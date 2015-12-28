@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/default_margin_distance"
+    android:layout_marginTop="@dimen/margin_medium"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linear_purchase_top"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="购买数量"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/substract_merchandise"
+            android:src="@mipmap/ms_takeout_bg_btn_reduce"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="@dimen/default_margin_distance"
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/add_substract_icon"
+            android:layout_height="@dimen/add_substract_icon" />
+        <EditText
+            android:id="@+id/purchase_number"
+            android:text="55"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/add_merchandise"
+            android:layout_marginLeft="@dimen/default_margin_distance"
+            android:src="@mipmap/ms_takeout_bg_btn_increase"
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/add_substract_icon"
+            android:layout_height="@dimen/add_substract_icon" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/purchase_btn"
+        android:text="加入购物车"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/default_margin_distance"
+        android:background="@color/main_theme_color"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_small"
+        android:layout_width="@dimen/purchase_width"
+        android:layout_height="@dimen/purchanse_height" />
+    <LinearLayout
+        android:id="@+id/linear_price"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_below="@+id/linear_purchase_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品总价"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/text_size_medium"
+            />
+        <TextView
+            android:id="@+id/merchandise_total_price"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥1125.0 "
+            android:textSize="@dimen/text_size_large"
+            android:textColor="@color/main_theme_color"
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/pay_btn"
+        android:text="点击购买"
+        android:layout_alignRight="@+id/purchase_btn"
+        android:layout_alignTop="@+id/linear_price"
+        android:background="@color/main_theme_color"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_small"
+        android:layout_width="@dimen/purchase_width"
+        android:layout_height="@dimen/purchanse_height" />
+</RelativeLayout>

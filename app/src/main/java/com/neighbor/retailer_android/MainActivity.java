@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -30,7 +31,7 @@ import com.neighbor.retailer_android.ui.fragment.WholeSaleTabFragment;
 
 import java.io.File;
 
-public class MainActivity extends Activity implements View.OnClickListener,View.OnLongClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,View.OnLongClickListener{
 
 //    /**
 //     * 从饭团tab界面跳转到main 时，通过aciton设置tab切换

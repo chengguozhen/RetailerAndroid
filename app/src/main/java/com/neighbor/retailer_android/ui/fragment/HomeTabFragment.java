@@ -8,12 +8,18 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseNewActivity;
@@ -21,6 +27,8 @@ import com.neighbor.retailer_android.ui.activity.home.notice.NoticeListActivity;
 import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseDiscountActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
 import com.neighbor.retailer_android.ui.adapter.AdvPagerAdapter;
+import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarHeader;
+import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarListener;
 import com.neighbor.retailer_android.util.AnimateFirstDisplayListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -32,13 +40,15 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressLint("NewApi")
 public class HomeTabFragment extends Fragment implements View.OnClickListener{
 
     //toolbar
-    private View home;
+    private View home,homeHeader;
     /**
      * 通知公告 优惠商品 新品上市
      */
@@ -85,13 +95,59 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
     public ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
     protected ImageLoader imageLoader= ImageLoader.getInstance();
 
+    /**
+     * 每日限时抢 计时器
+     */
+    private Timer timer;
+
+    private TextView second,minute,hour;
+    /**
+     * 小时 分钟 秒数
+     */
+    private int hourInt,minuteInt,secondInt;
+
+    /**
+     * 比onCreateView先调用, menu关联
+     * @param savedInstanceState
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         home = inflater.inflate(R.layout.main_tab_01, container, false);
+        initToolbar();
         initView();
         initAdvAdapter();
+        startTimer();
         return home;
+    }
+
+    private void initToolbar()
+    {
+        homeHeader = home.findViewById(R.id.home_header);
+        if(homeHeader != null)
+        {
+            Toolbar toolbar = (Toolbar)homeHeader;
+            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+            MyToolbarHeader toolbarHeader = new MyToolbarHeader(getActivity(),toolbar);
+            toolbarHeader.setHeaderTitle(/*getString(R.string.)*/"首页");
+            toolbarHeader.setSearchMenu();
+            MyToolbarListener listener = new MyToolbarListener() {
+                @Override
+                public void addNavigation() {
+                //定位
+                Toast.makeText(getActivity(), "定位", Toast.LENGTH_SHORT).show();
+                }
+            };
+            toolbarHeader.setNavigation(R.mipmap.add, listener);
+            //toolbarHeader.setSearchMenu();
+        }
     }
 
     /**
@@ -112,6 +168,9 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         identity = (Button)home.findViewById(R.id.my_identity_btn);
         identity.setOnClickListener(this);
         */
+        hour = (TextView)home.findViewById(R.id.hour);
+        minute = (TextView)home.findViewById(R.id.minute);
+        second = (TextView)home.findViewById(R.id.second);
     }
 
     /**
@@ -168,7 +227,6 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         advPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
@@ -185,7 +243,6 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
         //设置自动滑动和手动改变监听
@@ -292,4 +349,103 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         }
 
     }
+
+    /**
+     *  想要生效 必须先setHasOptionsMenu(true);
+     * @param menu
+     * @param inflater
+     */
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //super.onCreateOptionsMenu(menu, inflater);
+        if(inflater!=null) {
+            inflater.inflate(R.menu.contact_menu, menu);
+        }
+        else {
+            getActivity().getMenuInflater().inflate(R.menu.search_menu,menu);
+        }
+    }
+
+    /**
+     * 开启倒计时
+     */
+    private void startTimer()
+    {
+        //需要先得到倒计时，Date形式？ 假设10：01：10
+        final String hourStr = "10";
+        final String minuteStr = "01";
+        final String secondStr = "10";
+
+        hour.setText(hourStr);
+        minute.setText(minuteStr);
+        second.setText(secondStr);
+        timer = new Timer();
+        hourInt = Integer.valueOf(hourStr);
+        minuteInt = Integer.valueOf(minuteStr);
+        secondInt = Integer.valueOf(secondStr);
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                Message msg = new Message();
+                msg.what = 1000;
+                timerHandler.sendMessage(msg);
+            }
+        };
+        timer.schedule(timerTask,1000,1000);
+    }
+
+    private Handler timerHandler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what)
+            {
+                case 1000:
+                    if(secondInt > 0)
+                    {
+                        secondInt--;
+                        second.setText(secondInt+"");
+                        if(minuteInt>0)
+                        {
+                            minuteInt--;
+                            minute.setText(minuteInt+"");
+                        }
+                        else if(minuteInt == 0){
+                            if(hourInt > 0)
+                            {
+                                hourInt--;
+                                hour.setText(hourInt+"");
+                            }
+                            else if(hourInt == 0)
+                            {}
+                        }
+                    }
+                    else if(secondInt == 0)
+                    {
+                        if(minuteInt>0)
+                        {
+                            secondInt = 59;
+                            second.setText(secondInt+"");
+                            minuteInt--;
+                            minute.setText(minuteInt+"");
+                        }
+                        else if(minuteInt == 0){
+                            if(hourInt > 0)
+                            {
+                                hourInt--;
+                                hour.setText(hourInt+"");
+                            }
+                            else if(hourInt == 0)
+                            {
+                                timer.cancel();
+                            }
+                        }
+                    }
+                    break;
+                default:
+
+                    break;
+            }
+        }
+    };
 }

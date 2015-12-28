@@ -26,7 +26,7 @@
                 android:background="@color/white"
                 android:singleLine="true"
                 android:textSize="14sp"
-                android:hint="输入关键字进行搜索"/>
+                android:hint="输入关键字进行批发商搜索"/>
             <ImageButton
                 android:id="@+id/search_btn"
                 android:layout_width="0dp"

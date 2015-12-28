@@ -101,9 +101,9 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
         }
         holder.saleName.setText(mList.get(groupPosition).getName() + "  " + mList.get(groupPosition).getCategory());
         if(isExpanded){
-            holder.openImg.setBackgroundResource(R.mipmap.shop_list_item_down);
+            holder.openImg.setBackgroundResource(R.mipmap.icon_down_arrow);
         }else{
-            holder.openImg.setBackgroundResource(R.mipmap.shop_list_item_go);
+            holder.openImg.setBackgroundResource(R.mipmap.icon_goto_gray);
         }
         return convertView;
     }
@@ -124,7 +124,6 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
             holder.count = (TextView)convertView.findViewById(R.id.shop_count);
             holder.del = (ImageButton)convertView.findViewById(R.id.shop_count_del);
             holder.add = (ImageButton)convertView.findViewById(R.id.shop_count_add);
-            holder.category = (TextView)convertView.findViewById(R.id.shop_category);
             holder.check = (CheckBox)convertView.findViewById(R.id.shop_info_check);
             //将设置好的布局保存到缓存中，并将其设置在Tag里，以便后面方便取出Tag
             convertView.setTag(holder);
@@ -136,7 +135,6 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
         holder.price.setText(mList.get(groupPosition).getList().get(childPosition).getPrice() + "");
         holder.total.setText(mList.get(groupPosition).getList().get(childPosition).getSum() + "");
         holder.count.setText(mList.get(groupPosition).getList().get(childPosition).getCount() + "");
-        holder.category.setText(mList.get(groupPosition).getList().get(childPosition).getSpec());
         return convertView;
     }
 
@@ -160,7 +158,6 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
         public TextView count;
         public ImageButton del;
         public ImageButton add;
-        public TextView category;
         public CheckBox check;
     }
 }

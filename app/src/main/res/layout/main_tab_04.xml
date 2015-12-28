@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:gravity="center"
-        android:background="@mipmap/my_header_bg"
+        android:background="@mipmap/bg3"
         android:orientation="vertical">
         <com.neighbor.retailer_android.ui.view.CircularImage
             android:id="@+id/my_head_img"
@@ -31,7 +31,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="90dp"
         android:background="@color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:orientation="horizontal">
@@ -46,14 +46,15 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:src="@mipmap/ic_launcher"/>
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:src="@mipmap/card_icon"/>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:gravity="center"
                 android:text="名片"
-                android:textSize="@dimen/text_size_large"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/main_text_color"/>
         </LinearLayout>
 
@@ -66,14 +67,15 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:src="@mipmap/ic_launcher"/>
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:src="@mipmap/order_icon"/>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:gravity="center"
                 android:text="订单"
-                android:textSize="@dimen/text_size_large"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/main_text_color"/>
         </LinearLayout>
 
@@ -86,14 +88,14 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:src="@mipmap/ic_launcher"/>
+                android:layout_height="60dp"
+                android:src="@mipmap/ws_icon"/>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:gravity="center"
                 android:text="批发商"
-                android:textSize="@dimen/text_size_large"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/main_text_color"/>
         </LinearLayout>
 
@@ -107,14 +109,68 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:src="@mipmap/ic_launcher"/>
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:src="@mipmap/address_icon"/>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:gravity="center"
-                android:text="积分"
-                android:textSize="@dimen/text_size_large"
+                android:text="地址"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/main_text_color"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:id="@+id/my_pwd_change"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:src="@mipmap/pwd_icon"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="修改密码"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/main_text_color"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/my_collection"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:padding="5dp"
+                android:src="@mipmap/icon_my_collection"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="我的收藏"
+                android:textSize="@dimen/text_size_medium"
                 android:textColor="@color/main_text_color"/>
         </LinearLayout>
 
@@ -162,7 +218,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@mipmap/shop_list_item_go"/>
+                android:src="@mipmap/icon_goto_gray"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -191,7 +247,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@mipmap/shop_list_item_go"/>
+                android:src="@mipmap/icon_goto_gray"/>
         </LinearLayout>
     </LinearLayout>
 

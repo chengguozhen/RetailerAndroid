@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,11 +22,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseNewActivity;
 import com.neighbor.retailer_android.ui.activity.home.notice.NoticeListActivity;
 import com.neighbor.retailer_android.ui.activity.home.newdiscount.MerchandiseDiscountActivity;
+import com.neighbor.retailer_android.ui.activity.my.AddressEditActivity;
 import com.neighbor.retailer_android.ui.activity.my.MyIdentityActivity;
+import com.neighbor.retailer_android.ui.activity.my.NewAddressActivity;
 import com.neighbor.retailer_android.ui.adapter.AdvPagerAdapter;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarHeader;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarListener;
@@ -43,12 +50,20 @@ import java.util.ListIterator;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
-
+/**
+ * Created by Vicky on 2015/12/17.
+ * Retailer_android
+ * contact way: 317461087@qq.com
+ */
 @SuppressLint("NewApi")
 public class HomeTabFragment extends Fragment implements View.OnClickListener{
 
     //toolbar
     private View home,homeHeader;
+    private ImageView locView;
+    private TextView cityTv;
+    private ImageView contactView;
+
     /**
      * 通知公告 优惠商品 新品上市
      */
@@ -99,12 +114,22 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
      * 每日限时抢 计时器
      */
     private Timer timer;
-
-    private TextView second,minute,hour;
     /**
      * 小时 分钟 秒数
      */
+    private TextView second,minute,hour;
     private int hourInt,minuteInt,secondInt;
+
+    /**
+     * 提示每日限时抢已结束
+     */
+    private TextView endTv;
+
+    /**
+     * 百度定位信息
+     */
+    private LocationClient mLocationClient = null;
+    private BDLocationListener myListener = new MyLocationListener();
 
     /**
      * 比onCreateView先调用, menu关联
@@ -120,34 +145,49 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         home = inflater.inflate(R.layout.main_tab_01, container, false);
+
         initToolbar();
         initView();
         initAdvAdapter();
         startTimer();
+        initLocation();
         return home;
     }
 
     private void initToolbar()
     {
-        homeHeader = home.findViewById(R.id.home_header);
+        /*homeHeader = home.findViewById(R.id.home_header);
         if(homeHeader != null)
         {
             Toolbar toolbar = (Toolbar)homeHeader;
             ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
             MyToolbarHeader toolbarHeader = new MyToolbarHeader(getActivity(),toolbar);
-            toolbarHeader.setHeaderTitle(/*getString(R.string.)*/"首页");
+            toolbarHeader.setHeaderTitle(*//*getString(R.string.)*//*"首页");
             toolbarHeader.setSearchMenu();
             MyToolbarListener listener = new MyToolbarListener() {
                 @Override
                 public void addNavigation() {
                 //定位
-                Toast.makeText(getActivity(), "定位", Toast.LENGTH_SHORT).show();
+                mLocationClient.start();
+                mLocationClient.requestLocation();
                 }
             };
             toolbarHeader.setNavigation(R.mipmap.add, listener);
             //toolbarHeader.setSearchMenu();
-        }
+        }*/
+
+        homeHeader = home.findViewById(R.id.home_header);
+        locView = (ImageView)homeHeader.findViewById(R.id.home_loc);
+        cityTv = (TextView)homeHeader.findViewById(R.id.home_city);
+        contactView = (ImageView)homeHeader.findViewById(R.id.home_contact);
+        locView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mLocationClient.start();
+                mLocationClient.requestLocation();
+            }
+        });
     }
 
     /**
@@ -171,6 +211,8 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
         hour = (TextView)home.findViewById(R.id.hour);
         minute = (TextView)home.findViewById(R.id.minute);
         second = (TextView)home.findViewById(R.id.second);
+        endTv = (TextView)home.findViewById(R.id.merchandise_end);
+        endTv.setVisibility(View.INVISIBLE);
     }
 
     /**
@@ -340,10 +382,6 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                 intentNew.setClass(getActivity(), MerchandiseNewActivity.class);
                 startActivity(intentNew);
                 break;
-            /*case R.id.my_identity_btn:
-                Intent intentIdentity = new Intent(getActivity(), MyIdentityActivity.class);
-                startActivity(intentIdentity);
-                break;*/
             default:
                 break;
         }
@@ -372,7 +410,7 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
     private void startTimer()
     {
         //需要先得到倒计时，Date形式？ 假设10：01：10
-        final String hourStr = "10";
+        final String hourStr = "00";
         final String minuteStr = "01";
         final String secondStr = "10";
 
@@ -405,19 +443,9 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                     {
                         secondInt--;
                         second.setText(secondInt+"");
-                        if(minuteInt>0)
+                        if(secondInt <= 9)
                         {
-                            minuteInt--;
-                            minute.setText(minuteInt+"");
-                        }
-                        else if(minuteInt == 0){
-                            if(hourInt > 0)
-                            {
-                                hourInt--;
-                                hour.setText(hourInt+"");
-                            }
-                            else if(hourInt == 0)
-                            {}
+                            second.setText("0"+secondInt);
                         }
                     }
                     else if(secondInt == 0)
@@ -428,16 +456,29 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
                             second.setText(secondInt+"");
                             minuteInt--;
                             minute.setText(minuteInt+"");
+                            if(minuteInt <= 9)
+                            {
+                                minute.setText("0"+minuteInt);
+                            }
                         }
                         else if(minuteInt == 0){
                             if(hourInt > 0)
                             {
+                                secondInt = 59;
+                                second.setText(secondInt+"");
                                 hourInt--;
                                 hour.setText(hourInt+"");
+                                if(hourInt <= 9)
+                                {
+                                    hour.setText("0"+hourInt);
+                                }
+                                minuteInt = 59;
+                                minute.setText(minuteInt+"");
                             }
                             else if(hourInt == 0)
                             {
                                 timer.cancel();
+                                endTv.setVisibility(View.VISIBLE);
                             }
                         }
                     }
@@ -448,4 +489,89 @@ public class HomeTabFragment extends Fragment implements View.OnClickListener{
             }
         }
     };
+
+    /**
+     * 初始化定位设置
+     */
+    private void initLocation()
+    {
+        mLocationClient = new LocationClient(getActivity());
+        //注册监听
+        mLocationClient.registerLocationListener(myListener);
+
+        LocationClientOption option = new LocationClientOption();
+        //设置定位模式：默认高精度  高精度 低功耗 仅设备
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
+        //使用哪个坐标系 默认国测局gcj02
+        option.setCoorType("bd0911");
+        //设置多久定位一次
+        int span = 1000*60;
+        option.setScanSpan(span);
+
+        option.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要
+        option.setOpenGps(true);//可选，默认false,设置是否使用gps
+        option.setLocationNotify(true);//可选，默认false，设置是否当gps有效时按照1S1次频率输出GPS结果
+        option.setIsNeedLocationDescribe(true);//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
+        option.setIsNeedLocationPoiList(true);//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
+        option.setIgnoreKillProcess(false);//可选，默认false，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认杀死
+        option.SetIgnoreCacheException(false);//可选，默认false，设置是否收集CRASH信息，默认收集
+        option.setEnableSimulateGps(false);//可选，默认false，设置是否需要过滤gps仿真结果，默认需要
+
+        mLocationClient.setLocOption(option);
+    }
+
+    /**
+     * 定位信息接收
+     *
+     61 ： GPS定位结果，GPS定位成功。
+     62 ： 无法获取有效定位依据，定位失败，请检查运营商网络或者wifi网络是否正常开启，尝试重新请求定位。
+     63 ： 网络异常，没有成功向服务器发起请求，请确认当前测试手机网络是否通畅，尝试重新请求定位。
+     65 ： 定位缓存的结果。
+     66 ： 离线定位结果。通过requestOfflineLocaiton调用时对应的返回结果。
+     67 ： 离线定位失败。通过requestOfflineLocaiton调用时对应的返回结果。
+     68 ： 网络连接失败时，查找本地离线定位时对应的返回结果。
+     161： 网络定位结果，网络定位定位成功。
+     162： 请求串密文解析失败。
+     167： 服务端定位失败，请您检查是否禁用获取位置信息权限，尝试重新请求定位。
+     502： key参数错误，请按照说明文档重新申请KEY。
+     505： key不存在或者非法，请按照说明文档重新申请KEY。
+     601： key服务被开发者自己禁用，请按照说明文档重新申请KEY。
+     602： key mcode不匹配，您的ak配置过程中安全码设置有问题，请确保：sha1正确，“;”分号是英文状态；且包名是您当前运行应用的包名，请按照说明文档重新申请KEY。
+     501～700：key验证失败，请按照说明文档重新申请KEY。
+     *
+     */
+    public class  MyLocationListener implements BDLocationListener{
+        @Override
+        public void onReceiveLocation(BDLocation bdLocation) {
+            bdLocation.getLatitude();
+            bdLocation.getLongitude();
+            Log.i("home loction:", bdLocation.getLatitude() + "-" + bdLocation.getLongitude());
+            Log.e("error code:",bdLocation.getLocType()+"");
+            bdLocation.getTime();
+            //错误码：
+            bdLocation.getLocType();
+            //GPS
+            if(bdLocation.getLocType() == BDLocation.TypeGpsLocation)
+            {
+                bdLocation.getAddress();
+                bdLocation.getAddrStr();
+            }
+            //Netword
+            else if(bdLocation.getLocType() == BDLocation.TypeNetWorkLocation)
+            {
+                bdLocation.getAddrStr();
+                bdLocation.getAddress();
+            }
+            else {}
+            //Log.i("city",bdLocation.getAddress().city);
+            if(bdLocation.getAddress()!=null)
+            {
+                cityTv.setVisibility(View.VISIBLE);
+                cityTv.setText(bdLocation.getAddress().city);
+            }
+            else {
+                cityTv.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
 }

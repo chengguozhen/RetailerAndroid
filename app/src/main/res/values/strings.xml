@@ -51,6 +51,7 @@
     <string name="merchandise_new_title">新品列表</string>
     <string name="merchandise_discount_title">特惠商品列表</string>
     <string name="merchandisedetail_title">商品详情</string>
+    <string name="merchandise_intro">商品介绍</string>
 
     <!-- MyIdentityActivity -->
     <string name="my_identity">我的名片</string>
@@ -58,4 +59,9 @@
     <string name="toolbar_search">搜索</string>
     <string name="toolbar_test">test</string>
     <string name="toolbar_contact">联系客服</string>
+
+
+    <string name="location_choose">请选择省市区</string>
+    <string name="location_confirm">确定</string>
+    <string name="location_cancel">取消</string>
 </resources>

@@ -6,10 +6,10 @@
 
     <include layout="@layout/kind_title_bar"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/colorPrimaryDark"/>
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="2dp"-->
+        <!--android:background="@color/colorPrimaryDark"/>-->
     <LinearLayout
         android:id="@+id/parent_layout"
         android:layout_width="match_parent"

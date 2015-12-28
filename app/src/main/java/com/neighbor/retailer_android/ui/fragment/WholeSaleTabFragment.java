@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +16,19 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.neighbor.retailer_android.R;
+import com.neighbor.retailer_android.bean.ResponseBean;
 import com.neighbor.retailer_android.bean.WholeSale;
+import com.neighbor.retailer_android.common.Common;
+import com.neighbor.retailer_android.common.utils.JsonUtil;
 import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleDetailActivity;
 import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleListActivity;
 import com.neighbor.retailer_android.ui.adapter.WholeSaleAdapter;
 import com.neighbor.retailer_android.ui.view.FtLoadingDialog;
 import com.neighbor.retailer_android.ui.view.pulltorefresh.XListView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,10 +40,9 @@ import java.util.Locale;
 public class WholeSaleTabFragment extends Fragment implements XListView.IXListViewListener,View.OnClickListener{
 
     private View rootView;
-    /**
-     * listview
-     */
+    /* listview */
     private XListView saleListView = null;
+    /* 数据源 */
     private List<WholeSale> mList = new ArrayList<WholeSale>();
     private WholeSaleAdapter adapter;
     /**
@@ -49,12 +57,15 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
      * 网络错误，重新加载按钮
      */
     private Button doLoddingBtn;
+    /* 搜索按钮 */
     private ImageButton searchBtn;
+    /* 搜索输入框 */
     private EditText searchEdit;
     /**
      * 分页值
      */
     private int mRefreshIndex = 0;
+    private int page = 10;
     /**
      *  loading 对话框
      *  */
@@ -79,6 +90,45 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
         }
     }
 
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch(msg.what){
+                case Common.wholeSaleListSuccess:
+                    ResponseBean responseBean = (ResponseBean) msg.obj;
+                    try {
+                        if(noNetWork.getVisibility() == View.VISIBLE){
+                            noNetWork.setVisibility(View.GONE);
+                            listviewLayout.setVisibility(View.VISIBLE);
+                        }
+                        JSONObject jsonObject = new JSONObject(JsonUtil.objToJson(responseBean.getResult()));
+                        if(!jsonObject.isNull("rows")){
+                            JSONArray array = jsonObject.getJSONArray("rows");
+                            List<WholeSale> data = JsonUtil.jsonToList(array.toString(), WholeSale.class);
+                            for(int i = 0;i < data.size();i++){
+                                mList.add(data.get(i));
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    dismissDialog();
+                    onLoad();
+                    break;
+                case Common.wholeSaleListFailed:
+                    //显示网络异常
+                    if(noNetWork.getVisibility() == View.GONE){
+                        noNetWork.setVisibility(View.VISIBLE);
+                        listviewLayout.setVisibility(View.GONE);
+                    }
+                    dismissDialog();
+                    onLoad();
+                    break;
+            }
+        }
+    };
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -98,19 +148,22 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
         saleListView.setAdapter(adapter);
         for(int i = 0;i < 10;i++){
             WholeSale info = new WholeSale();
-            info.setName("幸福便利店" + i);
+            info.setMidName("幸福便利店" + i);
             mList.add(info);
         }
-        adapter.notifyDataSetChanged();
+        //getMsListData(1);
         saleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String name = mList.get(position).getName();
+                String wsId = mList.get(position).getMidId();
+                String name = mList.get(position).getMidName();
                 Intent intent = new Intent(getActivity(), WholeSaleDetailActivity.class);
-                intent.putExtra("NAME",name);
+                intent.putExtra("ID", wsId);
+                intent.putExtra("NAME", name);
                 startActivity(intent);
             }
         });
+        //showDialog("正在加载数据......");
         return rootView;
     }
 
@@ -125,9 +178,20 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
                 break;
             case R.id.ms_tab_do_lodding_btn:
                 //重新加载逻辑
-                //getMsListData(1);
+                getMsListData(1);
                 break;
         }
+    }
+
+    /* 加载数据，更新数据源（mode=1重新加载，mode=0上拉加载） */
+    private void getMsListData(int mode){
+        if(mode==1){
+            mRefreshIndex = 0;
+            if(mList != null || !mList.isEmpty()){
+                mList.clear();
+            }
+        }
+        Common.wholeSaleList(getActivity(), mHandler, "", mRefreshIndex + "", page + "");
     }
 
     /**
@@ -135,22 +199,7 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
      */
     @Override
     public void onRefresh() {
-//        mRefreshIndex = 0;
-//        if(list != null || !list.isEmpty()){
-//            list.clear();
-//        }
-//        key = "";
-//        cityCode = (String)SPUtil.get(MeishiActivity.this,"CITY_NAME","name_pinyin","weihai");
-//        latitudeAndLongitude = (String)SPUtil.get(MeishiActivity.this,"CITY_NAME","location","37.433032,122.151025");
-//        sortWay = "distance:asc";
-//        takeOut = "";
-//        tableSize = "";
-//        distanceData = "10000";
-//        msExpandTabView.setTitle("美食", 0);
-//        msExpandTabView.setTitle("全城", 1);
-//        msExpandTabView.setTitle("智能排序", 2);
-//        msExpandTabView.setTitle("筛选", 3);
-//        getMsListData(0);
+        getMsListData(1);
     }
 
     /**
@@ -158,11 +207,12 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
      */
     @Override
     public void onLoadMore() {
-//        if(list.size() >= 10) {
-//            getMsListData(0);
-//        }else{
-//            saleListView.stopLoadMore();
-//        }
+        if(mList.size() >= 10) {
+            mRefreshIndex++;
+            getMsListData(0);
+        }else{
+            saleListView.stopLoadMore();
+        }
     }
 
 

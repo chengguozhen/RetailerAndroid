@@ -1,6 +1,7 @@
 package com.neighbor.retailer_android.ui.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Handler;
@@ -17,6 +18,8 @@ import android.widget.LinearLayout;
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.ShopCartInfo;
 import com.neighbor.retailer_android.bean.ShopInfo;
+import com.neighbor.retailer_android.ui.activity.shopcart.SubmitOrderActivity;
+import com.neighbor.retailer_android.ui.adapter.OrderShopListAdapter;
 import com.neighbor.retailer_android.ui.adapter.ShopCartAdapter;
 import com.neighbor.retailer_android.ui.view.pulltorefresh.XListView;
 
@@ -54,6 +57,7 @@ public class ShopCartTabFragment extends Fragment {
      * 网络出错，重新加载按钮
      */
     private Button doLoddingBtn;
+    /* 确认支付按钮 */
     private Button submit;
 
     private Handler mHandler = new Handler() {
@@ -78,6 +82,8 @@ public class ShopCartTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //点击支付逻辑
+                Intent intent = new Intent(getActivity(), SubmitOrderActivity.class);
+                startActivity(intent);
             }
         });
         doLoddingBtn.setOnClickListener(new ImageButton.OnClickListener() {
@@ -99,7 +105,6 @@ public class ShopCartTabFragment extends Fragment {
                 shopInfo.setName("商品名称" + i + j);
                 shopInfo.setCount(i + 1);
                 shopInfo.setPrice(10.0 + j);
-                shopInfo.setSpec("规格" + i + j);
                 data.add(shopInfo);
             }
             ShopCartInfo shopCartInfo = new ShopCartInfo();

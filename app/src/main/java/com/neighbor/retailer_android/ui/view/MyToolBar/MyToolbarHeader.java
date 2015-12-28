@@ -30,6 +30,7 @@ public class MyToolbarHeader {
     {
         TextView headerTitle = new TextView(context);
         headerTitle.setTextColor(context.getResources().getColor(R.color.white));
+        headerTitle.setTextSize(context.getResources().getDimension(R.dimen.text_size_large));
         headerTitle.setTextAppearance(context,R.style.toolbar_title);
         headerTitle.setText(title);
         Toolbar.LayoutParams params = new Toolbar.LayoutParams(

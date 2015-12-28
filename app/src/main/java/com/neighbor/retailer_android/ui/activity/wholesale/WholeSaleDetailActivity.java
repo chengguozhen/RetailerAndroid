@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -12,32 +14,62 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
+import com.neighbor.retailer_android.common.Common;
 import com.neighbor.retailer_android.ui.activity.kind.MerchandiseListActivity;
 
 public class WholeSaleDetailActivity extends Activity implements View.OnClickListener{
 
+    /* 标题 */
     private TextView title;
+    /* 返回键 */
     private ImageButton back;
+    /* 批发商图片 */
     private ImageView wholeImg;
+    /* 批发商名称 */
     private TextView wholeName;
+    /* 批发商id */
     private TextView wholeId;
+    /* 批发商编码 */
     private TextView wholeCode;
+    /* 批发商地址 */
     private TextView wholeAddress;
+    /* 批发商联系方式 */
     private TextView wholePhoneNum;
+    /* 批发商联系人 */
     private TextView wholeConnectName;
+    /* 批发商邮箱 */
     private TextView wholeMail;
+    /* 批发商经营类型 */
     private TextView wholeKind;
+    /* 拨打批发商电话 */
     private LinearLayout wholePhoneBtn;
+    /* 主布局 */
     private LinearLayout parentLayout;
+    /* 无网络布局 */
     private LinearLayout noNetwork;
+    /* 商品详情按钮 */
     private Button shopDetailBtn;
+    /* 申请会员按钮 */
     private Button applyMemberBtn;
     /**
      * 网络错误，重新加载按钮
      */
     private Button doLoddingBtn;
+    /* 标题名 */
     private String titleName = "幸福便利店";
+    /* 批发商id */
+    private String wsId;
+    /* 电话号码 */
     private String phoneNum = "15650131931";
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch(msg.what){
+
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +77,11 @@ public class WholeSaleDetailActivity extends Activity implements View.OnClickLis
         setContentView(R.layout.activity_whole_sale_detail);
 
         titleName = getIntent().getStringExtra("NAME");
+        wsId = getIntent().getStringExtra("ID");
         initView();
         initListener();
+        //如果未登录则申请会员按钮灰掉不可点击，如果已登录则根据用户id返回状态显示退出会员还是申请会员
+        //Common.wholeSaleDetail(WholeSaleDetailActivity.this,mHandler,wsId,"");
         initValue();
     }
 
@@ -79,6 +114,7 @@ public class WholeSaleDetailActivity extends Activity implements View.OnClickLis
 
     private void initValue(){
         title.setText(titleName);
+        //根据wsId获取批发商信息
         //设置批发商信息
     }
 

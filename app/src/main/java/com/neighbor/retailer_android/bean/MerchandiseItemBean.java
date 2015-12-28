@@ -1,5 +1,10 @@
 package com.neighbor.retailer_android.bean;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 /**
@@ -7,6 +12,21 @@ import java.util.List;
  * Retailer_android
  * contact way: 317461087@qq.com
  */
+/**
+ * goodCategory : 神奇的分类
+ * stock : 123
+ * MANY_PRICE : null
+ * sales : null
+ * leastBuyCnt : 124
+ * dateExpiry : 2015-12-25
+ * dateInPro : 2015-12-25
+ * midName : null
+ * goodName : 123
+ * goodCol : null
+ */
+@JsonAutoDetect
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class MerchandiseItemBean {
     /**
      * 商品编号
@@ -15,11 +35,17 @@ public class MerchandiseItemBean {
     /**
      * 商品名称
      */
+    @JsonProperty("goodName")
     private String merchandiseName;
     /**
      * 商品图片url列表
      */
     private List<String> merchandiseUrl;
+    /**
+     * 测试url
+     */
+    @JsonProperty("URL")
+    private String url;
     /**
      * 商品状态
      */
@@ -27,34 +53,47 @@ public class MerchandiseItemBean {
     /**
      * 商品单价
      */
+    @JsonProperty("manyPrice")
     private String unitPrice;
+
+    /**
+     * 商品批发价格
+     */
+    private String cellPrice;
     /**
      * 生产日期
      */
+    @JsonProperty("dateInPro")
     private String dateOfManufacture;
     /**
      * 保质期
      */
+    @JsonProperty("dateExpire")
     private String qualifyPeriod;
     /**
      * 规格
      */
+    @JsonProperty("goodCol")
     private String specifications;
     /**
      * 所属批发商
      */
+    @JsonProperty("midName")
     private String wholesaler;
     /**
      * 类别
      */
+    @JsonProperty("goodCategory")
     private String category;
     /**
      * 已售数量
      */
+    @JsonProperty("sales")
     private String saledCounts;
     /**
      * 库存数量
      */
+    @JsonProperty("stock")
     private String inventoryCounts;
 
     public String getMerchandiseId() {
@@ -103,6 +142,22 @@ public class MerchandiseItemBean {
 
     public void setDateOfManufacture(String dateOfManufacture) {
         this.dateOfManufacture = dateOfManufacture;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getCellPrice() {
+        return cellPrice;
+    }
+
+    public void setCellPrice(String cellPrice) {
+        this.cellPrice = cellPrice;
     }
 
     public String getQualifyPeriod() {
@@ -160,6 +215,7 @@ public class MerchandiseItemBean {
     /**
      * 起批数
      */
+    @JsonProperty("leastBuyCnt")
     private int initNumber;
 
     public int getPurchaseNumber() {

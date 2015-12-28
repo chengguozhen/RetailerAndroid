@@ -1,45 +1,52 @@
 package com.neighbor.retailer_android.bean;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.List;
 
 /**
  * Created by xu on 2015/12/15.
  */
+@JsonAutoDetect
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class WholeSale {
-    private String name;
-    private String url;
-    private String tag;
+    public String midId;
+    public String midName;
+    public String picUrl;
+    public String midSpec;
 
-    public String getName() {
-        return name;
+    public String getMidId() {
+        return midId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMidId(String midId) {
+        this.midId = midId;
     }
 
-    public String getUrl() {
-        return url;
+    public String getMidName() {
+        return midName;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setMidName(String midName) {
+        this.midName = midName;
     }
 
-    public String getTag() {
-        return tag;
+    public String getPicUrl() {
+        return picUrl;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 
-    @Override
-    public String toString() {
-        return "WholeSale{" +
-                "name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                ", tag='" + tag + '\'' +
-                '}';
+    public String getMidSpec() {
+        return midSpec;
+    }
+
+    public void setMidSpec(String midSpec) {
+        this.midSpec = midSpec;
     }
 }

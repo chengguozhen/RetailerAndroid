@@ -3,6 +3,9 @@ package com.neighbor.retailer_android;
 import android.app.Application;
 import android.content.Context;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.neighbor.retailer_android.common.utils.MLog;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -16,11 +19,17 @@ import com.nostra13.universalimageloader.utils.L;
  */
 public class MyApplication extends Application {
 
+    public static RequestQueue mQueue;
+    public Context context = null;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        initImageLoader(getApplicationContext());
 
+        context = getApplicationContext();
+        mQueue = Volley.newRequestQueue(context);
+        MLog.setIsLog(true);
+        initImageLoader(getApplicationContext());
     }
 
 
@@ -42,5 +51,9 @@ public class MyApplication extends Application {
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
         L.disableLogging();
+    }
+
+    public static RequestQueue getQueue(){
+        return mQueue;
     }
 }

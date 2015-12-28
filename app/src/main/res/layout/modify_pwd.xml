@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/pwd_header"
+        layout="@layout/my_header_toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/modify_pwd_layout"
+        android:layout_below="@+id/pwd_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/pwd_tv"
+            android:text="旧密码"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="30dip" />
+        <EditText
+            android:id="@+id/old_pwd"
+            android:layout_toRightOf="@+id/pwd_tv"
+            android:layout_margin="10dp"
+            android:singleLine="true"
+            android:textSize="@dimen/text_size_medium"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:background="@drawable/edittext_select"
+            />
+        <TextView
+            android:id="@+id/pwd_tv2"
+            android:layout_below="@+id/pwd_tv"
+            android:hint="新密码"
+            android:layout_alignLeft="@+id/pwd_tv"
+            android:layout_alignTop="@+id/new_pwd"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="30dip" />
+        <EditText
+            android:id="@+id/new_pwd"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/old_pwd"
+            android:layout_alignLeft="@+id/old_pwd"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:background="@drawable/edittext_select"
+            />
+        <TextView
+            android:id="@+id/pwd_tv3"
+            android:layout_below="@+id/pwd_tv2"
+            android:hint="新密码"
+            android:layout_alignLeft="@+id/pwd_tv2"
+            android:layout_alignTop="@+id/new_pwd2"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="30dip" />
+        <EditText
+            android:id="@+id/new_pwd2"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/new_pwd"
+            android:layout_alignLeft="@+id/new_pwd"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:background="@drawable/edittext_select"
+            />
+    </RelativeLayout>
+    <Button
+        android:id="@+id/edit_save_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/click"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_large"
+        android:layout_alignParentBottom="true"
+        android:text="保存密码"/>
+</RelativeLayout>

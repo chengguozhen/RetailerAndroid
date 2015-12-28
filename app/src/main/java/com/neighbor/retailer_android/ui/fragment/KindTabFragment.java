@@ -80,7 +80,9 @@ public class KindTabFragment extends Fragment implements View.OnClickListener{
      * 网络错误，重新加载按钮
      */
     private Button doLoddingBtn;
+    /* 搜索按钮 */
     private ImageButton searchBtn;
+    /* 搜索框 */
     private EditText searchEdit;
     /**
      * Handler MSG 饭店列表数据更新
@@ -150,21 +152,21 @@ public class KindTabFragment extends Fragment implements View.OnClickListener{
                 dish.setName("方便即食" + i + j);
                 List<String> list = new ArrayList<String>();
                 list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
-                list.add("牙刷");
+                list.add("薯片");
+                list.add("方便面");
+                list.add("食用油");
+                list.add("浴巾");
+                list.add("苹果");
+                list.add("口香糖");
+                list.add("花生");
+                list.add("奶茶");
+                list.add("可乐");
+                list.add("面包");
+                list.add("酱油");
+                list.add("辣椒");
+                list.add("生姜");
+                list.add("可可粉");
+                list.add("洁厕灵");
                 dish.setList(list);
                 list1.add(dish);
             }

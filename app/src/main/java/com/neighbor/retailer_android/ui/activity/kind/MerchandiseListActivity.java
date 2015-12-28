@@ -16,7 +16,11 @@ import com.neighbor.retailer_android.ui.fragment.MerchandiseListCountFragment;
 import com.neighbor.retailer_android.ui.fragment.MerchandiseListPriceFragment;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarHeader;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarListener;
-
+/**
+ * Created by Vicky on 2015/12/17.
+ * Retailer_android
+ * contact way: 317461087@qq.com
+ */
 public class MerchandiseListActivity extends AppCompatActivity implements View.OnClickListener{
 
     private View view;

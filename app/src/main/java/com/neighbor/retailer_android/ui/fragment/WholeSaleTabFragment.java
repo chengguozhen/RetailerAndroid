@@ -115,8 +115,10 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
         saleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String wsId = mList.get(position).getId();
                 String name = mList.get(position).getName();
                 Intent intent = new Intent(getActivity(), WholeSaleDetailActivity.class);
+                intent.putExtra("ID",wsId);
                 intent.putExtra("NAME",name);
                 startActivity(intent);
             }

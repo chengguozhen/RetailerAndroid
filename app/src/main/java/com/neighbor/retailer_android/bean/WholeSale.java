@@ -6,6 +6,7 @@ import java.util.List;
  * Created by xu on 2015/12/15.
  */
 public class WholeSale {
+    private String id;
     private String name;
     private String url;
     private String tag;
@@ -34,12 +35,11 @@ public class WholeSale {
         this.tag = tag;
     }
 
-    @Override
-    public String toString() {
-        return "WholeSale{" +
-                "name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                ", tag='" + tag + '\'' +
-                '}';
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

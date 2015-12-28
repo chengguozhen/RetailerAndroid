@@ -35,20 +35,18 @@ public class Common {
      * url address
      */
     public static String baseUrl = "http://192.168.10.110:8088/v1";
+    /* login */
     public static String loginUrl = "/openapi/user/accessToken.d-json";
-    public static String registerUrl = "/openapi/user/resgister.d-json";
-    public static String merchandiseDetailUrl = "/api/mid/good/goodInfo.d-json";
-
-    /**
-     * msg.what
-     */
     public static final int loginUrl_success = 10001;
     public static final int loginUrl_failed = 10002;
+    /* register */
+    public static String registerUrl = "/openapi/user/resgister.d-json";
     public static final int register_susccess = 10004;
     public static final int register_failed = 10005;
+    /* merchandiseDetail */
+    public static String merchandiseDetailUrl = "/api/mid/good/goodInfo.d-json";
     public static final int merchandiseDetailSuccess = 10007;
     public static final int merchandiseDetailFailed = 10008;
-
 
     /**
      * login params

@@ -54,6 +54,8 @@ public class WholeSaleDetailActivity extends Activity implements View.OnClickLis
     private Button doLoddingBtn;
     /* 标题名 */
     private String titleName = "幸福便利店";
+    /* 批发商id */
+    private String wsId;
     /* 电话号码 */
     private String phoneNum = "15650131931";
 
@@ -63,6 +65,7 @@ public class WholeSaleDetailActivity extends Activity implements View.OnClickLis
         setContentView(R.layout.activity_whole_sale_detail);
 
         titleName = getIntent().getStringExtra("NAME");
+        wsId = getIntent().getStringExtra("ID");
         initView();
         initListener();
         initValue();
@@ -97,6 +100,7 @@ public class WholeSaleDetailActivity extends Activity implements View.OnClickLis
 
     private void initValue(){
         title.setText(titleName);
+        //根据wsId获取批发商信息
         //设置批发商信息
     }
 

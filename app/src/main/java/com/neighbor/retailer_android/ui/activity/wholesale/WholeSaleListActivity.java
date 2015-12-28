@@ -97,6 +97,7 @@ public class WholeSaleListActivity extends Activity implements View.OnClickListe
         back.setOnClickListener(this);
         adapter = new WholeSaleAdapter(this,mList);
         saleListView.setAdapter(adapter);
+        //根据key搜索出满足条件的批发商信息填充数据源
         for(int i = 0;i < 10;i++){
             WholeSale info = new WholeSale();
             info.setName("幸福便利店" + i);
@@ -106,9 +107,11 @@ public class WholeSaleListActivity extends Activity implements View.OnClickListe
         saleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String wsId = mList.get(position).getId();
                 String name = mList.get(position).getName();
                 Intent intent = new Intent(WholeSaleListActivity.this, WholeSaleDetailActivity.class);
-                intent.putExtra("NAME", name);
+                intent.putExtra("ID",wsId);
+                intent.putExtra("NAME",name);
                 startActivity(intent);
             }
         });

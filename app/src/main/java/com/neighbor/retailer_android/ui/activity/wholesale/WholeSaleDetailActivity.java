@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -12,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
+import com.neighbor.retailer_android.common.Common;
 import com.neighbor.retailer_android.ui.activity.kind.MerchandiseListActivity;
 
 public class WholeSaleDetailActivity extends Activity implements View.OnClickListener{
@@ -59,6 +62,15 @@ public class WholeSaleDetailActivity extends Activity implements View.OnClickLis
     /* 电话号码 */
     private String phoneNum = "15650131931";
 
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch(msg.what){
+
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +80,8 @@ public class WholeSaleDetailActivity extends Activity implements View.OnClickLis
         wsId = getIntent().getStringExtra("ID");
         initView();
         initListener();
+        //如果未登录则申请会员按钮灰掉不可点击，如果已登录则根据用户id返回状态显示退出会员还是申请会员
+        //Common.wholeSaleDetail(WholeSaleDetailActivity.this,mHandler,wsId,"");
         initValue();
     }
 

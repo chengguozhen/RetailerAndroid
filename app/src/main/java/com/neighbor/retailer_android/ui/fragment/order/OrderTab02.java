@@ -56,7 +56,7 @@ public class OrderTab02 extends Fragment implements XListView.IXListViewListener
 		listview.setAdapter(adapter);
         for(int i = 0;i < 10;i++){
             WholeSale info = new WholeSale();
-            info.setName("幸福便利店" + i);
+            info.setMidName("幸福便利店" + i);
             mList.add(info);
         }
         adapter.notifyDataSetChanged();

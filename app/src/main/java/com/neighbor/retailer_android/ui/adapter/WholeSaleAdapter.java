@@ -1,7 +1,6 @@
 package com.neighbor.retailer_android.ui.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,11 @@ import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
 import com.neighbor.retailer_android.bean.WholeSale;
+import com.neighbor.retailer_android.util.AnimateFirstDisplayListener;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 import java.util.List;
 
@@ -28,11 +32,23 @@ public class WholeSaleAdapter extends BaseAdapter {
      */
     private Context mContext;
     private LayoutInflater mInflater = null;
+    DisplayImageOptions options;
+    private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     public WholeSaleAdapter(Context context, List<WholeSale> list){
         this.mContext = context;
         this.mList = list;
         this.mInflater = LayoutInflater.from(context);
+        options = new DisplayImageOptions.Builder()
+                .showStubImage(R.mipmap.ic_launcher) // 设置图片下载期间显示的图片
+                .showImageForEmptyUri(R.mipmap.ic_launcher) // 设置图片Uri为空或是错误的时候显示的图片
+                .showImageOnFail(R.mipmap.ic_launcher) // 设置图片加载或解码过程中发生错误显示的图片
+                .cacheInMemory(true) // 设置下载的图片是否缓存在内存中
+                .cacheOnDisc(true) // 设置下载的图片是否缓存在SD卡中
+                .displayer(new RoundedBitmapDisplayer(20)) // 设置成圆角图片
+                .build(); // 创建配置过得DisplayImageOption对象
+
     }
     @Override
     public int getCount() {
@@ -68,6 +84,10 @@ public class WholeSaleAdapter extends BaseAdapter {
         {
             holder = (ViewHolder)convertView.getTag();
         }
+//        holder.name.setText(mList.get(position).getMidName());
+//        holder.tag.setText(mList.get(position).getMidSpec());
+//        imageLoader.displayImage(mList.get(position).getPicUrl(), holder.img, options,
+//                animateFirstListener);
         return convertView;
     }
 

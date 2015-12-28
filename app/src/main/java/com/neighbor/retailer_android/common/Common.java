@@ -47,6 +47,19 @@ public class Common {
     public static String merchandiseDetailUrl = "/api/mid/good/goodInfo.d-json";
     public static final int merchandiseDetailSuccess = 10007;
     public static final int merchandiseDetailFailed = 10008;
+    /* wholesale */
+    public static String wholeSaleListUrl = "/api/opt/mid/mids.d-json";
+    public static final int wholeSaleListSuccess = 11001;
+    public static final int wholeSaleListFailed = 11002;
+    public static String KEY_WS_PAGE = "page";
+    public static String KEY_WS_ROWS = "rows";
+    public static String KEY_WS_SEARCH_KEY = "search";
+    /* wholesaledetail */
+    public static String wholeSaleDetailUrl = "/api/opt/mid/midInfo.d-json";
+    public static final int wholeSaleDetailSuccess = 11003;
+    public static final int wholeSaleDetailFailed = 11004;
+    public static String KEY_WSD_ID = "midId";
+    public static String KEY_WSD_USER_ID = "userId";
 
     /**
      * login params
@@ -136,5 +149,30 @@ public class Common {
 
         MRequest.postRequest(context, merchandiseDetailUrl, null, params, mhandler,
                 merchandiseDetailSuccess, merchandiseDetailFailed);
+    }
+
+    public static void wholeSaleList(Context context, Handler mhandler, String search,String page,String rows)
+    {
+        Map<String, String> params = new HashMap<String, String>();
+        if(!search.equals("")){
+            params.put(KEY_WS_SEARCH_KEY,search);
+        }
+        params.put(KEY_WS_PAGE,page);
+        params.put(KEY_WS_ROWS,rows);
+
+        MRequest.postRequest(context, wholeSaleListUrl, null, params, mhandler,
+                wholeSaleListSuccess, wholeSaleListFailed);
+    }
+
+    public static void wholeSaleDetail(Context context, Handler mhandler, String midId,String userId)
+    {
+        Map<String, String> params = new HashMap<String, String>();
+        if(!userId.equals("")){
+            params.put(KEY_WSD_USER_ID,userId);
+        }
+        params.put(KEY_WSD_ID,midId);
+
+        MRequest.postRequest(context, wholeSaleListUrl, null, params, mhandler,
+                wholeSaleListSuccess, wholeSaleListFailed);
     }
 }

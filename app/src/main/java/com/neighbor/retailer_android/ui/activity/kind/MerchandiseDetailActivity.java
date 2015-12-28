@@ -1,5 +1,6 @@
 package com.neighbor.retailer_android.ui.activity.kind;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
@@ -104,6 +106,7 @@ public class MerchandiseDetailActivity extends AppCompatActivity implements View
     private ImageView add,substract;
     private TextView totalPrice;
     private Button addCart,pay;
+    private LinearLayout merchandiseIntro;
     /**
      * 起批数
      */
@@ -130,7 +133,8 @@ public class MerchandiseDetailActivity extends AppCompatActivity implements View
         substract.setOnClickListener(this);
         addCart.setOnClickListener(this);
         pay.setOnClickListener(this);
-
+        merchandiseIntro = (LinearLayout)findViewById(R.id.merchandise_detail_intro);
+        merchandiseIntro.setOnClickListener(this);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,6 +192,10 @@ public class MerchandiseDetailActivity extends AppCompatActivity implements View
             case R.id.pay_btn:
 
                 break;
+            case R.id.merchandise_detail_intro:
+                Intent intro = new Intent(MerchandiseDetailActivity.this,MerchandiseIntroActivity.class);
+                startActivity(intro);
+                break;
             default:
                 break;
         }
@@ -218,7 +226,7 @@ public class MerchandiseDetailActivity extends AppCompatActivity implements View
                         inventoryNum.setText(merchandiseDetailBean.getInventoryCounts());
                         purchaseNum.setText(merchandiseDetailBean.getInitNumber());
                         batchNum = merchandiseDetailBean.getInitNumber();
-                        MToast.show(MerchandiseDetailActivity.this,merchandiseDetailBean.getUrl());
+                        MToast.show(MerchandiseDetailActivity.this, merchandiseDetailBean.getUrl());
                     }
                     break;
                 case Common.merchandiseDetailFailed:

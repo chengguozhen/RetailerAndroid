@@ -82,4 +82,36 @@
             android:textColor="@color/main_text_color"
             />
     </LinearLayout>
+    <View
+        android:id="@+id/linear_line"
+        android:layout_below="@+id/linear_sale_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/merchandise_detail_intro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linear_line"
+        android:layout_marginBottom="@dimen/default_margin_distance"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/main_text_color"
+            android:text="商品介绍"
+            android:textSize="@dimen/text_size_medium"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/add"
+            android:layout_marginRight="@dimen/margin_medium"
+            />
+    </LinearLayout>
+
 </RelativeLayout>

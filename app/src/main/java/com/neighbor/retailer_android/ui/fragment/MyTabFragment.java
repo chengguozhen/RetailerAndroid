@@ -22,14 +22,23 @@ import com.neighbor.retailer_android.ui.activity.wholesale.WholeSaleListActivity
 public class MyTabFragment extends Fragment implements View.OnClickListener{
 
     private View rootView;
+    /* 我的头像 */
     private ImageView myHeadImg;
+    /* 用户名 */
     private TextView myName;
+    /* 我的名片按钮 */
     private LinearLayout myCard;
+    /* 我的订单按钮 */
     private LinearLayout myOrder;
+    /* 我的批发商 */
     private LinearLayout myWholeSale;
+    /* 我的地址管理 */
     private LinearLayout myIntegral;
+    /* 进货周期统计 */
     private LinearLayout myStockCycleCount;
+    /* 商品价格变动统计 */
     private LinearLayout myPriceChangeCount;
+    /* 修改密码 */
     private LinearLayout myPwdChange;
 
     @Override

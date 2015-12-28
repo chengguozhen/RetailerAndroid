@@ -57,6 +57,7 @@ public class ShopCartTabFragment extends Fragment {
      * 网络出错，重新加载按钮
      */
     private Button doLoddingBtn;
+    /* 确认支付按钮 */
     private Button submit;
 
     private Handler mHandler = new Handler() {

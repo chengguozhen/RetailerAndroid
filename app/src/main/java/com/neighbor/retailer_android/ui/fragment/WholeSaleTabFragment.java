@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +33,9 @@ import java.util.Locale;
 public class WholeSaleTabFragment extends Fragment implements XListView.IXListViewListener,View.OnClickListener{
 
     private View rootView;
-    /**
-     * listview
-     */
+    /* listview */
     private XListView saleListView = null;
+    /* 数据源 */
     private List<WholeSale> mList = new ArrayList<WholeSale>();
     private WholeSaleAdapter adapter;
     /**
@@ -49,7 +50,9 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
      * 网络错误，重新加载按钮
      */
     private Button doLoddingBtn;
+    /* 搜索按钮 */
     private ImageButton searchBtn;
+    /* 搜索输入框 */
     private EditText searchEdit;
     /**
      * 分页值
@@ -78,6 +81,13 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
             dialog.dismiss();
         }
     }
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -125,9 +135,14 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
                 break;
             case R.id.ms_tab_do_lodding_btn:
                 //重新加载逻辑
-                //getMsListData(1);
+                getMsListData(1);
                 break;
         }
+    }
+
+    /* 加载数据，更新数据源（mode=1重新加载，mode=0上拉加载） */
+    private void getMsListData(int mode){
+
     }
 
     /**
@@ -139,17 +154,6 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
 //        if(list != null || !list.isEmpty()){
 //            list.clear();
 //        }
-//        key = "";
-//        cityCode = (String)SPUtil.get(MeishiActivity.this,"CITY_NAME","name_pinyin","weihai");
-//        latitudeAndLongitude = (String)SPUtil.get(MeishiActivity.this,"CITY_NAME","location","37.433032,122.151025");
-//        sortWay = "distance:asc";
-//        takeOut = "";
-//        tableSize = "";
-//        distanceData = "10000";
-//        msExpandTabView.setTitle("美食", 0);
-//        msExpandTabView.setTitle("全城", 1);
-//        msExpandTabView.setTitle("智能排序", 2);
-//        msExpandTabView.setTitle("筛选", 3);
 //        getMsListData(0);
     }
 
@@ -158,11 +162,11 @@ public class WholeSaleTabFragment extends Fragment implements XListView.IXListVi
      */
     @Override
     public void onLoadMore() {
-//        if(list.size() >= 10) {
-//            getMsListData(0);
-//        }else{
-//            saleListView.stopLoadMore();
-//        }
+        if(mList.size() >= 10) {
+            getMsListData(0);
+        }else{
+            saleListView.stopLoadMore();
+        }
     }
 
 

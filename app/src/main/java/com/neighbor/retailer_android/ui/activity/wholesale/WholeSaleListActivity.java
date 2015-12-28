@@ -3,6 +3,8 @@ package com.neighbor.retailer_android.ui.activity.wholesale;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -20,12 +22,15 @@ import java.util.List;
 
 public class WholeSaleListActivity extends Activity implements View.OnClickListener{
 
+    /* 返回键 */
     private ImageButton back;
     /**
      * listview
      */
     private ListView saleListView = null;
+    /* 数据源 */
     private List<WholeSale> mList = new ArrayList<WholeSale>();
+    /* 适配器 */
     private WholeSaleAdapter adapter;
     /**
      * 未连接网络提示布局
@@ -43,8 +48,9 @@ public class WholeSaleListActivity extends Activity implements View.OnClickListe
      *  loading 对话框
      *  */
     private FtLoadingDialog dialog;
-    //搜索关键词
+    /* 搜索关键词 */
     private String key;
+    /* 标题 */
     private TextView title;
 
     /**
@@ -65,6 +71,13 @@ public class WholeSaleListActivity extends Activity implements View.OnClickListe
             dialog.dismiss();
         }
     }
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,4 +126,5 @@ public class WholeSaleListActivity extends Activity implements View.OnClickListe
                 break;
         }
     }
+
 }

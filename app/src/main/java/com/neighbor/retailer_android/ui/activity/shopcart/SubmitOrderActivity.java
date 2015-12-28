@@ -21,25 +21,45 @@ import java.util.List;
 
 public class SubmitOrderActivity extends Activity implements View.OnClickListener{
 
+    /* 返回键 */
     private ImageButton back;
+    /* 标题 */
     private TextView title;
+    /* listview */
     private ListView listView;
+    /* 确认按钮 */
     private Button submit;
+    /* 画布 */
     private LayoutInflater mInflater;
+    /* header */
     private View header;
+    /* footer */
     private View footer;
+    /* 切换地址按钮 */
     private ImageButton addressImg;
+    /* 收货人姓名 */
     private TextView recName;
+    /* 收货人联系方式 */
     private TextView recPhone;
+    /* 收货地址 */
     private TextView recAddress;
+    /* 批发商名称 */
     private TextView wsName;
+    /* 总价 */
     private TextView totalPrice;
+    /* 订单编码 */
     private TextView orderCode;
+    /* 下单时间 */
     private TextView orderTime;
+    /* 总价确认 */
     private TextView totalSubmit;
+    /* 在线支付 */
     private CheckBox online;
+    /* 货到付款 */
     private CheckBox outline;
+    /* 适配器 */
     private OrderShopListAdapter adpater;
+    /* 数据源 */
     private List<ShopInfo> mList = new ArrayList<ShopInfo>();
 
     @Override

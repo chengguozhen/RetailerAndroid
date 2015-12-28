@@ -22,14 +22,19 @@ import java.util.List;
 
 public class AddressListActivity extends Activity implements View.OnClickListener{
 
+    /* 返回键 */
     private ImageButton back;
+    /* 标题 */
     private TextView title;
+    /* 添加地址按钮 */
     private ImageButton addAddress;
     /**
      * listview
      */
     private ListView addressListView = null;
+    /* 数据源 */
     private List<WholeSale> mList = new ArrayList<WholeSale>();
+    /* 适配器 */
     private MyAddressAdapter adapter;
     /**
      * 未连接网络提示布局
@@ -47,6 +52,7 @@ public class AddressListActivity extends Activity implements View.OnClickListene
      *  loading 对话框
      *  */
     private FtLoadingDialog dialog;
+    /* 跳转标志位 */
     private boolean flag = true;
 
     /**

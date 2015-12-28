@@ -9,9 +9,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.neighbor.retailer_android.R;
+import com.neighbor.retailer_android.bean.MerchandiseDetailBean;
+import com.neighbor.retailer_android.bean.ResponseBean;
+import com.neighbor.retailer_android.bean.ResponseInnerBean;
+import com.neighbor.retailer_android.common.Common;
+import com.neighbor.retailer_android.common.utils.JsonUtil;
+import com.neighbor.retailer_android.common.utils.MToast;
 import com.neighbor.retailer_android.ui.adapter.MerPagerAdapter;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarHeader;
 import com.neighbor.retailer_android.ui.view.MyToolBar.MyToolbarListener;
@@ -25,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class MerchandiseDetailActivity extends AppCompatActivity {
+public class MerchandiseDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
     /**
      * Toolbar
@@ -78,13 +86,56 @@ public class MerchandiseDetailActivity extends AppCompatActivity {
     public ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
     protected ImageLoader imageLoader= ImageLoader.getInstance();
 
+    /**
+     * 商品详情显示的具体信息控件
+     */
+    private TextView merchandiseName;
+    private TextView merchandiseCellPrice,merchandiseUnitPrice;
+    private TextView merchandiseSpecification;
+    private TextView createdTime,qualityPeriod;
+    private TextView category;
+    private TextView salesNum,inventoryNum;
+    private TextView purchaseNum;
+    private ImageView add,substract;
+    private TextView totalPrice;
+    private Button addCart,pay;
+    /**
+     * 起批数
+     */
+    private int batchNum = 0;
+
+    private void initView()
+    {
+        merchandiseName = (TextView)findViewById(R.id.merchandise_name);
+        merchandiseCellPrice = (TextView)findViewById(R.id.merchandise_cells_price);
+        merchandiseUnitPrice = (TextView)findViewById(R.id.merchandise_unit_price);
+        merchandiseSpecification = (TextView)findViewById(R.id.merchandise_specification);
+        createdTime = (TextView)findViewById(R.id.generate_tv);
+        qualityPeriod = (TextView)findViewById(R.id.quality_period_tv);
+        category = (TextView)findViewById(R.id.merchandise_category);
+        salesNum = (TextView)findViewById(R.id.merchandise_sale_num);
+        inventoryNum = (TextView)findViewById(R.id.merchandise_inventory_num);
+        purchaseNum = (TextView)findViewById(R.id.purchase_number);
+        add = (ImageView)findViewById(R.id.add_merchandise);
+        substract = (ImageView)findViewById(R.id.substract_merchandise);
+        totalPrice = (TextView)findViewById(R.id.merchandise_total_price);
+        addCart = (Button)findViewById(R.id.purchase_btn);
+        pay = (Button)findViewById(R.id.pay_btn);
+        add.setOnClickListener(this);
+        substract.setOnClickListener(this);
+        addCart.setOnClickListener(this);
+        pay.setOnClickListener(this);
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_merchandise_detail);
 
+        initView();
         initToolbar();
         initPagerAdapter();
+        initData();
     }
 
     private void initToolbar()
@@ -110,6 +161,55 @@ public class MerchandiseDetailActivity extends AppCompatActivity {
             //toolbarHeader.setSearchMenu();
         }
     }
+
+    private void initData()
+    {
+        Common.merchandiseDetail(this,mhandler,"20151225143006");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.add_merchandise:
+                batchNum += batchNum;
+                break;
+            case R.id.substract_merchandise:
+                batchNum -= batchNum;
+                break;
+            case R.id.purchase_btn:
+
+                break;
+            case R.id.pay_btn:
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    Handler mhandler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what)
+            {
+                case Common.merchandiseDetailSuccess:
+                    MToast.show(MerchandiseDetailActivity.this,"merchandise detail success.");
+                    ResponseBean responseBean = (ResponseBean)msg.obj;
+                    ResponseInnerBean innerBean = JsonUtil.jsonToObj(JsonUtil.objToJson(responseBean.getResult()),ResponseInnerBean.class);
+                    MerchandiseDetailBean merchandiseDetailBean = JsonUtil.jsonToObj(JsonUtil.objToJson(innerBean.getResult()), MerchandiseDetailBean.class);
+                    MToast.show(MerchandiseDetailActivity.this,merchandiseDetailBean.getGoodName());
+                    break;
+                case Common.merchandiseDetailFailed:
+                    MToast.show(MerchandiseDetailActivity.this,"merchandise detail failed.");
+                    break;
+
+            }
+        }
+    };
+
 
     private void initPagerAdapter()
     {
